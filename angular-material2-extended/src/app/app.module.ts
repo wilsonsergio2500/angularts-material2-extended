@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Route } from '@angular/router';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule } from '@angular/material';
+import {
+  MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { APP_ROUTES } from './routes';
@@ -38,7 +41,8 @@ import { ROOT_COMPONENTS } from './views/root/components'
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

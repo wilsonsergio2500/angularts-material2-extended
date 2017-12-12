@@ -9,6 +9,12 @@ import { MediaMatcher } from '@angular/cdk/layout';
   .mat-sidenav{
     width: 240px;
   }
+  .side-content{
+    overflow-y: hidden;
+  }
+  .dashboard-content{
+    height: 100%;
+  }
 `
   ]
 })
