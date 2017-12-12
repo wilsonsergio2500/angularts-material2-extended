@@ -8,7 +8,19 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
-  </mat-sidenav>
+    <mat-nav-list>
+      <a 
+         mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyvanilla']">
+        Vanilla Formly
+      </a>
+    </mat-nav-list>
+
+</mat-sidenav>
   <mat-sidenav-content class="side-content">
 
     <mat-toolbar color="primary">

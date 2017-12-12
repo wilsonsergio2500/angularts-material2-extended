@@ -37,6 +37,9 @@
     <Content Include=".angular-cli.json" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\fomly-fields\Fields.ts" />
+    <Content Include="src\app\fomly-fields\FormlyField.ts" />
+    <Content Include="src\app\fomly-fields\IFormlyField.ts" />
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -45,6 +48,7 @@
     <Content Include="src\app\views\root\dashboard\main\main.component.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
     <Content Include="src\app\views\root\root.component.html" />
     <Content Include="src\app\views\root\root-routes.ts" />
     <Content Include="src\app\views\sample\sample.component.html">
@@ -69,6 +73,7 @@
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\main\main.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\root.component.ts" />
     <TypeScriptCompile Include="src\app\views\sample\sample.component.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
@@ -85,11 +90,13 @@
     <Folder Include="src\" />
     <Folder Include="src\app\" />
     <Folder Include="src\app\common\" />
+    <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />
     <Folder Include="src\app\views\root\dashboard\" />
     <Folder Include="src\app\views\root\dashboard\main\" />
+    <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />
