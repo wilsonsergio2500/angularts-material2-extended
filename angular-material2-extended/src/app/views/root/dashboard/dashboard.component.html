@@ -1,0 +1,34 @@
+
+<mat-sidenav-container class="demo-root" fullscreen>
+  <mat-sidenav #start [opened]="mobileQuery.matches ? false : true" [mode]="mobileQuery.matches ? 'over' : 'side'">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <mat-icon class="example-icon">favorite</mat-icon>
+        <span>Actions</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+
+        <button mat-icon-button color="warn" (click)="start.open('mouse')">
+          <mat-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
+        </button>
+
+
+        <span>Dashboard</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+   </mat-sidenav-content>
+</mat-sidenav-container>
+
+  
+

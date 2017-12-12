@@ -4,6 +4,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>angular-material2-extended</Name>
     <RootNamespace>angular-material2-extended</RootNamespace>
+    <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -36,9 +37,22 @@
     <Content Include=".angular-cli.json" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\views\home\home.component.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\views\root\dashboard\components.ts" />
+    <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
+    <Content Include="src\app\views\root\dashboard\main\main.component.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\views\root\root.component.html" />
+    <Content Include="src\app\views\root\root-routes.ts" />
+    <Content Include="src\app\views\sample\sample.component.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
-    <Content Include="src\styles.css" />
+    <Content Include="src\styles.scss" />
     <Content Include="src\tsconfig.app.json" />
     <Content Include="src\tsconfig.spec.json" />
     <Content Include="tsconfig.json" />
@@ -48,6 +62,15 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\views\home\home.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\views\root\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\main\main.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
+    <TypeScriptCompile Include="src\app\views\root\root.component.ts" />
+    <TypeScriptCompile Include="src\app\views\sample\sample.component.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
@@ -61,6 +84,13 @@
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="src\" />
     <Folder Include="src\app\" />
+    <Folder Include="src\app\common\" />
+    <Folder Include="src\app\views\" />
+    <Folder Include="src\app\views\home\" />
+    <Folder Include="src\app\views\root\" />
+    <Folder Include="src\app\views\root\dashboard\" />
+    <Folder Include="src\app\views\root\dashboard\main\" />
+    <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />
   </ItemGroup>
