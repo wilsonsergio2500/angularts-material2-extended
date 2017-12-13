@@ -48,12 +48,21 @@ export namespace Fields {
 
   }
 
+  export interface ISelectOption{
+    label: string;
+    value: string;
+  }
+  export interface IRadioOption{
+    key: string | number;
+    value: string;
+  }
+
   class InputBase implements FormlyFieldConfig {
     key: string;
     type: string;
     templateOptions: IFormlyTemplateOptions;
     optionsTypes?: string[];
-
+    defaultValue?: any;
     validation?: {
       messages?: {
         [messageProperties: string]: string | ((error, field: FormlyFieldConfig) => string);
@@ -134,4 +143,30 @@ export namespace Fields {
         }
     }
 
+  export class SelectField extends InputBase{
+    constructor(key: string, label: string, options: ISelectOption[], required : boolean = false){
+      super(key, label, required);
+      this.type =  types.SELECT;
+      this.templateOptions.options = options;
+    }
+  }
+
+  export class CheckBoxField extends InputBase{
+    constructor(key: string, label: string){
+      super(key, label, false);
+      this.type = types.CHECKBOX;
+      this.defaultValue = false;
+
+    }
+  }
+
+  export class RadioField extends InputBase{
+    constructor(key: string, label: string, options: IRadioOption[]){
+      super(key, label, true);
+      this.type = types.RADIO;
+      
+      this.templateOptions.options = options;
+
+    }
+  }
 }

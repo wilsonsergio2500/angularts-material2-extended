@@ -37,6 +37,7 @@
     <Content Include=".angular-cli.json" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\fomly-fields\FieldGroups.ts" />
     <Content Include="src\app\fomly-fields\Fields.ts" />
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
     <Content Include="src\app\fomly-fields\IFormlyGroup.ts" />
