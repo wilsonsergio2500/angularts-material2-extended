@@ -119,6 +119,13 @@ export namespace Fields {
 		}
 	}
 
+  export class NumberField extends InputBase{
+     constructor(key: string, label: string, required: boolean = false){
+       super(key, label, required);
+       this.templateOptions.type = 'number';
+     }
+  }
+
   export class PasswordField extends InputBase {
         constructor(key: string, label: string) {
             super(key, label, true);

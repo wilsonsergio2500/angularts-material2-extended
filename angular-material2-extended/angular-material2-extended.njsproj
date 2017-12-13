@@ -38,8 +38,8 @@
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\fomly-fields\Fields.ts" />
-    <Content Include="src\app\fomly-fields\FormlyField.ts" />
-    <Content Include="src\app\fomly-fields\IFormlyField.ts" />
+    <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
+    <Content Include="src\app\fomly-fields\IFormlyGroup.ts" />
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>

@@ -47,15 +47,7 @@ export class VanillaFormlyComponent{
         },
         validation: { messages },
         validators : {
-                //'required': {
-                //    expression: (formGroup : FormGroup) => {
-                //      return (!!formGroup.value);
-                //    },
-                //    message: (item: any, formlyConfig: FormlyFieldConfig) => {
-                      
-                //        return `${formlyConfig.templateOptions.label} is required` ;
-                //    }
-                //},
+                
                 'email': {
                    expression: (FormGroup: FormGroup) => {
                         let value = FormGroup.value;
