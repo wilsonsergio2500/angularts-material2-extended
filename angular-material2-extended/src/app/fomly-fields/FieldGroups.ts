@@ -4,7 +4,7 @@ import { FormGroup, AbstractControl, FormGroupDirective, NgForm } from '@angular
 
 export namespace FieldGroups{
 
-	class GroupBase implements FormlyFieldConfig{
+	export class GroupBase implements FormlyFieldConfig{
 
       className?: string;
       fieldGroupClassName?: string;
@@ -14,6 +14,7 @@ export namespace FieldGroups{
 
 	  constructor(){
 		  this.fieldGroupClassName = 'row';
+      this.className= 'col-md-12'
 		  this.fieldGroup = [];
 	  }
 	}
@@ -36,5 +37,12 @@ export namespace FieldGroups{
 			this.fieldGroup = [field1, field2, field3];
 		 }
 	}
+
+  export class GroupRow extends GroupBase{
+      constructor(fields: FormlyFieldConfig[] | GroupBase[]){
+        super();
+        this.fieldGroup = fields;
+      }
+  }
 
 }

@@ -1,0 +1,12 @@
+<div>
+
+  <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+    <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
+      <div class="pt-2">
+        <button type="submit" class="btn btn-primary submit-button ">Submit</button>
+        <button type="button" class="btn btn-default" (click)="formlyGroup.options.resetModel()">Reset</button>
+      </div>
+    </formly-form>
+  </form>
+
+</div>
