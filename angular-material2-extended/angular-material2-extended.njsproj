@@ -45,6 +45,7 @@
     </Content>
     <Content Include="src\app\views\root\dashboard\components.ts" />
     <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
+    <Content Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.html" />
     <Content Include="src\app\views\root\dashboard\main\main.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -71,6 +72,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\views\root\components.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\main\main.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.ts" />
@@ -96,6 +98,7 @@
     <Folder Include="src\app\views\root\" />
     <Folder Include="src\app\views\root\dashboard\" />
     <Folder Include="src\app\views\root\dashboard\main\" />
+    <Folder Include="src\app\views\root\dashboard\formly-fields\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

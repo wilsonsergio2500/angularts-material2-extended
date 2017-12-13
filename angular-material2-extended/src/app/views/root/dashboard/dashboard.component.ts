@@ -11,9 +11,18 @@ import { MediaMatcher } from '@angular/cdk/layout';
   }
   .side-content{
     overflow-y: hidden;
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+  }
+  .side-content .mat-toolbar{
+    flex: 0 1 auto;
   }
   .dashboard-content{
     height: 100%;
+    overflow-y: auto;
+    width: 100%;
+    flex: 1 1 auto;
   }
 `
   ]

@@ -26,6 +26,7 @@ export class VanillaFormlyComponent{
       {
         key: 'text',
         type: 'input',
+        
         templateOptions: {
           label: 'Text 1',
           placeholder: 'enter an item',
@@ -38,6 +39,7 @@ export class VanillaFormlyComponent{
       {
         key: 'email',
         type: 'input',
+        
         templateOptions: {
           label: 'Email',
           required: true

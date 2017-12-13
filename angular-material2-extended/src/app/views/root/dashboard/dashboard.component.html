@@ -18,6 +18,14 @@
          [routerLink]="['/dashboard/formlyvanilla']">
         Vanilla Formly
       </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyFieldTypes']">
+        Formly Fields
+      </a>
     </mat-nav-list>
 
 </mat-sidenav>
