@@ -42,6 +42,12 @@ export namespace Fields {
     [additionalProperties: string]: any;
   }
 
+  interface IFormlyValidator{
+    expression: (formGroup : FormGroup) => boolean;
+    message: (error, field: FormlyFieldConfig) => string;
+
+  }
+
   class InputBase implements FormlyFieldConfig {
     key: string;
     type: string;
@@ -55,10 +61,10 @@ export namespace Fields {
       show?: boolean;
       [additionalProperties: string]: any;
     };
-    validators?: any;
+    validators?: { [validatorProperty: string] : IFormlyValidator } //any;
     asyncValidators?: any;
     formControl?: AbstractControl;
-
+     hideExpression?: boolean | string | ((model: any, formState: any) => boolean);
     className?: string;
 
     constructor(key: string, label: string, required: boolean = false) {
@@ -68,7 +74,7 @@ export namespace Fields {
 
       const messages = {
         required: (error, field: FormlyFieldConfig) => {
-          return field.templateOptions.label + ' is required';
+          return `${field.templateOptions.label} is required`;
         }
       }
 
@@ -93,15 +99,22 @@ export namespace Fields {
             super(key, label, required);
             this.validators = {
                 'email': {
-                    expression: ($viewvalue, $modelvalue) => {
-                        let value = $modelvalue || $viewvalue;
-                        let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                        return regex.test(value);
+                    expression: (formGroup : FormGroup) => {
+                        let value = formGroup.value;
+                        if(!!value){
+                            let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            return regex.test(value);
+                        } else {
+                          //if value should be handle by the required validator
+                          return true;
+                        }
+                        
                     },
-                    message: ($viewvalue, $modelvalue) => {
-                        return ($viewvalue) && $viewvalue + ' is not a valid Email Address' ;
+                    message: (error, field: FormlyFieldConfig) => {
+                        return `${field.formControl.value} is not a valid Email Address` ;
                     }
-                }
+                },
+             
 			  }
 		}
 	}
