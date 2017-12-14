@@ -79,12 +79,16 @@ export namespace Fields {
     formControl?: AbstractControl;
      hideExpression?: boolean | string | ((model: any, formState: any) => boolean);
     className?: string;
-
+    modelOptions?: {
+        debounce?: {
+            default: number;
+        };
+    };
     constructor(key: string, label: string, required: boolean = false) {
       this.key = key;
-	  this.type = types.INPUT;
+	    this.type = types.INPUT;
       this.templateOptions = <IFormlyTemplateOptions>{ label, required };
-
+      this.modelOptions = {};
       const messages = {
         required: (error, field: FormlyFieldConfig) => {
           return `${field.templateOptions.label} is required`;

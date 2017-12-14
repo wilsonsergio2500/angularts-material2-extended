@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {  HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Route } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,12 +33,14 @@ import { ROOT_COMPONENTS } from './views/root/components'
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROOT_ROUTES),
     FormsModule,
     ReactiveFormsModule,
     FormlyModule.forRoot(),
     FormlyMaterialModule,
+
 
     //material
     LayoutModule,

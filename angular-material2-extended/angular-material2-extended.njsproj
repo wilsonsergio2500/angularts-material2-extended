@@ -60,6 +60,7 @@
     <Content Include="src\app\views\root\dashboard\components-example\components-example.component.html" />
     <Content Include="src\app\views\root\dashboard\components.ts" />
     <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
+    <Content Include="src\app\views\root\dashboard\formly-async-validator\formly-async-validator.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-layout-template\formly-layout-template.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-layout\formly-layout.component.html">
@@ -101,6 +102,7 @@
     <TypeScriptCompile Include="src\app\views\root\components.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\components-example\components-example.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-async-validator\formly-async-validator.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout-template\formly-layout-template.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout\fomly-layout.component.ts">
@@ -145,6 +147,7 @@
     <Folder Include="src\app\views\root\dashboard\formly-layout\" />
     <Folder Include="src\app\views\root\dashboard\formly-layout-template\" />
     <Folder Include="src\app\views\root\dashboard\components-example\" />
+    <Folder Include="src\app\views\root\dashboard\formly-async-validator\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

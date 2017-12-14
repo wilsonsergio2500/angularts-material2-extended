@@ -6,7 +6,7 @@ import { VanillaFormlyComponent } from './vanilla-formly/vanilla-formly.componen
 import { FormlyFieldsTypesComponent } from './formly-fields/formly-fields.component';
 import { FormlyLayoutComponent } from './formly-layout/fomly-layout.component';
 import { FomlyLayoutTemplateComponent } from './formly-layout-template/formly-layout-template.component';
-
+import { FormlyAsyncValidatorComponent } from './formly-async-validator/formly-async-validator.component'
 
 
 
@@ -18,5 +18,6 @@ export const DASHBOARD_COMPONENTS : any[] = [
   VanillaFormlyComponent,
   FormlyFieldsTypesComponent,
   FormlyLayoutComponent,
-  FomlyLayoutTemplateComponent
+  FomlyLayoutTemplateComponent,
+  FormlyAsyncValidatorComponent
 ]
