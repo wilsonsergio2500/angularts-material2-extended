@@ -34,6 +34,14 @@
          [routerLink]="['/dashboard/formlylayout']">
         Formly Layout
       </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlylayoutTemplate']">
+        Formly Layout Template
+      </a>
     </mat-nav-list>
 
 </mat-sidenav>

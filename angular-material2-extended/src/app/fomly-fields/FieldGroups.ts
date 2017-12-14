@@ -45,4 +45,13 @@ export namespace FieldGroups{
       }
   }
 
+  export class Template implements FormlyFieldConfig{
+    template: string;
+    className?: string;
+      constructor(template: string){
+         
+        this.template = template;
+      }
+  }
+
 }

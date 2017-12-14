@@ -47,6 +47,10 @@ export namespace Fields {
     message: (error, field: FormlyFieldConfig) => string;
 
   }
+  interface IFormlyAsyncValidator{
+     expression: (formGroup : FormGroup) => Promise<boolean>;
+      message: (error, field: FormlyFieldConfig) => string;
+  }
 
   export interface ISelectOption{
     label: string;
@@ -70,8 +74,8 @@ export namespace Fields {
       show?: boolean;
       [additionalProperties: string]: any;
     };
-    validators?: { [validatorProperty: string] : IFormlyValidator } //any;
-    asyncValidators?: any;
+    validators?: { [validatorProperty: string] : IFormlyValidator } 
+    asyncValidators?: { [validatorAsyncProperty: string] : IFormlyAsyncValidator } 
     formControl?: AbstractControl;
      hideExpression?: boolean | string | ((model: any, formState: any) => boolean);
     className?: string;

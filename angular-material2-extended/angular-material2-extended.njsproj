@@ -47,6 +47,7 @@
     <Content Include="src\app\views\root\dashboard\components.ts" />
     <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.html" />
+    <Content Include="src\app\views\root\dashboard\formly-layout-template\formly-layout-template.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-layout\formly-layout.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -77,6 +78,7 @@
     <TypeScriptCompile Include="src\app\views\root\components.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout-template\formly-layout-template.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout\fomly-layout.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -107,6 +109,7 @@
     <Folder Include="src\app\views\root\dashboard\main\" />
     <Folder Include="src\app\views\root\dashboard\formly-fields\" />
     <Folder Include="src\app\views\root\dashboard\formly-layout\" />
+    <Folder Include="src\app\views\root\dashboard\formly-layout-template\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

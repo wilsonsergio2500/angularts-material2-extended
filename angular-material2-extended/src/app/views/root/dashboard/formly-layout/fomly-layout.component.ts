@@ -3,6 +3,7 @@ import { FormlyGroup } from '../../../../fomly-fields/FormlyGroup';
 import { IFormlyGroup } from '../../../../fomly-fields/IFormlyGroup';
 import { Fields } from '../../../../fomly-fields/Fields';
 import { FieldGroups  } from '../../../../fomly-fields/FieldGroups';
+import { FormGroup, AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
 
 interface IMember{
   username: string;
@@ -25,6 +26,8 @@ export class FormlyLayoutComponent{
 
     this.formlyGroup = new FormlyGroup<IMember>();
 
+    
+
     this.formlyGroup.fields = [
       new Fields.SelectField('suffix', 'Suffix', [{ label: 'Mr.', value: 'Mr.'}, {label: 'Ms.', value: 'Ms.'}], true),
 
@@ -38,7 +41,7 @@ export class FormlyLayoutComponent{
 
         new FieldGroups.Group3(
            new Fields.InputField('username', 'User Name', true),
-          new Fields.EmailField('email', 'Email', true),
+            new Fields.EmailField('email', 'Email', true),
            new Fields.NumberField('zipcode', 'Zip Code', true)
           )
         ]),
