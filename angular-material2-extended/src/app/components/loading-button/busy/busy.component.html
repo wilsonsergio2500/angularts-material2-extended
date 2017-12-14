@@ -1,0 +1,7 @@
+<span *ngIf="parentContext.IsWorking">
+
+  <ng-content></ng-content>
+  <span style="float:right; padding-top:6px">
+    <mat-progress-spinner mode="indeterminate" [diameter]="20" [strokeWidth]="2"></mat-progress-spinner>
+  </span>
+</span>

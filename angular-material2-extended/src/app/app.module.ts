@@ -16,10 +16,11 @@ import { ROOT_ROUTES } from './views/root/root-routes'
 
 
 
+
+
+//components
 import { AppComponent } from './app.component';
-
-//views
-
+import { CUSTOM_COMPONENTS} from './components/index';
 import { ROOT_COMPONENTS } from './views/root/components'
 
 
@@ -29,7 +30,7 @@ import { ROOT_COMPONENTS } from './views/root/components'
     AppComponent,
 
 
-
+    CUSTOM_COMPONENTS,
     ROOT_COMPONENTS
   ],
   imports: [

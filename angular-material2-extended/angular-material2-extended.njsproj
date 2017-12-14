@@ -37,6 +37,14 @@
     <Content Include=".angular-cli.json" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\components\index.ts" />
+    <Content Include="src\app\components\loading-button\busy\busy.component.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\components\loading-button\loading-button.component.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\components\loading-button\ready\ready.component.html" />
     <Content Include="src\app\fomly-fields\FieldGroups.ts" />
     <Content Include="src\app\fomly-fields\Fields.ts" />
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
@@ -44,6 +52,7 @@
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\app\views\root\dashboard\components-example\components-example.component.html" />
     <Content Include="src\app\views\root\dashboard\components.ts" />
     <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.html" />
@@ -72,10 +81,14 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\components\loading-button\busy\busy.component.ts" />
+    <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
+    <TypeScriptCompile Include="src\app\components\loading-button\ready\ready.component.ts" />
     <TypeScriptCompile Include="src\app\views\home\home.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\views\root\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\components-example\components-example.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout-template\formly-layout-template.component.ts" />
@@ -100,7 +113,10 @@
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="src\" />
     <Folder Include="src\app\" />
-    <Folder Include="src\app\common\" />
+    <Folder Include="src\app\components\" />
+    <Folder Include="src\app\components\loading-button\" />
+    <Folder Include="src\app\components\loading-button\busy\" />
+    <Folder Include="src\app\components\loading-button\ready\" />
     <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
@@ -110,6 +126,7 @@
     <Folder Include="src\app\views\root\dashboard\formly-fields\" />
     <Folder Include="src\app\views\root\dashboard\formly-layout\" />
     <Folder Include="src\app\views\root\dashboard\formly-layout-template\" />
+    <Folder Include="src\app\views\root\dashboard\components-example\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

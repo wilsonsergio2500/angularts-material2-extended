@@ -1,0 +1,13 @@
+
+<div class="container">
+
+  <loading-button [IsBusy]="working" (onSubmit)="Submit($event)" mat-raised-button type="button">
+    <loading-button-ready>
+      Save
+    </loading-button-ready>
+    <loading-button-busy>
+      Loading...
+    </loading-button-busy>
+  </loading-button>
+
+</div>
