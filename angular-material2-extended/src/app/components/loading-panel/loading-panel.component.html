@@ -1,0 +1,12 @@
+﻿
+<ng-content></ng-content>
+<div class="loading-panel"
+     [style.width.px]="dimensions.width"
+     [style.height.px]="dimensions.height" 
+     [hidden]="!IsBusy">
+    <div class="loading-signal"
+         [style.top.px]="verticalCenter"
+         [style.left.px]="horizontalCenter">
+        <mat-progress-spinner mode="indeterminate" [diameter]="diameter" [strokeWidth]="2"></mat-progress-spinner>
+    </div>
+</div>

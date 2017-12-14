@@ -37,6 +37,7 @@
     <Content Include=".angular-cli.json" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\components\check-animation\check-animation.component.html" />
     <Content Include="src\app\components\index.ts" />
     <Content Include="src\app\components\loading-button\busy\busy.component.html">
       <SubType>Code</SubType>
@@ -45,6 +46,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\app\components\loading-button\ready\ready.component.html" />
+    <Content Include="src\app\components\loading-panel\loading-panel.component.html" />
     <Content Include="src\app\fomly-fields\FieldGroups.ts" />
     <Content Include="src\app\fomly-fields\Fields.ts" />
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
@@ -81,9 +83,11 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\components\check-animation\check-animation.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\busy\busy.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\ready\ready.component.ts" />
+    <TypeScriptCompile Include="src\app\components\loading-panel\loading-panel.component.ts" />
     <TypeScriptCompile Include="src\app\views\home\home.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -117,6 +121,8 @@
     <Folder Include="src\app\components\loading-button\" />
     <Folder Include="src\app\components\loading-button\busy\" />
     <Folder Include="src\app\components\loading-button\ready\" />
+    <Folder Include="src\app\components\check-animation\" />
+    <Folder Include="src\app\components\loading-panel\" />
     <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />

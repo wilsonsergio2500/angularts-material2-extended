@@ -1,13 +1,38 @@
 
 <div class="container">
 
-  <loading-button [IsBusy]="working" (onSubmit)="Submit($event)" mat-raised-button type="button">
-    <loading-button-ready>
-      Save
-    </loading-button-ready>
-    <loading-button-busy>
-      Loading...
-    </loading-button-busy>
-  </loading-button>
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <loading-button [IsBusy]="working" (onSubmit)="Submit($event)" mat-raised-button type="button">
+        <loading-button-ready>
+          Save
+        </loading-button-ready>
+        <loading-button-busy>
+          Loading...
+        </loading-button-busy>
+      </loading-button>
+
+    </div>
+
+    <div class="col-md-12">
+      <check-animation color="rgba(0, 150, 0, 1)" play-after="500" width="35" speed="6"></check-animation>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <loading-panel [IsBusy]="true">
+          <div style="width:200px; height:200px; border: 1px solid; border-color: lightgray">
+            <p style="padding:6px;">This border is produced by the transluded element. The loading-panel has no inherited border style.</p>
+          </div>
+      </loading-panel>
+
+    </div>
+  </div>
 
 </div>
