@@ -45,18 +45,14 @@ export class FormlyAsyncValidatorComponent{
 
             },
             message: (error, field: FormlyFieldConfig) => {
-              return `Invalid`
+              return `${field.templateOptions.label} ${field.formControl.value} is Invalid`
             }
           }
         }
 
         this.formlyGroup.fields = [zipcode];
 
-        this.http.get('http://ziptasticapi.com/11').toPromise().then((r) => {
-          console.log(r.json())
-        }).catch((e)=> {
-
-        })
+        
         
   }
 
