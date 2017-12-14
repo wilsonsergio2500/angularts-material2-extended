@@ -5,7 +5,7 @@ import { RouterModule, Route } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule,
-  MatProgressSpinnerModule, MatListModule
+  MatProgressSpinnerModule, MatListModule, MatSnackBarModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormlyModule } from '@ngx-formly/core';
@@ -15,12 +15,9 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { ROOT_ROUTES } from './views/root/root-routes'
 
 
-
-
-
 //components
 import { AppComponent } from './app.component';
-import { CUSTOM_COMPONENTS} from './components/index';
+import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS} from './components/index';
 import { ROOT_COMPONENTS } from './views/root/components'
 
 
@@ -49,10 +46,16 @@ import { ROOT_COMPONENTS } from './views/root/components'
     MatSidenavModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
 
   ],
-  providers: [],
+  providers: [
+    CUSTOM_PROVIDERS
+    ],
+  entryComponents: [
+    CUSTOM_COMPONENTS
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

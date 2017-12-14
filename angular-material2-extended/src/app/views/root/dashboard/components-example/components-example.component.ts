@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { SnackbarStatusService } from '../../../../components/snackbar-status/service/snackbar-status.service';
 
 @Component({
   selector: 'components-example',
@@ -8,7 +9,8 @@ import { Component } from '@angular/core';
 export class ComponentsExampleComponent {
 
   working: boolean;
-  constructor(){
+  
+  constructor(private snackbarStatusService: SnackbarStatusService){
     this.working = false;
   }
 
@@ -16,6 +18,19 @@ export class ComponentsExampleComponent {
     this.working = true;
     setTimeout(() => {
       this.working = false;
+    }, 8000)
+  }
+
+  ShowProgress(){
+    this.snackbarStatusService.OpenProgress('Loading...')
+    setTimeout(() => {
+      this.snackbarStatusService.CloseStatus();
+    }, 8000)
+  }
+  ShowCompleted(){
+    this.snackbarStatusService.OpenComplete('Action Completed')
+    setTimeout(()=> {
+      this.snackbarStatusService.CloseStatus();
     }, 8000)
   }
 }

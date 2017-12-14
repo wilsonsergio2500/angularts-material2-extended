@@ -47,6 +47,9 @@
     </Content>
     <Content Include="src\app\components\loading-button\ready\ready.component.html" />
     <Content Include="src\app\components\loading-panel\loading-panel.component.html" />
+    <Content Include="src\app\components\snackbar-status\styles.ts" />
+    <Content Include="src\app\components\snackbar-status\types\completed\snackbar-completed.component.html" />
+    <Content Include="src\app\components\snackbar-status\types\progress\snackbar-progress.component.html" />
     <Content Include="src\app\fomly-fields\FieldGroups.ts" />
     <Content Include="src\app\fomly-fields\Fields.ts" />
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
@@ -88,6 +91,10 @@
     <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\ready\ready.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-panel\loading-panel.component.ts" />
+    <TypeScriptCompile Include="src\app\components\snackbar-status\service\snackbar-status.service.ts" />
+    <TypeScriptCompile Include="src\app\components\snackbar-status\snackbar-status-base.ts" />
+    <TypeScriptCompile Include="src\app\components\snackbar-status\types\completed\snackbar-completed.component.ts" />
+    <TypeScriptCompile Include="src\app\components\snackbar-status\types\progress\snackbar-progress.component.ts" />
     <TypeScriptCompile Include="src\app\views\home\home.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -123,6 +130,11 @@
     <Folder Include="src\app\components\loading-button\ready\" />
     <Folder Include="src\app\components\check-animation\" />
     <Folder Include="src\app\components\loading-panel\" />
+    <Folder Include="src\app\components\snackbar-status\" />
+    <Folder Include="src\app\components\snackbar-status\service\" />
+    <Folder Include="src\app\components\snackbar-status\types\" />
+    <Folder Include="src\app\components\snackbar-status\types\completed\" />
+    <Folder Include="src\app\components\snackbar-status\types\progress\" />
     <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
