@@ -28,6 +28,15 @@ export class FomlyLayoutTemplateComponent {
   constructor(){
 
     this.formlyGroup = new FormlyGroup<IMember>();
+    this.formlyGroup.model = {
+      username: 'gio',
+      suffix: 'Mr.',
+      name: 'Sergio',
+      lastname: 'Wilson',
+      email:'gio@gmail.com',
+      zipcode: 68144,
+      subscribed: false
+    }
 
     const template1 = new FieldGroups.Template('<div><strong> Section Example 1 - (This is a Template)</strong></div>')
     template1.className = 'col-md-12';
