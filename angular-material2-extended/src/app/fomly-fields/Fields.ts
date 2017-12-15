@@ -211,4 +211,11 @@ export namespace Fields {
 			  }
       }
   }
+
+  export class EditorField extends InputBase{
+    constructor(key: string, label: string, required: boolean = false){
+      super(key, label, true)
+      this.type = 'editor';
+    }
+  }
 }

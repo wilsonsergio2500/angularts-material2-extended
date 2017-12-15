@@ -37,6 +37,38 @@
       <button mat-raised-button (click)="ShowProgress()">Show Progress</button>
       <button mat-raised-button (click)="ShowCompleted()">Show Completed</button>
     </div>
+
+    <div class="col-md-12 mt-2">
+      <quill-editor [(ngModel)]="editor">
+        <div quill-editor-toolbar>
+          <span class="ql-formats">
+            <button class="ql-bold" [title]="'Bold'"></button>
+            <button class="ql-italic" [title]="'Italic'"></button>
+          </span>
+           <span class="ql-formats">
+            <button class="ql-header" [value]="1"></button>
+            <button class="ql-header" [value]="2"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-align" [title]="'Aligment'">
+              <option selected></option>
+              <option value="center"></option>
+              <option value="right"></option>
+              <option value="justify"></option>
+            </select>
+            <select class="ql-align" [title]="'Aligment2'">
+              <option selected></option>
+              <option value="center"></option>
+              <option value="right"></option>
+              <option value="justify"></option>
+            </select>
+          </span>
+        </div>
+      </quill-editor>
+
+      
+    </div>
+
   </div>
 
 </div>

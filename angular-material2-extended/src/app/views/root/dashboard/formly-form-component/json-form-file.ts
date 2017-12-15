@@ -7,6 +7,6 @@ export const fields = [
     new Fields.EmailField('email', 'Email Field', true ),
     new Fields.NumberField('number', 'Number Field', true),
     new Fields.DatePickerField('date', 'Date', true),
-
+    new Fields.EditorField('editor', 'Editor', true)
 
   ]
