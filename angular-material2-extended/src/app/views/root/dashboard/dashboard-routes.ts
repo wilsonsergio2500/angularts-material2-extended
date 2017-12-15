@@ -8,6 +8,7 @@ import { FormlyFieldsTypesComponent } from './formly-fields/formly-fields.compon
 import { FormlyLayoutComponent } from './formly-layout/fomly-layout.component';
 import { FomlyLayoutTemplateComponent } from './formly-layout-template/formly-layout-template.component';
 import { FormlyAsyncValidatorComponent } from './formly-async-validator/formly-async-validator.component';
+import { FormlyFormViewComponent } from './formly-form-component/formly-form-component.component'
 
 export const DASHBOARD_ROUTES: Routes = [
 
@@ -23,7 +24,8 @@ export const DASHBOARD_ROUTES: Routes = [
       { path: 'formlyFieldTypes', component: FormlyFieldsTypesComponent},
       { path: 'formlylayout', component: FormlyLayoutComponent},
        { path: 'formlylayoutTemplate', component: FomlyLayoutTemplateComponent},
-       { path: 'formlyAsyncValidator', component: FormlyAsyncValidatorComponent}
+       { path: 'formlyAsyncValidator', component: FormlyAsyncValidatorComponent},
+       { path: 'formlyFormComponent', component: FormlyFormViewComponent}
 
     ]
   }

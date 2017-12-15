@@ -11,11 +11,15 @@ export class FormlyGroup<T> implements IFormlyGroup<T> {
   fields: FormlyFieldConfig[];
   form: FormGroup;
 
+  IsAsyncValidating : boolean;
+
   constructor(ops? : IFormlyGroup<T>) {
     this.model = ops && ops.model || <T>{};
     this.options = ops && ops.options || <FormlyFormOptions>{};
     this.form = ops && ops.form || new FormGroup({});
     this.fields = ops && ops.fields || [];
+
+    this.IsAsyncValidating = false;
   }
 
  

@@ -58,6 +58,14 @@
          [routerLink]="['/dashboard/formlyAsyncValidator']">
         Formly Async  Validator
       </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyFormComponent']">
+        Formly Form Component  
+      </a>
     </mat-nav-list>
 
 </mat-sidenav>

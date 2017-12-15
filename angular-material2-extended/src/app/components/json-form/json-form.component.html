@@ -1,0 +1,22 @@
+
+<div class="container">
+
+  <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+    <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
+      <div class="pt-2">
+
+        <loading-button [IsBusy]="IsWorking"  mat-raised-button type="submit" [disabled]="formlyGroup.form.invalid" >
+          <loading-button-ready>
+            {{ btnReady }}
+          </loading-button-ready>
+          <loading-button-busy>
+            {{ btnBusy }}
+          </loading-button-busy>
+        </loading-button>
+
+        <button mat-raised-button type="button" (click)="formlyGroup.options.resetModel()">Revert</button>
+
+      </div>
+    </formly-form>
+  </form>
+</div>

@@ -9,5 +9,6 @@ export interface IFormlyGroup<T> {
   fields?: FormlyFieldConfig[] | FieldGroups.GroupBase[];
   form?: FormGroup;
 
+  IsAsyncValidating? : boolean;
  
 }

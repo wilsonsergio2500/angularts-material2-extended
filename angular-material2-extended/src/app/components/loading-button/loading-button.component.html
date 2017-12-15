@@ -1,4 +1,4 @@
-<button color="primary" [disabled]="IsWorking" (click)="onClick($event)"
+<button color="primary" [disabled]="IsWorking || disabled" (click)="onClick($event)"
         [ngClass]="class"
         mat-button
         [attr.type]="buttonType"

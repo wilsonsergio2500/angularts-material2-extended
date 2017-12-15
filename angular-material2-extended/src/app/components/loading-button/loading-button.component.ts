@@ -43,6 +43,8 @@ export class LoadingButton implements OnInit {
 
     @Input('IsBusy')
     public IsWorking: boolean;
+    @Input()
+    disabled: boolean;
 
     private class: string = '';
     private buttonType: string = 'button';
@@ -77,7 +79,7 @@ export class LoadingButton implements OnInit {
       
     }
     onClick($ev: any) {
-       
+     
         this.onSubmit.emit($ev);
     }
 

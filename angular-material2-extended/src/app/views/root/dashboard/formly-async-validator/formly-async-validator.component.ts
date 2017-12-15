@@ -30,6 +30,7 @@ export class FormlyAsyncValidatorComponent{
           valid : {
             expression: (formGroup : FormGroup) => {
 
+              this.formlyGroup.IsAsyncValidating = true;
 
               return new Promise<boolean>((resolve, reject) => {
                   this.http.get(`http://ziptasticapi.com/${formGroup.value}`)
@@ -40,6 +41,8 @@ export class FormlyAsyncValidatorComponent{
                         } else {
                           resolve(true);
                         }
+
+                      this.formlyGroup.IsAsyncValidating = false;
                     })
               })
 
