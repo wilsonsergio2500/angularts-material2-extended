@@ -1,0 +1,12 @@
+
+<input matInput [matDatepicker]="picker1"  [formControl]="formControl" [formlyAttributes]="field" [min]="to.min" maxlength="10"
+       (keypress)="_keyPress($event)" onkeyup="
+        var v = this.value;
+        if (v.match(/^\d{2}$/) !== null) {
+            this.value = v + '/';
+        } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+            this.value = v + '/';
+        }">
+<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+<mat-datepicker #picker1></mat-datepicker>
+

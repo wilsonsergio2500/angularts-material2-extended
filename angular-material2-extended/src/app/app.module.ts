@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {  HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Route } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule,
-  MatProgressSpinnerModule, MatListModule, MatSnackBarModule
+  MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule
+  MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -20,7 +22,7 @@ import { ROOT_ROUTES } from './views/root/root-routes'
 import { AppComponent } from './app.component';
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS} from './components/index';
 import { ROOT_COMPONENTS } from './views/root/components'
-
+import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS} from './fomly-fields/extensions/index'
 
 
 @NgModule({
@@ -29,20 +31,23 @@ import { ROOT_COMPONENTS } from './views/root/components'
 
 
     CUSTOM_COMPONENTS,
-    ROOT_COMPONENTS
+    ROOT_COMPONENTS,
+    FORMLY_CONTROLS_COMPONENTS
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROOT_ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot(),
+    FormlyModule.forRoot(FORMLY_CONTROLS_CONFIG),
     FormlyMaterialModule,
-
+     MatFormFieldModule,
 
     //material
+   
     LayoutModule,
     MatToolbarModule,
     MatIconModule,
@@ -50,7 +55,10 @@ import { ROOT_COMPONENTS } from './views/root/components'
     MatButtonModule,
     MatProgressSpinnerModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
 
   ],
   providers: [

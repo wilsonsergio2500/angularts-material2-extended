@@ -17,6 +17,8 @@ export class FormlyFormViewComponent{
 
   formSubmit(model: any){
 
+    console.log(model);
+
     this.working = true;
 
     setTimeout(() => {

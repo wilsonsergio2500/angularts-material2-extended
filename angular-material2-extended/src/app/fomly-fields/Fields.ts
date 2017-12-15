@@ -177,4 +177,38 @@ export namespace Fields {
 
     }
   }
+
+  export class DatePickerField extends InputBase{
+      constructor(key: string, label: string, required : boolean = false){
+        super(key, label, required);
+        this.type = 'datepicker';
+        this.templateOptions.min= new Date(1900, 1, 1,) as any;
+        this.templateOptions.max = new Date(3000, 1, 1) as any;
+        this.validators = {
+                'min': {
+                    expression: (formGroup : FormGroup) => {
+                      let value = formGroup.value;
+                 
+                      return (formGroup.value >this.templateOptions.min);
+                        
+                    },
+                    message: (error, field: FormlyFieldConfig) => {
+                        return `${field.templateOptions.label} value ${field.formControl.value} is not valid` ;
+                    }
+                },
+          'max':{
+             expression: (formGroup : FormGroup) => {
+                      let value = formGroup.value;
+                 
+                      return (formGroup.value <this.templateOptions.max);
+                        
+                    },
+                    message: (error, field: FormlyFieldConfig) => {
+                        return `${field.templateOptions.label} value ${field.formControl.value} is not valid` ;
+                    }
+          }
+             
+			  }
+      }
+  }
 }
