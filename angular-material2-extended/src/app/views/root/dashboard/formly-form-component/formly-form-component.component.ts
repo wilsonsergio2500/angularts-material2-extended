@@ -13,6 +13,10 @@ export class FormlyFormViewComponent{
   formlyGroup: FormlyGroup<any> = new FormlyGroup<any>({ fields });
   constructor(){
 
+    this.formlyGroup.MarkConstrlsAsPristine();
+
+
+    console.log('constructor');
   }
 
   formSubmit(model: any){

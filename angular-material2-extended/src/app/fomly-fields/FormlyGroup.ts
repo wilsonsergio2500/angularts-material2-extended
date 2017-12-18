@@ -22,6 +22,17 @@ export class FormlyGroup<T> implements IFormlyGroup<T> {
     this.IsAsyncValidating = false;
   }
 
- 
+  MarkConstrlsAsPristine(){
+
+    setTimeout(() => {
+
+        for(var key in this.form.controls){
+
+          this.form.controls[key].markAsPristine();
+          this.form.controls[key].markAsUntouched();
+
+        }
+      })
+  }
 
 }
