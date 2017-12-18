@@ -11,7 +11,8 @@ import {
   SimpleChanges,
   ViewEncapsulation,
   Optional,
-  Self
+  Self,
+  
   
 } from '@angular/core';
 import {ErrorStateMatcher, mixinErrorState, CanUpdateErrorState} from '@angular/material/core';
@@ -37,6 +38,13 @@ export interface CustomOption {
   whitelist: Array<any>;
 }
 
+export class MatInputBase {
+  constructor(public _defaultErrorStateMatcher: ErrorStateMatcher,
+              public _parentForm: NgForm,
+              public _parentFormGroup: FormGroupDirective,
+              public ngControl: NgControl) {}
+}
+export const _MatInputMixinBase = mixinErrorState(MatInputBase);
 
 
 @Component({
@@ -44,22 +52,24 @@ export interface CustomOption {
   template: `
   <ng-content select="[quill-editor-toolbar]"></ng-content>
 `,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => QuillEditorComponent),
-    multi: true
-  }, {
-    provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => QuillEditorComponent),
-    multi: true
-  }],
+  //providers: [{
+  //  provide: NG_VALUE_ACCESSOR,
+  //  useExisting: forwardRef(() => QuillEditorComponent),
+  //  multi: true
+  //}, {
+  //  provide: NG_VALIDATORS,
+  //  useExisting: forwardRef(() => QuillEditorComponent),
+  //  multi: true
+  //}],
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
     `../../../../node_modules/quill/dist/quill.snow.css`,
      `../../../../node_modules/quill/dist/quill.bubble.css`
     ]
 })
-export class QuillEditorComponent  implements  AfterViewInit, ControlValueAccessor, OnChanges, Validator  {
+export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterViewInit, ControlValueAccessor, OnChanges, Validator, CanUpdateErrorState   {
+
+
 
   quillEditor: any;
   editorElem: HTMLElement;
@@ -111,7 +121,11 @@ export class QuillEditorComponent  implements  AfterViewInit, ControlValueAccess
   constructor(private elementRef: ElementRef, @Inject(DOCUMENT) private doc: any, private renderer: Renderer2, _defaultErrorStateMatcher: ErrorStateMatcher,
               @Optional() _parentForm: NgForm,
               @Optional() _parentFormGroup: FormGroupDirective,
+               @Optional() @Self() public ngControl: NgControl,
     ) {
+    super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl);
+    ngControl.valueAccessor = this;
+      // this._inputValueAccessor = inputValueAccessor || this._elementRef.nativeElement;
   }
 
    stateChanges = new Subject<void>();
@@ -275,6 +289,30 @@ export class QuillEditorComponent  implements  AfterViewInit, ControlValueAccess
 
   ngOnDestroy() {
     this.stateChanges.complete();
+  }
+
+   @Input() errorStateMatcher: ErrorStateMatcher;
+
+  ngDoCheck() {
+    if (this.ngControl) {
+      // We need to re-evaluate this on every change detection cycle, because there are some
+      // error triggers that we can't subscribe to (e.g. parent form submissions). This means
+      // that whatever logic is in here has to be super lean or we risk destroying the performance.
+      this.updateErrorState();
+    } else {
+      // When the input isn't used together with `@angular/forms`, we need to check manually for
+      // changes to the native `value` property in order to update the floating label.
+      this._dirtyCheckNativeValue();
+    }
+  }
+
+   protected _dirtyCheckNativeValue() {
+    //const newValue = this.value;
+
+    //if (this._previousNativeValue !== newValue) {
+    //  this._previousNativeValue = newValue;
+    //  this.stateChanges.next();
+    //}
   }
 
 }

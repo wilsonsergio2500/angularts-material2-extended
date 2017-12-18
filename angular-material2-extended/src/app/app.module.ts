@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Route } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule
+  MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule,
   MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
