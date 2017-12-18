@@ -1,0 +1,17 @@
+:host {
+  height: 100%;
+}
+
+.mat-sidenav-container {
+  height: 100%;
+}
+
+.mat-sidenav {
+  width: 300px;
+}
+
+:host ::ng-deep .droppable-group {
+  border: 1px solid lightgray;
+  display: inline-block;
+  min-height:20px;
+}

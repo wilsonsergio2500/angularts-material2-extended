@@ -1,3 +1,4 @@
+/// <reference path="form-builder/form-builder.component.ts" />
 
 //components
 import { LoadingButton} from './loading-button/loading-button.component';
@@ -8,7 +9,8 @@ import { LoadingPanelComponent } from './loading-panel/loading-panel.component'
 import { CompletedSnackbarComponent } from './snackbar-status/types/completed/snackbar-completed.component';
 import { ProgressSnackbarComponent } from './snackbar-status/types/progress/snackbar-progress.component';
 import { JsonFormComponent } from './json-form/json-form.component';
-import { QuillEditorComponent } from './ngx-quill/quill-editor.component'
+import { QuillEditorComponent } from './ngx-quill/quill-editor.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 
 //providers
 import { SnackbarStatusService } from './snackbar-status/service/snackbar-status.service'
@@ -24,7 +26,8 @@ export const CUSTOM_COMPONENTS = [
   CompletedSnackbarComponent,
   ProgressSnackbarComponent,
   JsonFormComponent,
-  QuillEditorComponent
+  QuillEditorComponent,
+  FormBuilderComponent
   
 
  ];

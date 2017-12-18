@@ -1,0 +1,77 @@
+
+  <mat-sidenav-container>
+
+    <mat-sidenav [opened]="true" [mode]="'side'" position="end">
+
+      <mat-tab-group>
+        <mat-tab label="Inputs">
+
+          <div class="container-fluid">
+
+            <div *ngFor="let formlyGroup of formlyGroups">
+              <div class="pt-2" >
+
+                <div class="col-xs-12">
+                  <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item *ngFor="let group of Groups" (click)="AddToGroup(group, formlyGroup)"> {{group.name}} </button>
+                  </mat-menu>
+
+                  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>add</mat-icon>
+                  </button>
+
+                </div>
+                
+                <div class="col-xs-12">
+                  <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+                    <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
+                      <div class="pt-2">
+                        <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
+
+                      </div>
+                    </formly-form>
+                  </form>
+                </div>
+
+                
+
+              </div>
+              item
+            </div>
+
+            <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+              <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
+                <div class="pt-2">
+                  <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
+
+                </div>
+              </formly-form>
+            </form>
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Groups">Content 2</mat-tab>
+      </mat-tab-group>
+    </mat-sidenav>
+
+    <mat-sidenav-content >
+      <div class="container">
+
+        <!--<div draggable="true" style="background-color:black; width:200px; height:200px;"></div>-->
+
+        <form [formGroup]="formlyGroupPreview.form" (ngSubmit)="submit()">
+          <formly-form [model]="formlyGroupPreview.model" [fields]="formlyGroupPreview.fields" [options]="formlyGroupPreview.options" [form]="formlyGroupPreview.form">
+            <div class="pt-2">
+              <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
+
+            </div>
+          </formly-form>
+        </form>
+
+
+      </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+  

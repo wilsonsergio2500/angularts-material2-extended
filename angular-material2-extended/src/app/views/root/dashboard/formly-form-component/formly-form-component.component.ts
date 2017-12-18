@@ -15,8 +15,6 @@ export class FormlyFormViewComponent{
 
     this.formlyGroup.MarkConstrlsAsPristine();
 
-
-    console.log('constructor');
   }
 
   formSubmit(model: any){

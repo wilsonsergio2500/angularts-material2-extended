@@ -7,7 +7,7 @@ import { RouterModule, Route } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule,
-  MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule
+  MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatMenuModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -58,7 +58,9 @@ import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS} from './fomly-field
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatMenuModule
 
   ],
   providers: [

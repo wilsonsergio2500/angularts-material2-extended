@@ -38,6 +38,11 @@
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\components\check-animation\check-animation.component.html" />
+    <Content Include="src\app\components\form-builder\form-builder.component.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\components\form-builder\form-builder.style.css" />
+    <Content Include="src\app\components\form-builder\form-preview.ts" />
     <Content Include="src\app\components\json-form\json-form.component.html" />
     <Content Include="src\app\components\index.ts" />
     <Content Include="src\app\components\loading-button\busy\busy.component.html">
@@ -65,6 +70,9 @@
     <Content Include="src\app\views\root\dashboard\components-example\components-example.component.html" />
     <Content Include="src\app\views\root\dashboard\components.ts" />
     <Content Include="src\app\views\root\dashboard\dashboard.component.html" />
+    <Content Include="src\app\views\root\dashboard\form-builder-example\form-builder-example.component.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\app\views\root\dashboard\formly-async-validator\formly-async-validator.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.html" />
     <Content Include="src\app\views\root\dashboard\formly-form-component\formly-form-component.component.html">
@@ -96,6 +104,8 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\components\check-animation\check-animation.component.ts" />
+    <TypeScriptCompile Include="src\app\components\form-builder\form-builder.component.ts" />
+    <TypeScriptCompile Include="src\app\components\form-builder\type-options.ts" />
     <TypeScriptCompile Include="src\app\components\json-form\json-form.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\busy\busy.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
@@ -119,6 +129,9 @@
     <TypeScriptCompile Include="src\app\views\root\components.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\components-example\components-example.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\form-builder-example\form-builder-example.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-async-validator\formly-async-validator.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-fields\formly-fields.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-form-component\formly-form-component.component.ts" />
@@ -152,6 +165,7 @@
     <Folder Include="src\app\components\check-animation\" />
     <Folder Include="src\app\components\loading-panel\" />
     <Folder Include="src\app\components\json-form\" />
+    <Folder Include="src\app\components\form-builder\" />
     <Folder Include="src\app\components\ngx-quill\" />
     <Folder Include="src\app\components\snackbar-status\" />
     <Folder Include="src\app\components\snackbar-status\service\" />
@@ -174,6 +188,7 @@
     <Folder Include="src\app\views\root\dashboard\components-example\" />
     <Folder Include="src\app\views\root\dashboard\formly-async-validator\" />
     <Folder Include="src\app\views\root\dashboard\formly-form-component\" />
+    <Folder Include="src\app\views\root\dashboard\form-builder-example\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
