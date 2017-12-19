@@ -1,10 +1,10 @@
-
+﻿
 import { Fields } from '../../fomly-fields/Fields';
 import { FieldGroups } from '../../fomly-fields/FieldGroups';
 import { FormlyGroup} from '../../fomly-fields/FormlyGroup';
 
 
-const input =  new Fields.InputField('input', 'Input Type', false);
+const input = new Fields.InputField('input', 'Input Type', false);
 input.templateOptions.disabled = true;
 input.className = 'draggable';
 
@@ -21,10 +21,6 @@ export const TYPE_OPTIONS = [
 
     input
 
-  //new FieldGroups.GroupRow( [
-
-  //  input
-  //  //new Fields.InputField('input2', 'Input Type', false)
-  //])
+  
     
 ]

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
 import { FormlyGroup } from '../../fomly-fields/FormlyGroup';
 import { IFormlyGroup} from '../../fomly-fields/IFormlyGroup';
 import { TYPE_OPTIONS, TYPES} from './type-options';
 import { FORM_PREVIEW } from './form-preview';
 import { FieldGroups } from '../../fomly-fields/FieldGroups';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormBuilder } from '@ngx-formly/core';
+import { Fields } from '../../fomly-fields/Fields'
 
 interface IGroup{
   name: string;
@@ -37,7 +38,11 @@ export class FormBuilderComponent{
   RootGroup: FieldGroups.GroupRow;
   GroupRef: FieldGroups.GroupRow[];
   FormControls: FormlyFieldConfig[] = [];
-  constructor(){
+  constructor(private builder: FormlyFormBuilder) {
+
+      this.formlyGroup.options.formState = {
+          disabled: true,
+      }
 
     const template = new FieldGroups.Template('<div [hidden]="true">Group 1</div>');
     template.className = 'col-md-12';
@@ -59,30 +64,33 @@ export class FormBuilderComponent{
 
   AddToGroup(group : IGroup, formlyGroup: FormlyGroup<any>){
 
-    console.log(group, formlyGroup)
-    console.log(this.GroupRef[group.index].fieldGroup)
-    console.log(this.RootGroup)
-
-    const formcontrol = formlyGroup.fields[0];
-    console.log(formcontrol)
-    formcontrol.templateOptions.disabled = false;
-    formcontrol.className = 'col-md-12';
-
-    this.FormControls.push(formcontrol)
-    
-    this.GroupRef[group.index].fieldGroup.push(formcontrol);
-
-    //if(group.index === 0){
-
-    //  this.RootGroup.fieldGroup.push(formlyGroup.fields[0]);
       
-    //}
+    const fc = Object.assign({}, formlyGroup.fields[0]);
+    
+
+    const InputConfig: FormlyFieldConfig = <FormlyFieldConfig>{
+        id: `formly_1_input_input_${this.FormControls.length + 1}`,
+        key: `entry${this.FormControls.length + 1}`,
+        type: fc.type,
+        templateOptions: { type: fc.templateOptions.type, label: fc.templateOptions.label },
+        modelOptions: {},
+        className: 'col-md-12'
+    }
+
+    console.log(fc);
+    //console.log(formcontrol)
+    
+    
+    fc.className = 'col-md-12';
 
 
-  
-     
+    this.FormControls.push(InputConfig)
+    
+    this.GroupRef[group.index].fieldGroup.push(InputConfig);
 
-    //this.GroupRef[group.index - 1].fieldGroup.push(formlyGroup.fields[1]);
+    this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
+
+    
 
     
 
@@ -90,17 +98,10 @@ export class FormBuilderComponent{
 
 
 
-  //group =  new FieldGroups.GroupRow( [
-
-  //  new FieldGroups.Template('<div [hidden]="true">Group 1</div>')
-  
-  
-  //]);
-  //this.group.className = 'droppable-group col-md-12';
 
 
 
-   formlyGroupPreview; // = new FormlyGroup<any>( { fields: this.previews } );
+   formlyGroupPreview : IFormlyGroup<any>; 
 
  
   
