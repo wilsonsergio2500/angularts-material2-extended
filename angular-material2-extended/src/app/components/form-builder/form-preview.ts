@@ -6,7 +6,7 @@ import { FieldGroups } from '../../fomly-fields/FieldGroups';
 //input.className = 'col-md-12';
 const group =  new FieldGroups.GroupRow( [
 
-    new FieldGroups.Template('<div [hidden]="true">Group 1</div>')
+    new FieldGroups.Template('<div class="group-signal">Group 1</div>')
   
   
   ]);

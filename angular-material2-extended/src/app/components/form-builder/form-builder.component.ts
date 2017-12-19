@@ -51,7 +51,7 @@ export class FormBuilderComponent{
           disabled: true,
       }
 
-    const template = new FieldGroups.Template('<div [hidden]="true">Group 1</div>');
+    const template = new FieldGroups.Template('<div class="signal-group">Group 1 - Root</div>');
     template.className = 'col-md-12';
      const group =  new FieldGroups.GroupRow( [
 
@@ -74,29 +74,103 @@ export class FormBuilderComponent{
       
     const fc = Object.assign({}, formlyGroup.fields[0]);
 
-    const InputConfig: IFormlyConfigFormBuilder = <IFormlyConfigFormBuilder>{
-        namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
-        nameId: `Input${this.FormControls.length + 1}`,
-        key: `entry${this.FormControls.length + 1}`,
-        type: fc.type,
-        templateOptions: {
-          type: fc.templateOptions.type,
-          label: fc.templateOptions.label,
-          required: fc.templateOptions.required
-        },
-        modelOptions: {},
-        className: 'col-md-12 col-xs-12',
-        validators: fc.validators,
-        asyncValidators: fc.asyncValidators,
+    console.log(this.GroupRef)
+    let InputConfig: IFormlyConfigFormBuilder;
+
+    if(!!fc.type){
+          switch (fc.type){
+            case 'input':
+              InputConfig = <IFormlyConfigFormBuilder>{
+                namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+                nameId: `Input${this.FormControls.length + 1}`,
+                key: `entry${this.FormControls.length + 1}`,
+                type: fc.type,
+                templateOptions: {
+                  type: fc.templateOptions.type,
+                  label: fc.templateOptions.label,
+                  required: fc.templateOptions.required
+                },
+                modelOptions: {},
+                className: 'col-md-12 col-xs-12',
+                validators: fc.validators,
+                asyncValidators: fc.asyncValidators,
         
-    };
+              };
+              this.FormControls.push(InputConfig)
+              this.GroupRef[group.index].fieldGroup.push(InputConfig);
+              break;
 
-    //console.log(InputConfig)
+              case 'formly-group':
+                console.log('group')
+                let GroupConfig = Object.assign({}, fc) as IFormlyConfigFormBuilder;
+                console.log(GroupConfig);
+                GroupConfig.namekeyLabel = `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`;
+                GroupConfig.nameId =  `Input${this.FormControls.length + 1}`;
+                GroupConfig.fieldGroup[0].template = `<div class="group-signal">Group ${this.GroupRef.length + 1}</div>`
+                this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
+                this.GroupRef.push(GroupConfig)
+                this.GroupRef[group.index].fieldGroup.push(GroupConfig);
+                
+              break;
+          }
+      } else {
+
+        console.log((fc as any).namekey)
+        switch((fc as any).namekey){
+          case 'template':
+            InputConfig = <IFormlyConfigFormBuilder>{
+                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+                nameId: `Input${this.FormControls.length + 1}`,
+                key: `entry${this.FormControls.length + 1}`,
+                template: fc.template,
+            }
+            this.FormControls.push(InputConfig)
+            this.GroupRef[group.index].fieldGroup.push(InputConfig);
+            break;
+          //case 'group':
+          //  let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(`<div class="group-signal">Group${this.GroupRef.length + 1}</div>`) as IFormlyConfigFormBuilder;
+          //  tmptGroup.namekeyLabel = 'temptemplate';
+          //  //tmptGroup.na = 'temptemplate';
+          //  tmptGroup.className = 'col-md-12 col-xs-12';
+          //  let Group : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
+          //  Group.namekeyLabel = `${'Group'} ${this.FormControls.length + 1}`;
+          //  Group.nameId =  `Group{this.FormControls.length + 1}`;
+          //  this.GroupRef.push(group)
+          //  this.GroupRef[group.index].fieldGroup.push(group);
+          //  break;
+          
+            //  <IFormlyConfigFormBuilder>{
+            //     namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+            //    nameId: `Input${this.FormControls.length + 1}`,
+            //    key: `entry${this.FormControls.length + 1}`,
+            //    template: fc.template,
+            //}
+         
+        }
+      }
     
 
-    this.FormControls.push(InputConfig)
+    //const InputConfig: IFormlyConfigFormBuilder = <IFormlyConfigFormBuilder>{
+    //    namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+    //    nameId: `Input${this.FormControls.length + 1}`,
+    //    key: `entry${this.FormControls.length + 1}`,
+    //    type: fc.type,
+    //    templateOptions: {
+    //      type: fc.templateOptions.type,
+    //      label: fc.templateOptions.label,
+    //      required: fc.templateOptions.required
+    //    },
+    //    modelOptions: {},
+    //    className: 'col-md-12 col-xs-12',
+    //    validators: fc.validators,
+    //    asyncValidators: fc.asyncValidators,
+        
+    //};
+
+
+    //this.FormControls.push(InputConfig)
     
-    this.GroupRef[group.index].fieldGroup.push(InputConfig);
+    //this.GroupRef[group.index].fieldGroup.push(InputConfig);
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
 
@@ -126,10 +200,27 @@ export class FormBuilderComponent{
 
   updateInputType(){
 
+    const messages = {
+        required: (error, field: FormlyFieldConfig) => {
+          return `${field.templateOptions.label} is required`;
+        }
+      }
     
     let field = this.FormControls.find((el) => el.nameId === this.InputType.nameId);
     field = Object.assign(field, this.objectWithoutKey(this.formlyInputTypeGroup.model, 'mameId'));
-     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
+
+    console.log(field.templateOptions.required);
+    if(field.templateOptions.required){
+      field.validation = { messages }
+     } else {
+      field.validation = {}
+    }
+    console.log(field.validation)
+
+
+
+    this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
+  
     
   }
    
