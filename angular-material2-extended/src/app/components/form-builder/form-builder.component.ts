@@ -39,7 +39,6 @@ export class FormBuilderComponent{
 
   Groups: IGroup[] = [
         { name: `Root`, index: 0 },
-        //{ name: `Group ${1}`, index: 1 }
     ]
 
   RootGroup: FieldGroups.GroupRow;
@@ -73,7 +72,7 @@ export class FormBuilderComponent{
 
       
     const fc = Object.assign({}, formlyGroup.fields[0]);
-
+    console.log(fc);
     console.log(this.GroupRef)
     let InputConfig: IFormlyConfigFormBuilder;
 
@@ -127,17 +126,18 @@ export class FormBuilderComponent{
             this.FormControls.push(InputConfig)
             this.GroupRef[group.index].fieldGroup.push(InputConfig);
             break;
-          //case 'group':
-          //  let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(`<div class="group-signal">Group${this.GroupRef.length + 1}</div>`) as IFormlyConfigFormBuilder;
-          //  tmptGroup.namekeyLabel = 'temptemplate';
-          //  //tmptGroup.na = 'temptemplate';
-          //  tmptGroup.className = 'col-md-12 col-xs-12';
-          //  let Group : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
-          //  Group.namekeyLabel = `${'Group'} ${this.FormControls.length + 1}`;
-          //  Group.nameId =  `Group{this.FormControls.length + 1}`;
-          //  this.GroupRef.push(group)
-          //  this.GroupRef[group.index].fieldGroup.push(group);
-          //  break;
+          case 'group':
+            let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(`<div class="group-signal">Group${this.GroupRef.length + 1}</div>`) as IFormlyConfigFormBuilder;
+            tmptGroup.namekeyLabel = 'temptemplate';
+            tmptGroup.className = 'col-md-12 col-xs-12';
+            let Grp : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
+            Grp.type = 'formly-group';
+            Grp.namekeyLabel = `${'Group'} ${this.GroupRef.length + 1}`;
+            Grp.nameId =  `Group${this.GroupRef.length + 1}`;
+            this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
+            this.GroupRef.push(Grp)
+            this.GroupRef[group.index].fieldGroup.push(Grp);
+            break;
           
             //  <IFormlyConfigFormBuilder>{
             //     namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,

@@ -32,20 +32,11 @@ template.namekeyLabel = 'Template';
 template.namekey = 'template';
 template.className = 'col-md-12 col-xs-12';
 
-//let Group : IFormTypeReference = new FieldGroups.Template('<div>Group</div>') as IFormTypeReference;
-//Group.namekeyLabel = 'group';
-//Group.namekey = 'group';
-
-let tmptGroup : IFormTypeReference = new FieldGroups.Template('<div class="group-signal">Group </div>') as IFormTypeReference;
-tmptGroup.namekeyLabel = 'temptemplate';
-tmptGroup.name = 'temptemplate';
-tmptGroup.className = 'col-md-12';
-
-let Group : IFormTypeReference = new FieldGroups.GroupRow( [
-   tmptGroup
-  ]) as IFormTypeReference;
-Group.namekeyLabel = 'Group';
+let Group : IFormTypeReference = new FieldGroups.Template('<div>Group</div>') as IFormTypeReference;
+Group.namekeyLabel = 'group';
 Group.namekey = 'group';
+
+
 
 export namespace TYPES{
 
@@ -53,7 +44,8 @@ export namespace TYPES{
   const EmailGroup = new FormlyGroup<any>({ fields: [ email ]});
   const PasswordGroup = new FormlyGroup<any>({ fields: [ password]});
   const TemplateGroup = new FormlyGroup<any>({ fields: [ template ]})
-  const GroupGroup = new FormlyGroup<any>({ fields: [Group] })
+  const GroupGroup = new FormlyGroup<any>({ fields: [Group] });
+
 
   export const ALL : FormlyGroup<any>[] = [
     InputGroup,
