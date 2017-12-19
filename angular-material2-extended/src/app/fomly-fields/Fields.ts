@@ -218,4 +218,13 @@ export namespace Fields {
       this.type = 'editor';
     }
   }
+
+  export class HiddenField extends InputBase{
+    constructor(key, label, value: any = null){
+      super(key, label, true);
+      this.type = 'hidden';
+      this.defaultValue = value;
+     
+    }
+  }
 }

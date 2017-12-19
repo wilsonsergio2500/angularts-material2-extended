@@ -1,28 +1,24 @@
 
   <mat-sidenav-container>
 
-    <mat-sidenav [opened]="true" [mode]="'side'" position="end">
+    <mat-sidenav [opened]="true" [mode]="'side'" position="end" >
 
-      <mat-tab-group>
+      <mat-tab-group class="form-edit-tabs">
         <mat-tab label="Inputs">
 
           <div class="container-fluid">
 
+            <!--<mat-list>
+              <mat-list-item *ngFor="let formlyGroup of formlyGroups">
+                <h4 mat-line>{{formlyGroup.namekeyLabel}} t</h4>
+              </mat-list-item>
+
+            </mat-list>-->
+
             <div *ngFor="let formlyGroup of formlyGroups">
-              <div class="pt-2" >
+              <div class="pl-2 row" >
 
-                <div class="col-xs-12">
-                  <mat-menu #appMenu="matMenu">
-                    <button mat-menu-item *ngFor="let group of Groups" (click)="AddToGroup(group, formlyGroup)"> {{group.name}} </button>
-                  </mat-menu>
-
-                  <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                    <mat-icon>add</mat-icon>
-                  </button>
-
-                </div>
-                
-                <div class="col-xs-12">
+                <div class="col-sm-9">
                   <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
                     <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
                       <div class="pt-2">
@@ -33,24 +29,72 @@
                   </form>
                 </div>
 
+                <div class="col-sm-3">
+                  <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item *ngFor="let group of Groups" (click)="AddToGroup(group, formlyGroup)"> {{group.name}} </button>
+                  </mat-menu>
+
+                  <mat-icon class="pt-2" [matMenuTriggerFor]="appMenu">add</mat-icon>
+                  <!--<button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>add</mat-icon>
+                  </button>-->
+
+                </div>
+                
+                
+
                 
 
               </div>
-              item
+              
             </div>
 
-            <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+            <!--<form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
               <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
                 <div class="pt-2">
                   <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
 
                 </div>
               </formly-form>
-            </form>
+            </form>-->
           </div>
 
         </mat-tab>
-        <mat-tab label="Groups">Content 2</mat-tab>
+        <mat-tab label="Groups">
+
+          <div class="pt-2">
+            <mat-form-field>
+              <mat-select placeholder="Form Input Selector" [(value)]="InputType" (change)="InputTypeChanged($event)">
+                <mat-option *ngFor="let fc of FormControls" [value]="fc">{{ fc.namekeyLabel}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="pt-2" *ngIf="InputType">
+         
+
+            <form [formGroup]="formlyInputTypeGroup.form" (ngSubmit)="updateInputType()">
+              <formly-form [model]="formlyInputTypeGroup.model" [fields]="formlyInputTypeGroup.fields" [options]="formlyInputTypeGroup.options" [form]="formlyInputTypeGroup.form">
+                <div class="pt-2">
+
+                  <loading-button [IsBusy]="IsWorking" mat-raised-button type="submit" [disabled]="formlyInputTypeGroup.form.invalid">
+                    <loading-button-ready>
+                      Update
+                    </loading-button-ready>
+                    <loading-button-busy>
+                      Saving
+                    </loading-button-busy>
+                  </loading-button>
+
+                  <button mat-raised-button type="button" (click)="formlyInputTypeGroup.options.resetModel()">Revert</button>
+
+                </div>
+              </formly-form>
+            </form>
+
+
+          </div>
+
+        </mat-tab>
       </mat-tab-group>
     </mat-sidenav>
 
@@ -62,7 +106,7 @@
         <form [formGroup]="formlyGroupPreview.form" (ngSubmit)="submit()">
           <formly-form [model]="formlyGroupPreview.model" [fields]="formlyGroupPreview.fields" [options]="formlyGroupPreview.options" [form]="formlyGroupPreview.form">
             <div class="pt-2">
-              <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
+              <button type="submit" class="btn btn-primary submit-button " [hidden]="true" >Submit</button>
 
             </div>
           </formly-form>

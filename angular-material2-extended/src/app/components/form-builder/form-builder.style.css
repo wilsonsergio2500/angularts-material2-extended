@@ -7,11 +7,15 @@
 }
 
 .mat-sidenav {
-  width: 300px;
+  width: 350px;
 }
 
 :host ::ng-deep .droppable-group {
   border: 1px solid lightgray;
   display: inline-block;
   min-height:20px;
+}
+
+:host ::ng-deep .form-edit-tabs .mat-tab-label {
+  min-width: 100px;
 }

@@ -104,6 +104,7 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\components\check-animation\check-animation.component.ts" />
+    <TypeScriptCompile Include="src\app\components\form-builder\edit-types.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\form-builder.component.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\type-options.ts" />
     <TypeScriptCompile Include="src\app\components\json-form\json-form.component.ts" />
@@ -119,6 +120,9 @@
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\formly.error-state-matcher.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\index.ts" />
+    <TypeScriptCompile Include="src\app\fomly-fields\extensions\input-hidden\input-hidden.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\ngx-quill\formly-quill.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -175,6 +179,7 @@
     <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\fomly-fields\extensions\" />
     <Folder Include="src\app\fomly-fields\extensions\date-picker\" />
+    <Folder Include="src\app\fomly-fields\extensions\input-hidden\" />
     <Folder Include="src\app\fomly-fields\extensions\ngx-quill\" />
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
     <Folder Include="src\app\views\" />
