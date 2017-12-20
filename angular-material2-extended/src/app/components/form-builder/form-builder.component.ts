@@ -82,6 +82,7 @@ export class FormBuilderComponent{
           switch (fc.type){
             case 'input':
               InputConfig = <IFormlyConfigFormBuilder>{
+                
                 namekey: fc.namekey,
                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
@@ -156,24 +157,9 @@ export class FormBuilderComponent{
       }
     
 
-    //const InputConfig: IFormlyConfigFormBuilder = <IFormlyConfigFormBuilder>{
-    //    namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
-    //    nameId: `Input${this.FormControls.length + 1}`,
-    //    key: `entry${this.FormControls.length + 1}`,
-    //    type: fc.type,
-    //    templateOptions: {
-    //      type: fc.templateOptions.type,
-    //      label: fc.templateOptions.label,
-    //      required: fc.templateOptions.required
-    //    },
-    //    modelOptions: {},
-    //    className: 'col-md-12 col-xs-12',
-    //    validators: fc.validators,
-    //    asyncValidators: fc.asyncValidators,
-        
-    //};
 
-
+    this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
+    this.formlyGroupPreview.model = Object.assign({}, this.formlyGroupPreview.model);
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
 
