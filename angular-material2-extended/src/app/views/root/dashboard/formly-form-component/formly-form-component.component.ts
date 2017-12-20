@@ -15,6 +15,8 @@ export class FormlyFormViewComponent{
 
     this.formlyGroup.MarkConstrlsAsPristine();
 
+    
+
   }
 
   formSubmit(model: any){

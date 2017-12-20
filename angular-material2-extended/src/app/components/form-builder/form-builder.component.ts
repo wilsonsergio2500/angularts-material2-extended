@@ -17,6 +17,7 @@ interface IGroup{
 interface IFormlyConfigFormBuilder extends FormlyFieldConfig{
   nameId: string;
   namekeyLabel: string;
+  namekey: string;
 }
 @Component({
   selector: 'form-builder',
@@ -71,7 +72,7 @@ export class FormBuilderComponent{
   AddToGroup(group : IGroup, formlyGroup: FormlyGroup<any>){
 
       
-    const fc = Object.assign({}, formlyGroup.fields[0]);
+    const fc = Object.assign({}, formlyGroup.fields[0]) as IFormlyConfigFormBuilder;
     console.log(fc);
     console.log(this.GroupRef)
     let InputConfig: IFormlyConfigFormBuilder;
@@ -80,6 +81,7 @@ export class FormBuilderComponent{
           switch (fc.type){
             case 'input':
               InputConfig = <IFormlyConfigFormBuilder>{
+                namekey: fc.namekey,
                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
                 key: `entry${this.FormControls.length + 1}`,
@@ -100,9 +102,9 @@ export class FormBuilderComponent{
               break;
 
               case 'formly-group':
-                console.log('group')
+                //console.log('group')
                 let GroupConfig = Object.assign({}, fc) as IFormlyConfigFormBuilder;
-                console.log(GroupConfig);
+                //console.log(GroupConfig);
                 GroupConfig.namekeyLabel = `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`;
                 GroupConfig.nameId =  `Input${this.FormControls.length + 1}`;
                 GroupConfig.fieldGroup[0].template = `<div class="group-signal">Group ${this.GroupRef.length + 1}</div>`
@@ -118,10 +120,12 @@ export class FormBuilderComponent{
         switch((fc as any).namekey){
           case 'template':
             InputConfig = <IFormlyConfigFormBuilder>{
-                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+                namekey: fc.namekey,
+                namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
                 key: `entry${this.FormControls.length + 1}`,
                 template: fc.template,
+                className: 'col-md-12 col-xs-12',
             }
             this.FormControls.push(InputConfig)
             this.GroupRef[group.index].fieldGroup.push(InputConfig);
@@ -182,8 +186,24 @@ export class FormBuilderComponent{
   InputTypeChanged($event: any){
 
     const value = $event.value as IFormlyConfigFormBuilder;
+
+    //switch ((value as any).namekey){
+    //    case 'input':
+    //      const {key, id, type, templateOptions, nameId, className} = Object.assign({}, value);
+    //      this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.type]);
+    //      this.formlyInputTypeGroup.model = <IFormlyConfigFormBuilder>{
+    //        key,
+    //        id,
+    //        type,
+    //        templateOptions,
+    //        nameId,
+    //        className
+    //      }
+    //    break;
+    //}
+    console.log('editype',EDIT_TYPES.NAMES[value.namekey]);
     const {key, id, type, templateOptions, nameId, className} = Object.assign({}, value);
-    this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.type]);
+    this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.namekey]);
     this.formlyInputTypeGroup.model = <IFormlyConfigFormBuilder>{
       key,
       id,
@@ -200,24 +220,14 @@ export class FormBuilderComponent{
 
   updateInputType(){
 
-    const messages = {
-        required: (error, field: FormlyFieldConfig) => {
-          return `${field.templateOptions.label} is required`;
-        }
-      }
+  
     
     let field = this.FormControls.find((el) => el.nameId === this.InputType.nameId);
     field = Object.assign(field, this.objectWithoutKey(this.formlyInputTypeGroup.model, 'mameId'));
 
-    console.log(field.templateOptions.required);
-    if(field.templateOptions.required){
-      field.validation = { messages }
-     } else {
-      field.validation = {}
-    }
-    console.log(field.validation)
+    console.log(field);
 
-
+     this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
   

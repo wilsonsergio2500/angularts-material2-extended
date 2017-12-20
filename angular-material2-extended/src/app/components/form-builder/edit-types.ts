@@ -13,6 +13,12 @@ export namespace EDIT_TYPES {
     return options;
   }
 
+  const TEMPLATE = [
+       new Fields.HiddenField('id', 'id'),
+       new Fields.SelectField('className', 'Class', getLayoutClasses(), true),
+       new Fields.EditorField('template', 'template', true)
+    ]
+
 
   const INPUT_TEXT = [
         new Fields.HiddenField('id', 'id'),
@@ -25,7 +31,8 @@ export namespace EDIT_TYPES {
 
 
   export const NAMES = {
-    input: new FormlyGroup<any>({ fields: INPUT_TEXT})
+    input: new FormlyGroup<any>({ fields: INPUT_TEXT}),
+    template: new FormlyGroup<any>({ fields: TEMPLATE})
 
   }
 

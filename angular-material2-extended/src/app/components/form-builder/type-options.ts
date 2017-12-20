@@ -12,18 +12,18 @@ export interface IFormTypeReference extends FormlyFieldConfig{
 
 let input : IFormTypeReference = new Fields.InputField('input', 'Input Type', false) as IFormTypeReference;
 input.namekeyLabel = 'Input';
-input.namekey = 'inputText';
+input.namekey = 'input';
 input.templateOptions.disabled = true;
 
 
 let email: IFormTypeReference = new Fields.EmailField('email', 'Email Type', false) as IFormTypeReference;
 email.namekeyLabel = 'Email';
-email.namekey = 'emailText';
+email.namekey = 'input';
 email.templateOptions.disabled = true;
 
 let password : IFormTypeReference = new Fields.PasswordField('password', 'Password Type') as IFormTypeReference;
 password.namekeyLabel = 'Password';
-password.namekey = 'passwordText';
+password.namekey = 'input';
 password.templateOptions.disabled = true;
 
 

@@ -84,6 +84,10 @@ export namespace Fields {
             default: number;
         };
     };
+    expressionProperties?: {
+        [property: string]: string | ((model: any, formState: any) => boolean);
+    } | any;
+
     constructor(key: string, label: string, required: boolean = false) {
       this.key = key;
 	    this.type = types.INPUT;

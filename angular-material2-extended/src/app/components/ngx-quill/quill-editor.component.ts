@@ -18,6 +18,12 @@ import {
 import {ErrorStateMatcher, mixinErrorState, CanUpdateErrorState} from '@angular/material/core';
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import { FieldType } from '@ngx-formly/core';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import  'rxjs/add/observable/from';
+import 'rxjs/add/operator/distinctUntilChanged';
+import {of} from 'rxjs/observable/of';
 
 
 import {
@@ -67,7 +73,7 @@ export const _MatInputMixinBase = mixinErrorState(MatInputBase);
      `../../../../node_modules/quill/dist/quill.bubble.css`
     ]
 })
-export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterViewInit, ControlValueAccessor, OnChanges, Validator, CanUpdateErrorState   {
+export class QuillEditorComponent extends  _MatInputMixinBase  implements  AfterViewInit, ControlValueAccessor, OnChanges, Validator, CanUpdateErrorState   {
 
 
 
@@ -110,6 +116,25 @@ export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterV
   @Input() scrollingContainer: HTMLElement | string;
   @Input() bounds: HTMLElement | string;
   @Input() customOptions: CustomOption[] = [];
+
+  _disabled: boolean;
+
+  @Input('disabled')
+    get disabled() { return this.ngControl ? this.ngControl.disabled : this._disabled; }
+    set disabled(disable: boolean){
+    //console.log('disabled')
+    this._disabled = disable;
+    //if(!!disable){
+    //  setTimeout(() => {
+    //    this.quillEditor.disable();
+    //  }, 50)
+    //} else {
+    //   setTimeout(() => {
+    //    this.quillEditor.enable();
+    //  }, 50)
+    //}
+   
+  }
 
   @Output() onEditorCreated: EventEmitter<any> = new EventEmitter();
   @Output() onContentChanged: EventEmitter<any> = new EventEmitter();
@@ -289,6 +314,8 @@ export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterV
 
   ngOnDestroy() {
     this.stateChanges.complete();
+    this.disabledSubscription.unsubscribe();
+    
   }
 
    @Input() errorStateMatcher: ErrorStateMatcher;
@@ -298,6 +325,7 @@ export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterV
       // We need to re-evaluate this on every change detection cycle, because there are some
       // error triggers that we can't subscribe to (e.g. parent form submissions). This means
       // that whatever logic is in here has to be super lean or we risk destroying the performance.
+      //console.log(this.disabled)
       this.updateErrorState();
     } else {
       // When the input isn't used together with `@angular/forms`, we need to check manually for
@@ -315,4 +343,35 @@ export class QuillEditorComponent extends _MatInputMixinBase  implements  AfterV
     //}
   }
 
+
+  disabledSubscription: Subscription;
+  ngOnInit() {
+
+    const tracker : Observable<any> = Observable.create((observer) => {
+
+      let value = null;
+
+      const interval = setInterval(() =>{
+        if (value != this.disabled){
+            value = this.disabled;
+            observer.next(value);
+          }
+      }, 250)
+
+      return () => clearInterval(interval);
+
+    });
+    
+    
+
+    this.disabledSubscription = tracker.subscribe((val) => {
+      if(!!val){
+        this.quillEditor.disable();
+      }
+      else {
+        this.quillEditor.enable();
+      }
+    })
+   
+  }
 }
