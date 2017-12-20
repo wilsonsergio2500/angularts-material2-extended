@@ -10,7 +10,7 @@ const group =  new FieldGroups.GroupRow( [
   
   
   ]);
-group.className = 'droppable-group col-md-12';
+group.className = 'droppable-group col-md-12 col-xs-12';
 group.template = '<span>gio</span>'
 
 

@@ -26,6 +26,11 @@ password.namekeyLabel = 'Password';
 password.namekey = 'input';
 password.templateOptions.disabled = true;
 
+let number : IFormTypeReference = new Fields.NumberField('number', 'Number Type', false) as IFormTypeReference;
+number.namekeyLabel = 'Number';
+number.namekey = 'input';
+number.templateOptions.disabled = true;
+
 
 let template : IFormTypeReference = new FieldGroups.Template('<div>Template</div>') as IFormTypeReference;
 template.namekeyLabel = 'Template';
@@ -41,6 +46,7 @@ Group.namekey = 'group';
 export namespace TYPES{
 
   const InputGroup = new FormlyGroup<any>({ fields: [ input]});
+  const NumberGroup = new FormlyGroup<any>({ fields: [number]})
   const EmailGroup = new FormlyGroup<any>({ fields: [ email ]});
   const PasswordGroup = new FormlyGroup<any>({ fields: [ password]});
   const TemplateGroup = new FormlyGroup<any>({ fields: [ template ]})
@@ -49,6 +55,7 @@ export namespace TYPES{
 
   export const ALL : FormlyGroup<any>[] = [
     InputGroup,
+    NumberGroup,
     EmailGroup,
     PasswordGroup,
     TemplateGroup,

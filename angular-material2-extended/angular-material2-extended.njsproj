@@ -182,7 +182,6 @@
     <Folder Include="src\app\fomly-fields\extensions\input-hidden\" />
     <Folder Include="src\app\fomly-fields\extensions\ngx-quill\" />
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
-    <Folder Include="src\app\Helpers\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />
