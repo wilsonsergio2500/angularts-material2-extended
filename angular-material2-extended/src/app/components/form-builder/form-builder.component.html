@@ -4,7 +4,7 @@
     <mat-sidenav [opened]="true" [mode]="'side'" position="end" >
 
       <mat-tab-group class="form-edit-tabs">
-        <mat-tab label="Inputs">
+        <mat-tab label="Add">
 
           <div class="container-fluid">
 
@@ -29,14 +29,9 @@
                   </mat-menu>
 
                   <mat-icon class="pt-2" [matMenuTriggerFor]="appMenu">add</mat-icon>
-                  <!--<button mat-icon-button [matMenuTriggerFor]="appMenu">
-                    <mat-icon>add</mat-icon>
-                  </button>-->
+                 
 
                 </div>
-                
-                
-
                 
 
               </div>
@@ -47,16 +42,16 @@
           </div>
 
         </mat-tab>
-        <mat-tab label="Groups">
+        <mat-tab label="Edit">
 
-          <div class="pt-2">
+          <div class="pt-2 container">
             <mat-form-field>
-              <mat-select placeholder="Form Input Selector" [(value)]="InputType" (change)="InputTypeChanged($event)">
+              <mat-select placeholder="Input Type" [(value)]="InputType" (change)="InputTypeChanged($event)">
                 <mat-option *ngFor="let fc of FormControls" [value]="fc">{{ fc.namekeyLabel}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="pt-2" *ngIf="InputType">
+          <div class="pt-2 container" *ngIf="InputType">
          
 
             <form [formGroup]="formlyInputTypeGroup.form" (ngSubmit)="updateInputType()">

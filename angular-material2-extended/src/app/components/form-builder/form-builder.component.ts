@@ -84,13 +84,13 @@ export class FormBuilderComponent{
               InputConfig = <IFormlyConfigFormBuilder>{
                 
                 namekey: fc.namekey,
-                namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+                namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
                 key: `entry${this.FormControls.length + 1}`,
                 type: fc.type,
                 templateOptions: {
                   type: fc.templateOptions.type,
-                  label: fc.templateOptions.label,
+                  label: `${fc.namekeyLabel} ${this.FormControls.length + 1}`, //fc.templateOptions.label,
                   required: fc.templateOptions.required
                 },
                 modelOptions: {},
@@ -103,18 +103,7 @@ export class FormBuilderComponent{
               this.GroupRef[group.index].fieldGroup.push(InputConfig);
               break;
 
-              //case 'formly-group':
-              //  //console.log('group')
-              //  let GroupConfig = Object.assign({}, fc) as IFormlyConfigFormBuilder;
-              //  //console.log(GroupConfig);
-              //  GroupConfig.namekeyLabel = `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`;
-              //  GroupConfig.nameId =  `Input${this.FormControls.length + 1}`;
-              //  GroupConfig.fieldGroup[0].template = `<div class="group-signal">Group ${this.GroupRef.length + 1}</div>`
-              //  this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
-              //  this.GroupRef.push(GroupConfig)
-              //  this.GroupRef[group.index].fieldGroup.push(GroupConfig);
-                
-              //break;
+             
           }
       } else {
 
@@ -126,6 +115,7 @@ export class FormBuilderComponent{
                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
                 key: `entry${this.FormControls.length + 1}`,
+                
                 template: fc.template,
                 className: 'col-md-12 col-xs-12',
             }
@@ -146,12 +136,7 @@ export class FormBuilderComponent{
             this.GroupRef[group.index].fieldGroup.push(Grp);
             break;
           
-            //  <IFormlyConfigFormBuilder>{
-            //     namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
-            //    nameId: `Input${this.FormControls.length + 1}`,
-            //    key: `entry${this.FormControls.length + 1}`,
-            //    template: fc.template,
-            //}
+           
          
         }
       }
@@ -172,6 +157,7 @@ export class FormBuilderComponent{
 
     const value = $event.value as IFormlyConfigFormBuilder;
 
+    console.log(value);
    
     const {key, id, type, templateOptions, nameId, className, template} = Object.assign({}, value);
     this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.namekey]);

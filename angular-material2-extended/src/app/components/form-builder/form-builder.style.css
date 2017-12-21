@@ -19,6 +19,10 @@
 :host ::ng-deep .form-edit-tabs .mat-tab-label {
   min-width: 100px;
 }
-::host mat-tab-group {
+:host ::ng-deep mat-tab-group {
+  height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
   height: 100%;
 }
