@@ -14,14 +14,14 @@ export namespace EDIT_TYPES {
   }
 
   const TEMPLATE = [
-       new Fields.HiddenField('id', 'id'),
+       //new Fields.HiddenField('id', 'id'),
        new Fields.SelectField('className', 'Class', getLayoutClasses(), true),
        new Fields.EditorField('template', 'template', true)
     ]
 
 
   const INPUT_TEXT = [
-        new Fields.HiddenField('id', 'id'),
+        //new Fields.HiddenField('id', 'id'),
         new Fields.InputField('key', 'Key', true),
         new Fields.HiddenField('type', 'Type'),
         new Fields.SelectField('className', 'Class', getLayoutClasses(), true),

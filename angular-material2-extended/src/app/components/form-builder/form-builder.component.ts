@@ -23,6 +23,7 @@ interface IFormlyConfigFormBuilder extends FormlyFieldConfig{
   namekeyLabel: string;
   namekey: string;
   template?: string;
+  ENUM_ID: string;
 }
 @Component({
   selector: 'form-builder',
@@ -36,12 +37,10 @@ export class FormBuilderComponent{
 
   
   formlyGroupPreview : IFormlyGroup<any>; 
-  formlyGroup = new FormlyGroup<any>( { fields: TYPE_OPTIONS } );
-
   InputType: IFormlyConfigFormBuilder;
- 
 
   formlyGroups : FormlyGroup<any>[] = TYPES.ALL;
+  FieldSchema: IFormlyConfigFormBuilder[];
 
   Groups: IGroup[] = [
         { name: `Root`, index: 0 },
@@ -52,19 +51,17 @@ export class FormBuilderComponent{
   FormControls: IFormlyConfigFormBuilder[] = [];
   constructor(private builder: FormlyFormBuilder) {
 
-      this.formlyGroup.options.formState = {
-          disabled: true,
-      }
+    
 
-    const template = new FieldGroups.Template(getGroupTemplate('Group 1 - Root'));
+    const template = new FieldGroups.Template(getGroupTemplate('Group 1 - Root')) as IFormlyConfigFormBuilder;
     template.className = 'col-md-12';
+    template.ENUM_ID = 'template';
      const group =  new FieldGroups.GroupRow( [
-
         template
   
-  
-      ]);
+      ]) as IFormlyConfigFormBuilder;
     group.className = 'droppable-group col-md-12';
+    group.ENUM_ID = 'group';
 
     this.RootGroup = group;
     this.GroupRef = [this.RootGroup];
@@ -76,17 +73,18 @@ export class FormBuilderComponent{
 
   AddToGroup(group : IGroup, formlyGroup: FormlyGroup<any>){
 
+    console.log(this.objectWithoutKey(this.GroupRef[0], 'fieldGroup' ));
       
     const fc = Object.assign({}, formlyGroup.fields[0]) as IFormlyConfigFormBuilder;
-    //console.log(fc);
-    //console.log(this.GroupRef)
+    const ENUM_ID = fc.ENUM_ID;
+   
     let InputConfig: IFormlyConfigFormBuilder;
 
     if(!!fc.type){
           switch (fc.type){
             case 'input':
               InputConfig = <IFormlyConfigFormBuilder>{
-                
+                ENUM_ID,
                 namekey: fc.namekey,
                 namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
@@ -112,9 +110,10 @@ export class FormBuilderComponent{
       } else {
 
        
-        switch((fc as any).namekey){
+        switch(fc.namekey){
           case 'template':
             InputConfig = <IFormlyConfigFormBuilder>{
+                ENUM_ID,
                 namekey: fc.namekey,
                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
@@ -130,11 +129,13 @@ export class FormBuilderComponent{
             let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(getGroupTemplate(`Group ${this.GroupRef.length + 1}`)) as IFormlyConfigFormBuilder;
             tmptGroup.namekeyLabel = 'temptemplate';
             tmptGroup.className = 'col-md-12 col-xs-12';
+            tmptGroup.ENUM_ID = 'template';
             let Grp : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
             Grp.type = 'formly-group';
             Grp.namekeyLabel = `${'Group'} ${this.GroupRef.length + 1}`;
             Grp.nameId =  `Group${this.GroupRef.length + 1}`;
             Grp.className = 'droppable-group col-md-12 col-xs-12';
+            Grp.ENUM_ID = ENUM_ID;
             this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
             this.GroupRef.push(Grp)
             this.GroupRef[group.index].fieldGroup.push(Grp);
@@ -144,11 +145,16 @@ export class FormBuilderComponent{
          
         }
       }
+
+    setTimeout(() => {
+      this.FieldSchema = this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]);
+      console.log(this.FieldSchema)
+    },100)
     
-
-
-    this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
-    this.formlyGroupPreview.model = Object.assign({}, this.formlyGroupPreview.model);
+    //delete this.formlyGroupPreview;
+    this.formlyGroupPreview = new FormlyGroup<any>( { fields: this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]) } );
+    //this.formlyGroupPreview = new FormlyGroup<any>( { fields: [ Object.assign({}, this.RootGroup)] } );
+    //this.formlyGroupPreview.model = Object.assign({}, this.formlyGroupPreview.model);
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
 
@@ -175,6 +181,8 @@ export class FormBuilderComponent{
       template
     }
 
+   
+
     this.builder.buildForm(this.formlyInputTypeGroup.form, this.formlyInputTypeGroup.fields, this.formlyInputTypeGroup.model, this.formlyInputTypeGroup.options);
    
     
@@ -188,12 +196,42 @@ export class FormBuilderComponent{
     field = Object.assign(field, this.objectWithoutKey(this.formlyInputTypeGroup.model, 'mameId'));
 
     
-
-     this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
+    this.formlyGroupPreview = new FormlyGroup<any>( { fields: this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]) } );
+     //this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
   
     
+  }
+
+  getOriginalFieldList(fields : IFormlyConfigFormBuilder[]) : IFormlyConfigFormBuilder[]{
+    let orignalFields : IFormlyConfigFormBuilder[] = [];
+     
+
+    fields.forEach((item: IFormlyConfigFormBuilder, index: number) => {
+      let field : IFormlyConfigFormBuilder = TYPE_OPTIONS[item.ENUM_ID];
+      switch(item.ENUM_ID){
+        case 'group':
+          field = this.objectWithoutKey(item, 'fieldGroup') as IFormlyConfigFormBuilder;
+          if(!!item.fieldGroup.length){
+            field.fieldGroup = this.getOriginalFieldList(item.fieldGroup as IFormlyConfigFormBuilder[]) 
+          }
+          break;
+          case 'template':
+          field = Object.assign({}, item);
+          break;
+          default:
+          field.className = item.className;
+          field.templateOptions = item.templateOptions;
+          
+          break;
+          
+      }
+      delete field.id;
+      orignalFields.push(Object.assign({}, field));
+    });
+
+    return orignalFields;
   }
    
    objectWithoutKey = (object, key) => {

@@ -115,9 +115,11 @@
 
         </mat-tab>
         <mat-tab label="Schema">
-          <pre>
-            Hello World
-          </pre>
+          <div class="container pt-4">
+              <pre class="schema">
+              {{ FieldSchema | json }}
+            </pre>
+          </div>
         </mat-tab>
 
       </mat-tab-group>
