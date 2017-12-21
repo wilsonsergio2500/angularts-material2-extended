@@ -9,6 +9,10 @@ import { FormlyFieldConfig, FormlyFormBuilder } from '@ngx-formly/core';
 import { Fields } from '../../fomly-fields/Fields';
 import { EDIT_TYPES } from './edit-types'
 
+const getGroupTemplate = (grouplabel: string) => {
+  return `<div class="signal-group"><div class="group-indicator">${grouplabel}</div></div>`
+}
+
 interface IGroup{
   name: string;
   index: number;
@@ -52,7 +56,7 @@ export class FormBuilderComponent{
           disabled: true,
       }
 
-    const template = new FieldGroups.Template('<div class="signal-group">Group 1 - Root</div>');
+    const template = new FieldGroups.Template(getGroupTemplate('Group 1 - Root'));
     template.className = 'col-md-12';
      const group =  new FieldGroups.GroupRow( [
 
@@ -67,7 +71,7 @@ export class FormBuilderComponent{
     this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
   }
 
-
+  
  
 
   AddToGroup(group : IGroup, formlyGroup: FormlyGroup<any>){
@@ -123,7 +127,7 @@ export class FormBuilderComponent{
             this.GroupRef[group.index].fieldGroup.push(InputConfig);
             break;
           case 'group':
-            let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(`<div class="group-signal">Group${this.GroupRef.length + 1}</div>`) as IFormlyConfigFormBuilder;
+            let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(getGroupTemplate(`Group ${this.GroupRef.length + 1}`)) as IFormlyConfigFormBuilder;
             tmptGroup.namekeyLabel = 'temptemplate';
             tmptGroup.className = 'col-md-12 col-xs-12';
             let Grp : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;

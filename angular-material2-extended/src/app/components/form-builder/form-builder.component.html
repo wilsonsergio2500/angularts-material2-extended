@@ -80,22 +80,47 @@
       </mat-tab-group>
     </mat-sidenav>
 
-    <mat-sidenav-content >
-      <div class="container">
+    <mat-sidenav-content class="pr-3 bg-white">
 
-        <!--<div draggable="true" style="background-color:black; width:200px; height:200px;"></div>-->
+      <mat-tab-group class="form-edit-tabs">
 
-        <form [formGroup]="formlyGroupPreview.form" (ngSubmit)="submit()">
-          <formly-form [model]="formlyGroupPreview.model" [fields]="formlyGroupPreview.fields" [options]="formlyGroupPreview.options" [form]="formlyGroupPreview.form">
-            <div class="pt-2">
-              <button type="submit" class="btn btn-primary submit-button " [hidden]="true" >Submit</button>
+        <mat-tab label="Design">
 
+          <div class="container pt-4 designer">
+
+            <form [formGroup]="formlyGroupPreview.form" (ngSubmit)="submit()">
+              <formly-form [model]="formlyGroupPreview.model" [fields]="formlyGroupPreview.fields" [options]="formlyGroupPreview.options" [form]="formlyGroupPreview.form">
+                <div class="pt-2">
+                  <button type="submit" class="btn btn-primary submit-button " [hidden]="true">Submit</button>
+
+                </div>
+              </formly-form>
+            </form>
+
+
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Preview">
+
+          <div class="container pt-4 previewer">
+
+            <json-form [formlyGroup]="formlyGroupPreview"
+                       [IsWorking]="false"
+                       [btn-ready]="'Save'"
+                       [btn-busy]="'Saving..'"
+                       (onFormSubmit)="formSubmit($event)"></json-form>
             </div>
-          </formly-form>
-        </form>
+            
 
+        </mat-tab>
+        <mat-tab label="Schema">
+          <pre>
+            Hello World
+          </pre>
+        </mat-tab>
 
-      </div>
+      </mat-tab-group>
 
     </mat-sidenav-content>
 

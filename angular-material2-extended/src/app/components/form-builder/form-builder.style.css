@@ -10,10 +10,30 @@
   width: 350px;
 }
 
-:host ::ng-deep .droppable-group {
+:host ::ng-deep .designer .droppable-group {
   border: 1px solid lightgray;
   display: inline-block;
-  min-height:20px;
+  min-height:50px;
+}
+
+:host ::ng-deep .designer .signal-group {
+  margin-bottom: 30px;
+}
+
+:host ::ng-deep .designer .droppable-group .group-indicator {
+    display: inline-block;
+    background-color: lightgrey;
+    padding: 5px;
+    position: absolute;
+    left: 0;
+    border-radius: 0.5px;
+    color: white;
+    font-size: 10px;
+    top: 0;
+  }
+
+:host ::ng-deep .previewer .droppable-group .group-indicator {
+  display:none;
 }
 
 :host ::ng-deep .form-edit-tabs .mat-tab-label {
@@ -25,4 +45,8 @@
 
 :host ::ng-deep .mat-tab-body-wrapper {
   height: 100%;
+}
+
+:host ::ng-deep .bg-white {
+  background-color: white;
 }
