@@ -79,37 +79,10 @@ export class FormBuilderComponent{
    
     let InputConfig: IFormlyConfigFormBuilder;
 
-    if(!!fc.type){
-          switch (fc.type){
-            case 'input':
-              InputConfig = <IFormlyConfigFormBuilder>{
-                ENUM_ID,
-                namekey: fc.namekey,
-                namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
-                nameId: `Input${this.FormControls.length + 1}`,
-                key: `entry${this.FormControls.length + 1}`,
-                type: fc.type,
-                templateOptions: {
-                  type: fc.templateOptions.type,
-                  label: `${fc.namekeyLabel} ${this.FormControls.length + 1}`, //fc.templateOptions.label,
-                  required: fc.templateOptions.required
-                },
-                modelOptions: {},
-                className: 'col-md-12 col-xs-12',
-                validators: fc.validators,
-                asyncValidators: fc.asyncValidators,
-        
-              };
-              this.FormControls.push(InputConfig)
-              this.GroupRef[group.index].fieldGroup.push(InputConfig);
-              break;
+    console.log(fc.namekey)
 
-             
-          }
-      } else {
 
-       
-        switch(fc.namekey){
+    switch(fc.namekey){
           case 'template':
             InputConfig = <IFormlyConfigFormBuilder>{
                 ENUM_ID,
@@ -117,7 +90,6 @@ export class FormBuilderComponent{
                 namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
                 nameId: `Input${this.FormControls.length + 1}`,
                 key: `entry${this.FormControls.length + 1}`,
-                
                 template: fc.template,
                 className: 'col-md-12 col-xs-12',
             }
@@ -139,21 +111,105 @@ export class FormBuilderComponent{
             this.GroupRef.push(Grp)
             this.GroupRef[group.index].fieldGroup.push(Grp);
             break;
+        case 'input':
+              InputConfig = <IFormlyConfigFormBuilder>{
+                ENUM_ID,
+                namekey: fc.namekey,
+                namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
+                nameId: `Input${this.FormControls.length + 1}`,
+                key: `entry${this.FormControls.length + 1}`,
+                type: fc.type,
+                templateOptions: {
+                  type: fc.templateOptions.type,
+                  label: `${fc.namekeyLabel} ${this.FormControls.length + 1}`, //fc.templateOptions.label,
+                  required: fc.templateOptions.required
+                },
+                modelOptions: {},
+                className: 'col-md-12 col-xs-12',
+                validators: fc.validators,
+                asyncValidators: fc.asyncValidators,
+        
+              };
+              this.FormControls.push(InputConfig)
+              this.GroupRef[group.index].fieldGroup.push(InputConfig);
+              break;
+        }
+
+
+    //if(!!fc.type){
+    //      switch (fc.type){
+    //        case 'input':
+    //          InputConfig = <IFormlyConfigFormBuilder>{
+    //            ENUM_ID,
+    //            namekey: fc.namekey,
+    //            namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
+    //            nameId: `Input${this.FormControls.length + 1}`,
+    //            key: `entry${this.FormControls.length + 1}`,
+    //            type: fc.type,
+    //            templateOptions: {
+    //              type: fc.templateOptions.type,
+    //              label: `${fc.namekeyLabel} ${this.FormControls.length + 1}`, //fc.templateOptions.label,
+    //              required: fc.templateOptions.required
+    //            },
+    //            modelOptions: {},
+    //            className: 'col-md-12 col-xs-12',
+    //            validators: fc.validators,
+    //            asyncValidators: fc.asyncValidators,
+        
+    //          };
+    //          this.FormControls.push(InputConfig)
+    //          this.GroupRef[group.index].fieldGroup.push(InputConfig);
+    //          break;
+
+             
+    //      }
+    //  } else {
+
+       
+    //    switch(fc.namekey){
+    //      case 'template':
+    //        InputConfig = <IFormlyConfigFormBuilder>{
+    //            ENUM_ID,
+    //            namekey: fc.namekey,
+    //            namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
+    //            nameId: `Input${this.FormControls.length + 1}`,
+    //            key: `entry${this.FormControls.length + 1}`,
+                
+    //            template: fc.template,
+    //            className: 'col-md-12 col-xs-12',
+    //        }
+    //        this.FormControls.push(InputConfig)
+    //        this.GroupRef[group.index].fieldGroup.push(InputConfig);
+    //        break;
+    //      case 'group':
+    //        let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(getGroupTemplate(`Group ${this.GroupRef.length + 1}`)) as IFormlyConfigFormBuilder;
+    //        tmptGroup.namekeyLabel = 'temptemplate';
+    //        tmptGroup.className = 'col-md-12 col-xs-12';
+    //        tmptGroup.ENUM_ID = 'template';
+    //        let Grp : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
+    //        Grp.type = 'formly-group';
+    //        Grp.namekeyLabel = `${'Group'} ${this.GroupRef.length + 1}`;
+    //        Grp.nameId =  `Group${this.GroupRef.length + 1}`;
+    //        Grp.className = 'droppable-group col-md-12 col-xs-12';
+    //        Grp.ENUM_ID = ENUM_ID;
+    //        this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
+    //        this.GroupRef.push(Grp)
+    //        this.GroupRef[group.index].fieldGroup.push(Grp);
+    //        break;
           
            
          
-        }
-      }
+    //    }
+    //  }
 
     setTimeout(() => {
       this.FieldSchema = this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]);
       
     },100)
     
-    //delete this.formlyGroupPreview;
+
     this.formlyGroupPreview = new FormlyGroup<any>( { fields: this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]) } );
-    //this.formlyGroupPreview = new FormlyGroup<any>( { fields: [ Object.assign({}, this.RootGroup)] } );
-    //this.formlyGroupPreview.model = Object.assign({}, this.formlyGroupPreview.model);
+
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
 

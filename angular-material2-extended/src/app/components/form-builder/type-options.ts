@@ -36,6 +36,12 @@ number.namekey = 'input';
 number.ENUM_ID = 'number';
 number.templateOptions.disabled = true;
 
+let editor : IFormTypeReference = new Fields.EditorField('editor', 'Editor Type', false) as IFormTypeReference;
+editor.templateOptions.disabled = true;
+editor.namekeyLabel = 'Editor';
+editor.namekey = 'input';
+editor.ENUM_ID = 'editor';
+
 
 let template : IFormTypeReference = new FieldGroups.Template('<div>Template</div>') as IFormTypeReference;
 template.namekeyLabel = 'Template';
@@ -56,8 +62,10 @@ export namespace TYPES{
   const NumberGroup = new FormlyGroup<any>({ fields: [number]})
   const EmailGroup = new FormlyGroup<any>({ fields: [ email ]});
   const PasswordGroup = new FormlyGroup<any>({ fields: [ password]});
+  const EditorGroup = new FormlyGroup<any>({ fields: [editor]});
   const TemplateGroup = new FormlyGroup<any>({ fields: [ template ]})
   const GroupGroup = new FormlyGroup<any>({ fields: [group] });
+  
 
 
   export const ALL : FormlyGroup<any>[] = [
@@ -65,8 +73,10 @@ export namespace TYPES{
     NumberGroup,
     EmailGroup,
     PasswordGroup,
+    EditorGroup,
     TemplateGroup,
-    GroupGroup
+    GroupGroup,
+    
     ]
 }
 
@@ -75,5 +85,6 @@ export const TYPE_OPTIONS = {
   number : Object.assign({}, number),
   email : Object.assign({}, email),
   password : Object.assign({}, password),
-  group : Object.assign({}, group)
+  group : Object.assign({}, group),
+  editor: Object.assign({}, editor)
 }
