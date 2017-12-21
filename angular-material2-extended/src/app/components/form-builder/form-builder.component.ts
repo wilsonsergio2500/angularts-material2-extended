@@ -79,8 +79,6 @@ export class FormBuilderComponent{
    
     let InputConfig: IFormlyConfigFormBuilder;
 
-    console.log(fc.namekey)
-
 
     switch(fc.namekey){
           case 'template':
@@ -135,72 +133,7 @@ export class FormBuilderComponent{
               break;
         }
 
-
-    //if(!!fc.type){
-    //      switch (fc.type){
-    //        case 'input':
-    //          InputConfig = <IFormlyConfigFormBuilder>{
-    //            ENUM_ID,
-    //            namekey: fc.namekey,
-    //            namekeyLabel: `${fc.namekeyLabel} ${this.FormControls.length + 1}`,
-    //            nameId: `Input${this.FormControls.length + 1}`,
-    //            key: `entry${this.FormControls.length + 1}`,
-    //            type: fc.type,
-    //            templateOptions: {
-    //              type: fc.templateOptions.type,
-    //              label: `${fc.namekeyLabel} ${this.FormControls.length + 1}`, //fc.templateOptions.label,
-    //              required: fc.templateOptions.required
-    //            },
-    //            modelOptions: {},
-    //            className: 'col-md-12 col-xs-12',
-    //            validators: fc.validators,
-    //            asyncValidators: fc.asyncValidators,
-        
-    //          };
-    //          this.FormControls.push(InputConfig)
-    //          this.GroupRef[group.index].fieldGroup.push(InputConfig);
-    //          break;
-
-             
-    //      }
-    //  } else {
-
-       
-    //    switch(fc.namekey){
-    //      case 'template':
-    //        InputConfig = <IFormlyConfigFormBuilder>{
-    //            ENUM_ID,
-    //            namekey: fc.namekey,
-    //            namekeyLabel: `${(fc as any).namekeyLabel} ${this.FormControls.length + 1}`,
-    //            nameId: `Input${this.FormControls.length + 1}`,
-    //            key: `entry${this.FormControls.length + 1}`,
-                
-    //            template: fc.template,
-    //            className: 'col-md-12 col-xs-12',
-    //        }
-    //        this.FormControls.push(InputConfig)
-    //        this.GroupRef[group.index].fieldGroup.push(InputConfig);
-    //        break;
-    //      case 'group':
-    //        let tmptGroup : IFormlyConfigFormBuilder = new FieldGroups.Template(getGroupTemplate(`Group ${this.GroupRef.length + 1}`)) as IFormlyConfigFormBuilder;
-    //        tmptGroup.namekeyLabel = 'temptemplate';
-    //        tmptGroup.className = 'col-md-12 col-xs-12';
-    //        tmptGroup.ENUM_ID = 'template';
-    //        let Grp : IFormlyConfigFormBuilder = new FieldGroups.GroupRow([ tmptGroup ]) as IFormlyConfigFormBuilder;
-    //        Grp.type = 'formly-group';
-    //        Grp.namekeyLabel = `${'Group'} ${this.GroupRef.length + 1}`;
-    //        Grp.nameId =  `Group${this.GroupRef.length + 1}`;
-    //        Grp.className = 'droppable-group col-md-12 col-xs-12';
-    //        Grp.ENUM_ID = ENUM_ID;
-    //        this.Groups.push({ name: `Group ${this.GroupRef.length + 1}`, index: this.GroupRef.length})
-    //        this.GroupRef.push(Grp)
-    //        this.GroupRef[group.index].fieldGroup.push(Grp);
-    //        break;
-          
-           
-         
-    //    }
-    //  }
+    
 
     setTimeout(() => {
       this.FieldSchema = this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]);
@@ -221,8 +154,6 @@ export class FormBuilderComponent{
   InputTypeChanged($event: any){
 
     const value = $event.value as IFormlyConfigFormBuilder;
-
-    
    
     const {key, id, type, templateOptions, nameId, className, template} = Object.assign({}, value);
     this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.namekey]);
@@ -243,10 +174,8 @@ export class FormBuilderComponent{
     
   }
 
-  updateInputType(){
+  UpdateInputType(){
 
-  
-    
     let field = this.FormControls.find((el) => el.nameId === this.InputType.nameId);
     field = Object.assign(field, this.objectWithoutKey(this.formlyInputTypeGroup.model, 'mameId'));
 
@@ -258,9 +187,29 @@ export class FormBuilderComponent{
     
   }
 
+  DeleteInput(){
+
+    this.FormControls = this.FormControls.filter(x => x.nameId !== this.InputType.nameId);
+    this.RemoveFromLocation([this.RootGroup  as IFormlyConfigFormBuilder]);
+    this.formlyGroupPreview = new FormlyGroup<any>( { fields: this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]) } );
+    this.InputType = null;
+ 
+  }
+  RemoveFromLocation(fields : IFormlyConfigFormBuilder[]){
+
+    fields.forEach((item: IFormlyConfigFormBuilder, index: number) => {
+       if(!!item.fieldGroup && item.fieldGroup.length){
+          item.fieldGroup = (item.fieldGroup as IFormlyConfigFormBuilder[]).filter(x => x.nameId !== this.InputType.nameId);
+          this.RemoveFromLocation(item.fieldGroup as IFormlyConfigFormBuilder[]);
+       }
+     
+    });
+
+  }
+
   getOriginalFieldList(fields : IFormlyConfigFormBuilder[]) : IFormlyConfigFormBuilder[]{
     let orignalFields : IFormlyConfigFormBuilder[] = [];
-     
+
 
     fields.forEach((item: IFormlyConfigFormBuilder, index: number) => {
       let field : IFormlyConfigFormBuilder = TYPE_OPTIONS[item.ENUM_ID];
@@ -282,6 +231,8 @@ export class FormBuilderComponent{
           
       }
       delete field.id;
+          
+      field.nameId = item.nameId;
       orignalFields.push(Object.assign({}, field));
     });
 

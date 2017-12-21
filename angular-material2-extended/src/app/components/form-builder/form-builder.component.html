@@ -54,7 +54,7 @@
           <div class="pt-2 container" *ngIf="InputType">
          
 
-            <form [formGroup]="formlyInputTypeGroup.form" (ngSubmit)="updateInputType()">
+            <form [formGroup]="formlyInputTypeGroup.form" (ngSubmit)="UpdateInputType()">
               <formly-form [model]="formlyInputTypeGroup.model" [fields]="formlyInputTypeGroup.fields" [options]="formlyInputTypeGroup.options" [form]="formlyInputTypeGroup.form">
                 <div class="pt-2">
 
@@ -68,6 +68,10 @@
                   </loading-button>
 
                   <button mat-raised-button type="button" (click)="formlyInputTypeGroup.options.resetModel()">Revert</button>
+
+                  <button mat-raised-button  mat-icon-button color="warn" type="button" (click)="DeleteInput()" >
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
 
                 </div>
               </formly-form>
