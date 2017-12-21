@@ -73,7 +73,6 @@ export class FormBuilderComponent{
 
   AddToGroup(group : IGroup, formlyGroup: FormlyGroup<any>){
 
-    console.log(this.objectWithoutKey(this.GroupRef[0], 'fieldGroup' ));
       
     const fc = Object.assign({}, formlyGroup.fields[0]) as IFormlyConfigFormBuilder;
     const ENUM_ID = fc.ENUM_ID;
@@ -148,7 +147,7 @@ export class FormBuilderComponent{
 
     setTimeout(() => {
       this.FieldSchema = this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]);
-      console.log(this.FieldSchema)
+      
     },100)
     
     //delete this.formlyGroupPreview;
@@ -167,7 +166,7 @@ export class FormBuilderComponent{
 
     const value = $event.value as IFormlyConfigFormBuilder;
 
-    console.log(value);
+    
    
     const {key, id, type, templateOptions, nameId, className, template} = Object.assign({}, value);
     this.formlyInputTypeGroup = Object.assign({}, EDIT_TYPES.NAMES[value.namekey]);
@@ -197,7 +196,6 @@ export class FormBuilderComponent{
 
     
     this.formlyGroupPreview = new FormlyGroup<any>( { fields: this.getOriginalFieldList([this.RootGroup as IFormlyConfigFormBuilder]) } );
-     //this.formlyGroupPreview = new FormlyGroup<any>( { fields: [this.RootGroup] } );
 
     this.builder.buildForm(this.formlyGroupPreview.form, this.formlyGroupPreview.fields, this.formlyGroupPreview.model, this.formlyGroupPreview.options);
   
