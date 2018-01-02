@@ -1,0 +1,36 @@
+
+<div>Stepper Here</div>
+
+<div class="col-md-12" [ngSwitch]="StepperType">
+
+
+  <mat-horizontal-stepper *ngSwitchCase="1">
+    <mat-step label="Step 1" *ngFor="let step of FormlyStepper.steps; let index = index; let last = last;">
+      <ng-template matStepLabel>{{ step.Label }}</ng-template>
+
+      <span>{{index}}</span>
+
+
+      <!--<json-form *ngIf="FormlyStepper.Forms[index]" [formlyGroup]="FormlyStepper.Forms[index]"
+                 [IsWorking]="working"
+                 [btn-ready]="'Save'"
+                 [btn-busy]="'Saving..'"
+                 (onFormSubmit)="formSubmit($event)"></json-form>-->
+
+
+    </mat-step>
+  
+  </mat-horizontal-stepper>
+
+  <mat-vertical-stepper  *ngSwitchCase="2">
+    <mat-step label="Step 1">
+      Content 1
+    </mat-step>
+    <mat-step label="Step 1">
+      Content 2
+    </mat-step>
+  </mat-vertical-stepper>
+
+  
+
+</div>

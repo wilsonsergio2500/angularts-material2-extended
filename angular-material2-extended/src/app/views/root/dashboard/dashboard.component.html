@@ -71,9 +71,18 @@
          routerLinkActive
          #routerLinkActiveInstance="routerLinkActive"
          [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyStepper']">
+        Formly Stepper
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
          [routerLink]="['/dashboard/formBuilder']">
         Formly Builder
-      </a></mat-nav-list>
+      </a>
+    </mat-nav-list>
 
 </mat-sidenav>
   <mat-sidenav-content class="side-content">

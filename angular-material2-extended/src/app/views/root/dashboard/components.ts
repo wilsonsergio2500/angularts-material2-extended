@@ -8,7 +8,8 @@ import { FormlyLayoutComponent } from './formly-layout/fomly-layout.component';
 import { FomlyLayoutTemplateComponent } from './formly-layout-template/formly-layout-template.component';
 import { FormlyAsyncValidatorComponent } from './formly-async-validator/formly-async-validator.component';
 import { FormlyFormViewComponent } from './formly-form-component/formly-form-component.component';
-import { FormBuilderExampleComponent} from './form-builder-example/form-builder-example.component'
+import { FormBuilderExampleComponent } from './form-builder-example/form-builder-example.component';
+import { FormlyStepperExampleComponent } from './formly-stepper-example/formly-stepper-example.component';
 
 
 
@@ -23,6 +24,8 @@ export const DASHBOARD_COMPONENTS : any[] = [
   FomlyLayoutTemplateComponent,
   FormlyAsyncValidatorComponent,
   FormlyFormViewComponent,
-  FormBuilderExampleComponent
+  FormBuilderExampleComponent,
+  FormlyStepperExampleComponent
+
 
 ]

@@ -43,6 +43,10 @@
     </Content>
     <Content Include="src\app\components\form-builder\form-builder.style.css" />
     <Content Include="src\app\components\form-builder\form-preview.ts" />
+    <Content Include="src\app\components\formly-stepper\formly-stepper.component.html" />
+    <Content Include="src\app\components\formly-stepper\formly-stepper.component.ts" />
+    <Content Include="src\app\components\formly-stepper\models\FormlyStepper.ts" />
+    <Content Include="src\app\components\formly-stepper\models\StepperTypes.ts" />
     <Content Include="src\app\components\json-form\json-form.component.html" />
     <Content Include="src\app\components\index.ts" />
     <Content Include="src\app\components\loading-button\busy\busy.component.html">
@@ -64,6 +68,7 @@
     <Content Include="src\app\fomly-fields\Fields.ts" />
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
     <Content Include="src\app\fomly-fields\IFormlyGroup.ts" />
+    <Content Include="src\app\helpers\Helpers.ts" />
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -82,6 +87,7 @@
     <Content Include="src\app\views\root\dashboard\formly-layout\formly-layout.component.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\app\views\root\dashboard\formly-stepper-example\formly-stepper-example.component.html" />
     <Content Include="src\app\views\root\dashboard\main\main.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -144,6 +150,9 @@
     <TypeScriptCompile Include="src\app\views\root\dashboard\formly-layout\fomly-layout.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-stepper-example\formly-stepper-example.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-stepper-example\steps\step1.ts" />
+    <TypeScriptCompile Include="src\app\views\root\dashboard\formly-stepper-example\steps\step2.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\main\main.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.ts" />
@@ -163,6 +172,7 @@
     <Folder Include="src\" />
     <Folder Include="src\app\" />
     <Folder Include="src\app\components\" />
+    <Folder Include="src\app\components\formly-stepper\models\" />
     <Folder Include="src\app\components\loading-button\" />
     <Folder Include="src\app\components\loading-button\busy\" />
     <Folder Include="src\app\components\loading-button\ready\" />
@@ -170,6 +180,7 @@
     <Folder Include="src\app\components\loading-panel\" />
     <Folder Include="src\app\components\json-form\" />
     <Folder Include="src\app\components\form-builder\" />
+    <Folder Include="src\app\components\formly-stepper\" />
     <Folder Include="src\app\components\ngx-quill\" />
     <Folder Include="src\app\components\snackbar-status\" />
     <Folder Include="src\app\components\snackbar-status\service\" />
@@ -182,10 +193,12 @@
     <Folder Include="src\app\fomly-fields\extensions\input-hidden\" />
     <Folder Include="src\app\fomly-fields\extensions\ngx-quill\" />
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
+    <Folder Include="src\app\helpers\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />
     <Folder Include="src\app\views\root\dashboard\" />
+    <Folder Include="src\app\views\root\dashboard\formly-stepper-example\steps\" />
     <Folder Include="src\app\views\root\dashboard\main\" />
     <Folder Include="src\app\views\root\dashboard\formly-fields\" />
     <Folder Include="src\app\views\root\dashboard\formly-layout\" />
@@ -194,6 +207,7 @@
     <Folder Include="src\app\views\root\dashboard\formly-async-validator\" />
     <Folder Include="src\app\views\root\dashboard\formly-form-component\" />
     <Folder Include="src\app\views\root\dashboard\form-builder-example\" />
+    <Folder Include="src\app\views\root\dashboard\formly-stepper-example\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

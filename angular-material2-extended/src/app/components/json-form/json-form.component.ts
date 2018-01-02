@@ -23,7 +23,8 @@ export class JsonFormComponent<T>{
   @Output()
     onFormSubmit: EventEmitter<T> = new EventEmitter<T>();
 
-  constructor(){
+  constructor() {
+    console.log(this.formlyGroup);
   }
 
   submit(){
