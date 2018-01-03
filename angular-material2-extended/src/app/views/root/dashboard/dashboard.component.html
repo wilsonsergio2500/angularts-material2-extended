@@ -90,7 +90,7 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
 
-        <button mat-icon-button color="warn" (click)="start.open('mouse')">
+        <button mat-icon-button color="warn" (click)="start.open('mouse')" *ngIf="mobileQuery.matches ? true : false">
           <mat-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
         </button>
 

@@ -1,8 +1,6 @@
 
-<div>Stepper Here</div>
 
 <div class="col-md-12" [ngSwitch]="StepperType">
-
 
   <mat-horizontal-stepper *ngSwitchCase="1" [linear]="true" >
     <mat-step label="Step 1" *ngFor="let step of FormlyStepper.steps; let index = index; let last = last;">
