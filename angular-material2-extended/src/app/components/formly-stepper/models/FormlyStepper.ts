@@ -29,7 +29,7 @@ export class FormlyStepper<T> implements IFormlyStepper<T> {
     this.steps.forEach((stepItem: IFormlyStepperItem) => {
 
       const fields = this.getFieldsCopy(stepItem.Fields);
-      console.log(fields);
+      
       const model = Object.assign({}, this.viewmodel);
       const form = new FormlyGroup<T>(<IFormlyGroup<T>>{ fields , model: model  });
       this.Forms.push(form);

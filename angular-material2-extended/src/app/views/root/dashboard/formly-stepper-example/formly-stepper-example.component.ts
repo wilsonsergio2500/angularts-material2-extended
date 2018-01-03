@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormlyStepper, IFormlyStepper, IFormlyStepperItem } from '../../../../components/formly-stepper/models/FormlyStepper';
 import { STEP1  } from './steps/step1';
 import { STEP2 } from './steps/step2';
@@ -21,19 +21,20 @@ export class FormlyStepperExampleComponent {
     }
   ]);
 
-  constructor() {
+  IsWorking: boolean = false;
+  constructor(private elementRef: ElementRef) {
 
-    //this.Forms = new FormlyStepper<any>([
-    //  <IFormlyStepperItem>{
-    //    Label: 'Step 1',
-    //    Fields: STEP1
-    //  },
-    //  <IFormlyStepperItem>{
-    //    Label: 'Step 2',
-    //    Fields: STEP2
-    //  }
-    //]);
+    
+    
+  }
 
-    console.log(this.Forms);
+  Complete(model: any) {
+    console.log(model);
+
+    this.IsWorking = true;
+    setTimeout(() => {
+      this.IsWorking = false;
+    }, 8000)
+    
   }
 }

@@ -1,9 +1,9 @@
 
 <div class="container">
 
-  <form [formGroup]="formlyGroup.form" (ngSubmit)="submit()">
+  <form [formGroup]="formlyGroup.form" autocomplete="off" (ngSubmit)="submit()">
     <formly-form [model]="formlyGroup.model" [fields]="formlyGroup.fields" [options]="formlyGroup.options" [form]="formlyGroup.form">
-      <div class="pt-2">
+      <div class="pt-2 btn-region">
 
         <loading-button [IsBusy]="IsWorking"  mat-raised-button type="submit" [disabled]="formlyGroup.form.invalid" >
           <loading-button-ready>
@@ -14,7 +14,7 @@
           </loading-button-busy>
         </loading-button>
 
-        <button mat-raised-button type="button" (click)="formlyGroup.options.resetModel()">Revert</button>
+        <button mat-raised-button type="button" (click)="formlyGroup.options.resetModel()" [hidden]="!showRevertBtn">Revert</button>
 
       </div>
     </formly-form>

@@ -1,4 +1,5 @@
 
-<div>Formly Stepper Example</div>
-
-<formly-stepper [FormlyStepper]="Forms" [StepperType]="1"></formly-stepper>
+<formly-stepper [FormlyStepper]="Forms" [StepperType]="1"
+                [HideHeader]="false"
+                [Busy]="IsWorking"
+                (OnCompleted)="Complete($event)"></formly-stepper>

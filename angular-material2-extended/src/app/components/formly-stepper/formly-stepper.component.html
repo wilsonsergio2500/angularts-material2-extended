@@ -4,33 +4,48 @@
 <div class="col-md-12" [ngSwitch]="StepperType">
 
 
-  <mat-horizontal-stepper *ngSwitchCase="1">
+  <mat-horizontal-stepper *ngSwitchCase="1" [linear]="true" >
     <mat-step label="Step 1" *ngFor="let step of FormlyStepper.steps; let index = index; let last = last;">
       <ng-template matStepLabel>{{ step.Label }}</ng-template>
 
-      <span>{{index}}</span>
-
-
-      <!--<json-form *ngIf="FormlyStepper.Forms[index]" [formlyGroup]="FormlyStepper.Forms[index]"
-                 [IsWorking]="working"
-                 [btn-ready]="'Save'"
+      <json-form *ngIf="FormlyStepper.Forms[index]" [formlyGroup]="FormlyStepper.Forms[index]"
+                 [IsWorking]="Busy"
+                 [btn-ready]="last ? 'Save' : 'Next'"
                  [btn-busy]="'Saving..'"
-                 (onFormSubmit)="formSubmit($event)"></json-form>-->
+                 [show-revert-btn]="false"
+                 (onFormSubmit)="Submit($event, last)"></json-form>
 
+      <button matStepperNext type="button"  #nextBtn [hidden]="true"  ></button>
+
+      <div class="btn-prior" >
+        <button matStepperPrevious mat-raised-button color="warn" [hidden]="!(index > 0)" [disabled]="Busy"><<<</button>
+      </div>
 
     </mat-step>
   
   </mat-horizontal-stepper>
 
   <mat-vertical-stepper  *ngSwitchCase="2">
-    <mat-step label="Step 1">
-      Content 1
-    </mat-step>
-    <mat-step label="Step 1">
-      Content 2
-    </mat-step>
-  </mat-vertical-stepper>
 
+    <mat-step label="Step 1" *ngFor="let step of FormlyStepper.steps; let index = index; let last = last;">
+      <ng-template matStepLabel>{{ step.Label }}</ng-template>
+
+      <json-form *ngIf="FormlyStepper.Forms[index]" [formlyGroup]="FormlyStepper.Forms[index]"
+                 [IsWorking]="Busy"
+                 [btn-ready]="last ? 'Save' : 'Next'"
+                 [btn-busy]="'Saving..'"
+                 [show-revert-btn]="false"
+                 (onFormSubmit)="Submit($event, last)"></json-form>
+
+      <button matStepperNext type="button" #nextBtn [hidden]="true"></button>
+
+      <div class="btn-prior">
+        <button matStepperPrevious mat-raised-button color="warn" [hidden]="!(index > 0)" [disabled]="Busy"><<<</button>
+      </div>
+
+    </mat-step>
+
+    </mat-vertical-stepper>
   
 
 </div>

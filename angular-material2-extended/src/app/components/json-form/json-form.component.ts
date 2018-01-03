@@ -18,13 +18,15 @@ export class JsonFormComponent<T>{
     btnReady: string;
 
    @Input('btn-busy')
-    btnBusy: string;
+  btnBusy: string;
+
+   @Input('show-revert-btn')
+   showRevertBtn: boolean = true;
 
   @Output()
     onFormSubmit: EventEmitter<T> = new EventEmitter<T>();
 
   constructor() {
-    console.log(this.formlyGroup);
   }
 
   submit(){
