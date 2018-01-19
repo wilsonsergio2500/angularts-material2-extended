@@ -60,6 +60,7 @@
     <Content Include="src\app\components\snackbar-status\styles.ts" />
     <Content Include="src\app\components\snackbar-status\types\completed\snackbar-completed.component.html" />
     <Content Include="src\app\components\snackbar-status\types\progress\snackbar-progress.component.html" />
+    <Content Include="src\app\components\snn-input\snn-input.style.css" />
     <Content Include="src\app\components\snn-input\ssn-input.component.html" />
     <Content Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.html" />
     <Content Include="src\app\fomly-fields\extensions\ngx-quill\formly-quill.component.html">

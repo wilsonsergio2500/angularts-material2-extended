@@ -1,0 +1,11 @@
+:host {
+  position: relative;
+}
+  :host .toggle-container {
+    display:inline-block;
+    position:absolute;
+    bottom:0;
+    right:0;
+    cursor:pointer;
+    
+  }

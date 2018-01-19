@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { SnackbarStatusService } from '../../../../components/snackbar-status/service/snackbar-status.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'components-example',
@@ -9,9 +10,12 @@ import { SnackbarStatusService } from '../../../../components/snackbar-status/se
 export class ComponentsExampleComponent {
 
   working: boolean;
+  SnnFormControl: FormControl;
   
   constructor(private snackbarStatusService: SnackbarStatusService){
     this.working = false;
+
+    this.SnnFormControl = new FormControl('');
   }
 
   Submit($event: any){

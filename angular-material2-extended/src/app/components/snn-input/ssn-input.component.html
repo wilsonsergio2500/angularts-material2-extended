@@ -1,7 +1,13 @@
 <mat-form-field>
  
-  <input matInput [placeholder]="placeholder"  [disabled]="disabled" #input [value]="$viewvalue" maxlength="11"  />
+  <input matInput [placeholder]="placeholder"  [disabled]="disabled" #input [value]="$viewvalue" maxlength="11" (blur)="onTouched()"  />
   
 </mat-form-field>
+<div class="toggle-container" (click)="Toggle()" *ngIf="DisplayToggle">
+  <i class="fa fa-eye" aria-hidden="true" *ngIf="!HideValue"></i>
+  <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="HideValue"></i>
+</div>
+<div>
 
-<input [value]="$modelvalue" />
+  <input [value]="$modelvalue" />
+</div>
