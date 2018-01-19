@@ -90,7 +90,7 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
     if (!!value) {
       this.$modelvalue = value;
       this.$modelvalueArray = this.$modelvalue.split('');
-      this.$viewvalue = this.getMask(this.$modelvalueArray);
+      this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
     }
     
   }
