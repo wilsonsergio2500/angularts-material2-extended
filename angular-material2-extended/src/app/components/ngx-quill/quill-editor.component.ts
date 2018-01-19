@@ -37,7 +37,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import {Subject} from 'rxjs/Subject';
 
 import * as QuillNamespace from 'quill';
-let Quill: any = QuillNamespace;
+const Quill: any = QuillNamespace;
 
 export interface CustomOption {
   import: string;
@@ -350,7 +350,7 @@ export class QuillEditorComponent extends  _MatInputMixinBase  implements  After
     const tracker : Observable<any> = Observable.create((observer) => {
 
       let value = null;
-
+      
       const interval = setInterval(() =>{
         if (value != this.disabled){
             value = this.disabled;

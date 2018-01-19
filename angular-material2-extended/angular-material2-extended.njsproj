@@ -60,6 +60,7 @@
     <Content Include="src\app\components\snackbar-status\styles.ts" />
     <Content Include="src\app\components\snackbar-status\types\completed\snackbar-completed.component.html" />
     <Content Include="src\app\components\snackbar-status\types\progress\snackbar-progress.component.html" />
+    <Content Include="src\app\components\snn-input\ssn-input.component.html" />
     <Content Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.html" />
     <Content Include="src\app\fomly-fields\extensions\ngx-quill\formly-quill.component.html">
       <SubType>Code</SubType>
@@ -123,6 +124,9 @@
     <TypeScriptCompile Include="src\app\components\snackbar-status\snackbar-status-base.ts" />
     <TypeScriptCompile Include="src\app\components\snackbar-status\types\completed\snackbar-completed.component.ts" />
     <TypeScriptCompile Include="src\app\components\snackbar-status\types\progress\snackbar-progress.component.ts" />
+    <TypeScriptCompile Include="src\app\components\snn-input\ssn-input.component.ts" />
+    <TypeScriptCompile Include="src\app\directives\index.ts" />
+    <TypeScriptCompile Include="src\app\directives\md-mask\md-mask.directive.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\formly.error-state-matcher.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\index.ts" />
@@ -181,12 +185,14 @@
     <Folder Include="src\app\components\json-form\" />
     <Folder Include="src\app\components\form-builder\" />
     <Folder Include="src\app\components\formly-stepper\" />
+    <Folder Include="src\app\components\snn-input\" />
     <Folder Include="src\app\components\ngx-quill\" />
     <Folder Include="src\app\components\snackbar-status\" />
     <Folder Include="src\app\components\snackbar-status\service\" />
     <Folder Include="src\app\components\snackbar-status\types\" />
     <Folder Include="src\app\components\snackbar-status\types\completed\" />
     <Folder Include="src\app\components\snackbar-status\types\progress\" />
+    <Folder Include="src\app\directives\md-mask\" />
     <Folder Include="src\app\fomly-fields\" />
     <Folder Include="src\app\fomly-fields\extensions\" />
     <Folder Include="src\app\fomly-fields\extensions\date-picker\" />
@@ -194,6 +200,7 @@
     <Folder Include="src\app\fomly-fields\extensions\ngx-quill\" />
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
     <Folder Include="src\app\helpers\" />
+    <Folder Include="src\app\directives\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />

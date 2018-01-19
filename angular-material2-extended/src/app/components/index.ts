@@ -10,10 +10,11 @@ import { ProgressSnackbarComponent } from './snackbar-status/types/progress/snac
 import { JsonFormComponent } from './json-form/json-form.component';
 import { QuillEditorComponent } from './ngx-quill/quill-editor.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
-import { FormlyStepperComponent } from './formly-stepper/formly-stepper.component'
+import { FormlyStepperComponent } from './formly-stepper/formly-stepper.component';
+import { SsnInputComponet  } from './snn-input/ssn-input.component';
 
 //providers
-import { SnackbarStatusService } from './snackbar-status/service/snackbar-status.service'
+import { SnackbarStatusService } from './snackbar-status/service/snackbar-status.service';
 
 export const CUSTOM_COMPONENTS = [
 
@@ -28,7 +29,8 @@ export const CUSTOM_COMPONENTS = [
   JsonFormComponent,
   QuillEditorComponent,
   FormBuilderComponent,
-  FormlyStepperComponent
+  FormlyStepperComponent,
+  SsnInputComponet
   
 
  ];

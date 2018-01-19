@@ -16,13 +16,14 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 
 
-import { ROOT_ROUTES } from './views/root/root-routes'
+import { ROOT_ROUTES } from './views/root/root-routes';
 
 
 //components
 import { AppComponent } from './app.component';
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS} from './components/index';
-import { ROOT_COMPONENTS } from './views/root/components'
+import { CUSTOM_DIRECTIVES } from './directives/index';
+import { ROOT_COMPONENTS } from './views/root/components';
 import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS} from './fomly-fields/extensions/index'
 
 
@@ -32,6 +33,7 @@ import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS} from './fomly-field
 
 
     CUSTOM_COMPONENTS,
+    CUSTOM_DIRECTIVES,
     ROOT_COMPONENTS,
     FORMLY_CONTROLS_COMPONENTS
   ],
