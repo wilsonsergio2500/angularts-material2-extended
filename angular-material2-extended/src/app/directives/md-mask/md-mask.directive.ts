@@ -1,6 +1,8 @@
 
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import IMask from 'imask';
+//import IMask from 'imask';
+
+const IMask = require('imask/dist/imask.js');
 
 export interface IMdMaskConfig {
   mask: string;
