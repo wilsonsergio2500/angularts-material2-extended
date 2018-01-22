@@ -72,12 +72,13 @@
 
     <div class="col-md-12 mt-2">
       <form class="example-form">
-        <ssn-input placeholder="Enter Social Security" [HideValue]="true" [formControl]="SnnFormControl"
+        <ssn-input placeholder="Enter Social Security" [HideValue]="true" [formControl]="SnnFormControl" [disabled]="true"
                    [required]="true"
-                   [DisplayToggle]="true"></ssn-input>
-        <mat-error *ngIf="SnnFormControl.hasError('required')">
+                   [Last4Only]="true"
+                   [DisplayToggle]="false"></ssn-input>
+        <!--<mat-error *ngIf="SnnFormControl.hasError('required')">
           required ssn
-        </mat-error>
+        </mat-error>-->
       </form>
 </div>
 

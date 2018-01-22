@@ -1,6 +1,6 @@
 <mat-form-field>
  
-  <input matInput [placeholder]="placeholder"  [disabled]="disabled" #input [value]="$viewvalue" maxlength="11" (blur)="onTouched()"  />
+  <input matInput [placeholder]="placeholder"  [disabled]="_disabled" #input [value]="$viewvalue" maxlength="11" (blur)="onTouched()"  />
   
 </mat-form-field>
 <div class="toggle-container" (click)="Toggle()" *ngIf="DisplayToggle">

@@ -59,7 +59,7 @@ usage:
 
 export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy {
 
-  private disabled: boolean;
+  private _disabled: boolean = false;
   private $modelvalue = '';
   private $modelvalueArray: string[] = [];
   private $viewvalue: string = EMPTY_MASK;
@@ -70,6 +70,10 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
   @Input() HideValue: boolean = false;
   @Input() required: boolean;
   @Input() DisplayToggle = true;
+  @Input() Last4Only = false;
+  @Input('disabled') set disable(val: boolean){
+    this._disabled = val;
+  }
 
   @ViewChild('input')
   private inputElement: ElementRef;
@@ -109,7 +113,8 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    console.log(isDisabled)
+    this._disabled = isDisabled;
   }
 
   registerOnChange(fn) {
@@ -149,6 +154,7 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
       .forEach((el) => {
         if (vals.length) {
           msk[el.index] = (!!vals[counter]) ? ( (hidden) ? HIDE_CHARACTER : vals[counter]) : mask[el.index];
+          msk[el.index] = (this.Last4Only && hidden && counter > 4 && !!vals[counter]) ? vals[counter] : msk[el.index];
           counter++;
         }
 
@@ -210,6 +216,12 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
 
         const input = (event.target as HTMLInputElement);
         const numeric = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+        
+
+        const cursor = input.value.slice(0, input.selectionStart).length;
+        if(cursor === 1 && this.$modelvalueArray.length === 9){
+            this.$modelvalueArray = [];
+        }
 
         if (numeric) {
           
