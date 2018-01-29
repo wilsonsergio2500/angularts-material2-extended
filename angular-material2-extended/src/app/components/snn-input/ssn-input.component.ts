@@ -46,7 +46,10 @@ export const SNN_VALIDATOR: any = {
 };
 /*
 usage:
-  <ssn-input placeholder="Enter Social Security" [HideValue]="true" [formControl]="SnnFormControl" [required]="true" [DisplayToggle]="true"></ssn-input>
+  <ssn-input placeholder="Enter Social Security" [HideValue]="true" [formControl]="SnnFormControl" [disabled]="false"
+                   [required]="true"
+                   [Last4Only]="true"
+                   [DisplayToggle]="true"></ssn-input>
 */
 
 

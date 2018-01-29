@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS} from './components/index';
 import { CUSTOM_DIRECTIVES } from './directives/index';
 import { ROOT_COMPONENTS } from './views/root/components';
-import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS} from './fomly-fields/extensions/index'
+import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS } from './fomly-fields/extensions/index';
 
 
 @NgModule({

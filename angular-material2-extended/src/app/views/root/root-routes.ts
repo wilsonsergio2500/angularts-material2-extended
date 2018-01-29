@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RootComponent } from './root.component'
+import { RootComponent } from './root.component';
 import { DASHBOARD_ROUTES } from './dashboard/dashboard-routes';
 
 export const ROOT_ROUTES: Routes = [
@@ -8,4 +8,4 @@ export const ROOT_ROUTES: Routes = [
     children: [].concat(DASHBOARD_ROUTES)
 
   }
-]
+];
