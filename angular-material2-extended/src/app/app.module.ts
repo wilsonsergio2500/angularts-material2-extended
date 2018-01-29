@@ -47,10 +47,10 @@ import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS } from './fomly-fiel
     ReactiveFormsModule,
     FormlyModule.forRoot(FORMLY_CONTROLS_CONFIG),
     FormlyMaterialModule,
-     MatFormFieldModule,
+     
 
     //material
-   
+    MatFormFieldModule,
     LayoutModule,
     MatToolbarModule,
     MatIconModule,
@@ -68,6 +68,34 @@ import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS } from './fomly-fiel
     MatStepperModule
 
   ],
+  exports: [
+    //CommonModule,
+    //BrowserModule,
+    //HttpModule,
+    //BrowserAnimationsModule,
+    //RouterModule.forRoot(ROOT_ROUTES),
+    FormsModule,
+    ReactiveFormsModule,
+    FormlyMaterialModule,
+
+    //material
+    MatFormFieldModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatTabsModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatStepperModule
+    ],
   providers: [
     CUSTOM_PROVIDERS
     ],

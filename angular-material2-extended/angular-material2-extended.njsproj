@@ -94,6 +94,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
+    <Content Include="src\app\views\root\external-views\external-view.component.html" />
+    <Content Include="src\app\views\root\external-views\welcome\welcome.component.html" />
     <Content Include="src\app\views\root\root.component.html" />
     <Content Include="src\app\views\root\root-routes.ts" />
     <Content Include="src\app\views\sample\sample.component.html">
@@ -161,6 +163,11 @@
     <TypeScriptCompile Include="src\app\views\root\dashboard\main\main.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\routes.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\external-view.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\external-views.module.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\welcome\welcome.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\root.component.ts" />
     <TypeScriptCompile Include="src\app\views\sample\sample.component.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
@@ -217,6 +224,8 @@
     <Folder Include="src\app\views\root\dashboard\form-builder-example\" />
     <Folder Include="src\app\views\root\dashboard\formly-stepper-example\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
+    <Folder Include="src\app\views\root\external-views\" />
+    <Folder Include="src\app\views\root\external-views\welcome\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />
