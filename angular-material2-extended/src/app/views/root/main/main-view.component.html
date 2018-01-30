@@ -1,0 +1,105 @@
+<mat-sidenav-container class="demo-root" fullscreen>
+  <mat-sidenav #start [opened]="mobileQuery.matches ? false : true" [mode]="mobileQuery.matches ? 'over' : 'side'">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <mat-icon class="example-icon">favorite</mat-icon>
+        <span>Actions</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/components']">
+        Components
+      </a>
+      <!--<a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyvanilla']">
+        Vanilla Formly
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyFieldTypes']">
+        Formly Fields
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlylayout']">
+        Formly Layout
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlylayoutTemplate']">
+        Formly Layout Template
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyAsyncValidator']">
+        Formly Async  Validator
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyFormComponent']">
+        Formly Form Component
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formlyStepper']">
+        Formly Stepper
+      </a>
+      <a mat-list-item
+         (click)="mobileQuery.matches && start.close()"
+         routerLinkActive
+         #routerLinkActiveInstance="routerLinkActive"
+         [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+         [routerLink]="['/dashboard/formBuilder']">
+        Formly Builder
+      </a>-->
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="side-content">
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+
+        <button mat-icon-button color="warn" (click)="start.open('mouse')" *ngIf="mobileQuery.matches ? true : false">
+          <mat-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
+        </button>
+
+
+        <span>Dashboard</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="dashboard-content px-2 pt-3">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -6,8 +6,10 @@ export const ROOT_ROUTES: Routes = [
   {
     path: '', component: RootComponent,
     children: [<Route>{
-      path: 'views', loadChildren: './external-views/external-views.module#ExternalViewModule'
-    }].concat(DASHBOARD_ROUTES)
+      path: 'views', loadChildren: './external-views/external-views.module#ExternalViewModule',
+    },
+      <Route>{ path: 'main', loadChildren: './main/main-view.module#MainModuleViewComponent' }
+    ].concat(DASHBOARD_ROUTES)
 
   }
 ];

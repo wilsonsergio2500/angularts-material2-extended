@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule, MatSelectModule,
   MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatMenuModule,
@@ -37,6 +38,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     FormsModule,
     ReactiveFormsModule,
     FormlyMaterialModule,
+    FlexLayoutModule,
 
     // ANGULAR MATERIAL
     MatFormFieldModule,
@@ -64,7 +66,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     ReactiveFormsModule,
     FormlyMaterialModule,
     FormlyModule,
-
+    FlexLayoutModule,
     // ANGULAR MATERIAL
     MatFormFieldModule,
     LayoutModule,

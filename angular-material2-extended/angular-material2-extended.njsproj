@@ -96,6 +96,8 @@
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
     <Content Include="src\app\views\root\external-views\external-view.component.html" />
     <Content Include="src\app\views\root\external-views\welcome\welcome.component.html" />
+    <Content Include="src\app\views\root\main\dashboard\dash.component.html" />
+    <Content Include="src\app\views\root\main\main-view.component.html" />
     <Content Include="src\app\views\root\root.component.html" />
     <Content Include="src\app\views\root\root-routes.ts" />
     <Content Include="src\app\views\sample\sample.component.html">
@@ -168,6 +170,11 @@
     <TypeScriptCompile Include="src\app\views\root\external-views\external-view.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\external-views.module.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\welcome\welcome.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\dashboard\dash.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\main-view.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\main-view.module.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\root.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\shared\shared.module.ts" />
     <TypeScriptCompile Include="src\app\views\sample\sample.component.ts" />
@@ -227,6 +234,8 @@
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\root\external-views\" />
     <Folder Include="src\app\views\root\external-views\welcome\" />
+    <Folder Include="src\app\views\root\main\" />
+    <Folder Include="src\app\views\root\main\dashboard\" />
     <Folder Include="src\app\views\root\shared\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
