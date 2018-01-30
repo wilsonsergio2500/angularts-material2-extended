@@ -33,6 +33,8 @@ import { SharedModule } from './views/root/shared/shared.module';
     
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(ROOT_ROUTES),
 

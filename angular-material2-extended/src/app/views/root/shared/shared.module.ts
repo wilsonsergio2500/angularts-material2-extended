@@ -33,9 +33,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
   imports: [
     FormlyModule.forRoot(FORMLY_CONTROLS_CONFIG),
     CommonModule,
-    BrowserModule,
     HttpModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     FormlyMaterialModule,
@@ -61,9 +59,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
   ],
   exports: [
     CommonModule,
-    BrowserModule,
     HttpModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     FormlyMaterialModule,
