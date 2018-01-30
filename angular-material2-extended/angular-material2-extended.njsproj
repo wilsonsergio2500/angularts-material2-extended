@@ -169,6 +169,7 @@
     <TypeScriptCompile Include="src\app\views\root\external-views\external-views.module.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\welcome\welcome.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\root.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\shared\shared.module.ts" />
     <TypeScriptCompile Include="src\app\views\sample\sample.component.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
@@ -226,6 +227,7 @@
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\root\external-views\" />
     <Folder Include="src\app\views\root\external-views\welcome\" />
+    <Folder Include="src\app\views\root\shared\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />

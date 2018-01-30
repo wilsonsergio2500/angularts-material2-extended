@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -21,86 +22,25 @@ import { ROOT_ROUTES } from './views/root/root-routes';
 
 //components
 import { AppComponent } from './app.component';
-import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS} from './components/index';
-import { CUSTOM_DIRECTIVES } from './directives/index';
 import { ROOT_COMPONENTS } from './views/root/components';
-import { FORMLY_CONTROLS_CONFIG, FORMLY_CONTROLS_COMPONENTS } from './fomly-fields/extensions/index';
+import { SharedModule } from './views/root/shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
-    CUSTOM_COMPONENTS,
-    CUSTOM_DIRECTIVES,
     ROOT_COMPONENTS,
-    FORMLY_CONTROLS_COMPONENTS
+    
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    HttpModule,
-    BrowserAnimationsModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROOT_ROUTES),
-    FormsModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(FORMLY_CONTROLS_CONFIG),
-    FormlyMaterialModule,
-     
-
-    //material
-    MatFormFieldModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatTabsModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatStepperModule
 
   ],
-  exports: [
-    //CommonModule,
-    //BrowserModule,
-    //HttpModule,
-    //BrowserAnimationsModule,
-    //RouterModule.forRoot(ROOT_ROUTES),
-    FormsModule,
-    ReactiveFormsModule,
-    FormlyMaterialModule,
-
-    //material
-    MatFormFieldModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatTabsModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatStepperModule
-    ],
   providers: [
-    CUSTOM_PROVIDERS
+  
     ],
   entryComponents: [
-    CUSTOM_COMPONENTS
     ],
   bootstrap: [AppComponent]
 })
