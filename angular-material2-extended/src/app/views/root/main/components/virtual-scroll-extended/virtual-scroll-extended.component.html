@@ -1,0 +1,15 @@
+
+<div #scrollingBlock>
+  <virtual-scroll [items]="items"
+                  [parentScroll]="scrollingBlock.nativeElement"
+                  [childWidth]="80"
+                  [childHeight]="30"
+                  (update)="viewPortItems = $event">
+    <!--<input type="search">
+    <div #container>
+      <list-item *ngFor="let item of viewPortItems" [item]="item">
+      </list-item>
+    </div>-->
+    <ng-content></ng-content>
+  </virtual-scroll>
+</div>

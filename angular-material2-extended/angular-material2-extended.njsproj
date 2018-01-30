@@ -96,6 +96,7 @@
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
     <Content Include="src\app\views\root\external-views\external-view.component.html" />
     <Content Include="src\app\views\root\external-views\welcome\welcome.component.html" />
+    <Content Include="src\app\views\root\main\components\virtual-scroll-extended\virtual-scroll-extended.component.html" />
     <Content Include="src\app\views\root\main\dashboard\dash.component.html" />
     <Content Include="src\app\views\root\main\main-view.component.html" />
     <Content Include="src\app\views\root\root.component.html" />
@@ -109,6 +110,7 @@
     <Content Include="src\tsconfig.app.json" />
     <Content Include="src\tsconfig.spec.json" />
     <Content Include="tsconfig.json" />
+    <TypeScriptCompile Include="Scripts\customs\element-resize-detector\element-resize-detector.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -171,6 +173,8 @@
     <TypeScriptCompile Include="src\app\views\root\external-views\external-views.module.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\welcome\welcome.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\components\index.ts" />
+    <TypeScriptCompile Include="src\app\views\root\main\components\virtual-scroll-extended\virtual-scroll-extended.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\dashboard\dash.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\main-view.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\main-view.module.ts" />
@@ -187,6 +191,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
+    <Folder Include="Scripts\customs\" />
+    <Folder Include="Scripts\customs\element-resize-detector\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="src\" />
@@ -235,7 +241,9 @@
     <Folder Include="src\app\views\root\external-views\" />
     <Folder Include="src\app\views\root\external-views\welcome\" />
     <Folder Include="src\app\views\root\main\" />
+    <Folder Include="src\app\views\root\main\components\virtual-scroll-extended\" />
     <Folder Include="src\app\views\root\main\dashboard\" />
+    <Folder Include="src\app\views\root\main\components\" />
     <Folder Include="src\app\views\root\shared\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
