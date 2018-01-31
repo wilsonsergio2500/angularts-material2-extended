@@ -1,15 +1,11 @@
 
-<div #scrollingBlock>
-  <virtual-scroll [items]="items"
+<div #scrollingBlock fxFlex="100" fxLayout="column" >
+  <virtual-scroll [items]="GridVs.items"
                   [parentScroll]="scrollingBlock.nativeElement"
-                  [childWidth]="80"
-                  [childHeight]="30"
-                  (update)="viewPortItems = $event">
-    <!--<input type="search">
-    <div #container>
-      <list-item *ngFor="let item of viewPortItems" [item]="item">
-      </list-item>
-    </div>-->
+                  [childWidth]="GridVs.TileWidth"
+                  [childHeight]="GridVs.TileHeight"
+                  (update)="onViewPortEmit($event)"
+                  (end)="onVsEnd($event)" fxFlex="100">
     <ng-content></ng-content>
   </virtual-scroll>
 </div>

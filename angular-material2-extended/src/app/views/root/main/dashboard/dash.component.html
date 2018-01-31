@@ -1,5 +1,37 @@
-<div  fxLayout="column">
-  <div fxFlex="100"  contenthold>
-    Dashboard here..
+<div  fxLayout="column" fxFlex="100">
+  <div fxFlex="100" fxLayout="column"  contenthold>
+
+    <virtual-scroll-extended [GridVs]="GridVs" (update)="viewPortItems = $event" (OnEndScroll)="onScrollEnd($event)">
+      <div *ngFor="let item of viewPortItems" style="display:inline-block"
+           [style.width.px]="GridVs.TileWidth"
+           [style.height.px]="GridVs.TileHeight">{{item?.name}}</div>
+    </virtual-scroll-extended>
+
+    <!--<div #scrollingBlock fxFlex="100" fxLayout="column">
+
+      <virtual-scroll [items]="items"
+                      [childWidth]="80"
+                      [childHeight]="30"
+                      [parentScroll]="scrollingBlock.nativeElement"
+                      (update)="viewPortItems = $event" fxFlex="100">
+        <div #container>
+          <div *ngFor="let item of GridVs.items" [style.width.px]="80" [style.height.px]="30">{{item?.name}}</div>
+        </div>
+      </virtual-scroll>
+
+    </div>-->
+
+
+
+      <!--<virtual-scroll [items]="GridVs.items"
+                      [childWidth]="100"
+                      [childHeight]="30"
+                      (end)="onVsEnd($event)"
+                      (update)="viewPortItems = $event"  fxFlex="100">
+          <div *ngFor="let item of viewPortItems" style="display:inline-block" [style.width.px]="100"  [style.height.px]="30">{{item?.name}}</div>
+      </virtual-scroll>-->
+
+    
+
   </div>
 </div>
