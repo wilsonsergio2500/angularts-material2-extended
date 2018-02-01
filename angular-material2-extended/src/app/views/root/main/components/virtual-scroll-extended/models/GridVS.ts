@@ -49,5 +49,4 @@ export class GridVS<T> implements IGridVS<T>  {
   setWidth(w: number) {
     this.TileWidth = w;
   }
-  
 }

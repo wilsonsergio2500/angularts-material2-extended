@@ -1,6 +1,7 @@
 
 import {
-  Component, ElementRef, Input, Output, EventEmitter, ViewChildren, ViewChild, OnInit, OnDestroy, AfterViewInit
+  Component, ElementRef, Input, Output, EventEmitter, ViewChildren, ViewChild, OnInit, OnDestroy, AfterViewInit,
+  NgZone
 } from '@angular/core';
 import { IResponsiveDimension } from './models/IResponsiveDimension';
 import { IGridVS, GridVS } from './models/GridVS';
@@ -42,6 +43,7 @@ const GetTileWidth = (ResponsiveDimensions: IResponsiveDimension[], containerWid
 export class VirtualScrollExtendedComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private ResizedSubscriber: ResizeSubscriber;
+  private current  = [];
 
   @Input() ResponsiveDimensions: IResponsiveDimension[] = DefaultDimensions;
   @Input() GridVs: IGridVS<any>;
@@ -58,7 +60,7 @@ export class VirtualScrollExtendedComponent implements OnInit, OnDestroy, AfterV
   @ViewChild(VirtualScrollComponent)
   private virtualScroll: VirtualScrollComponent;
 
-  constructor(private element: ElementRef) {
+  constructor(private element: ElementRef, private zone: NgZone) {
   }
 
   onVsEnd($event: ChangeEvent) {
@@ -66,7 +68,8 @@ export class VirtualScrollExtendedComponent implements OnInit, OnDestroy, AfterV
       this.OnEndScroll.emit();
     }
   }
-  onViewPortEmit($event: any) {
+  onViewPortEmit($event: any[]) {
+    this.current = $event;
     this.update.emit($event);
   }
   ngOnInit(): void {
@@ -76,13 +79,13 @@ export class VirtualScrollExtendedComponent implements OnInit, OnDestroy, AfterV
   OnResized(resized: IElementResized) {
 
     const newwidth = GetTileWidth(this.ResponsiveDimensions, resized.width);
-    this.GridVs.setWidth(newwidth);
-    setTimeout(() => {
+    this.zone.run(() => {
+      this.GridVs.setWidth(newwidth);
       this.virtualScroll.refresh();
-    }, 50);
-
-    console.log(newwidth);
-    console.log(resized);
+      this.virtualScroll.scrollInto(this.current);
+    });
+      
+ 
   }
 
 
