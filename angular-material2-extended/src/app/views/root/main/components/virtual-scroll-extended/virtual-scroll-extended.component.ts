@@ -84,7 +84,6 @@ export class VirtualScrollExtendedComponent implements OnInit, OnDestroy, AfterV
       this.virtualScroll.refresh();
       this.virtualScroll.scrollInto(this.current);
     });
-      
  
   }
 
