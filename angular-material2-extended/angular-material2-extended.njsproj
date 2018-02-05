@@ -71,6 +71,8 @@
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
     <Content Include="src\app\fomly-fields\IFormlyGroup.ts" />
     <Content Include="src\app\helpers\Helpers.ts" />
+    <Content Include="src\app\services\firebase\models\IDBSchema.ts" />
+    <Content Include="src\app\services\firebase\models\IUser.ts" />
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -95,7 +97,10 @@
     </Content>
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
     <Content Include="src\app\views\root\external-views\external-view.component.html" />
+    <Content Include="src\app\views\root\external-views\register\registration.component.css" />
+    <Content Include="src\app\views\root\external-views\register\registration.component.html" />
     <Content Include="src\app\views\root\external-views\welcome\welcome.component.html" />
+    <Content Include="src\app\views\root\login\login.component.html" />
     <Content Include="src\app\views\root\main\components\virtual-scroll-extended\models\GridVS.ts" />
     <Content Include="src\app\views\root\main\components\virtual-scroll-extended\models\IResponsiveDimension.ts" />
     <Content Include="src\app\views\root\main\components\virtual-scroll-extended\virtual-scroll-extended.component.html" />
@@ -171,10 +176,12 @@
     <TypeScriptCompile Include="src\app\views\root\dashboard\dashboard-routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\components.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\register\registration.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\routes.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\external-view.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\external-views.module.ts" />
     <TypeScriptCompile Include="src\app\views\root\external-views\welcome\welcome.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\components.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\components\index.ts" />
     <TypeScriptCompile Include="src\app\views\root\main\components\virtual-scroll-extended\virtual-scroll-extended.component.ts" />
@@ -226,6 +233,9 @@
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
     <Folder Include="src\app\helpers\" />
     <Folder Include="src\app\directives\" />
+    <Folder Include="src\app\services\" />
+    <Folder Include="src\app\services\firebase\" />
+    <Folder Include="src\app\services\firebase\models\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />
@@ -242,6 +252,7 @@
     <Folder Include="src\app\views\root\dashboard\formly-stepper-example\" />
     <Folder Include="src\app\views\root\dashboard\vanilla-formly\" />
     <Folder Include="src\app\views\root\external-views\" />
+    <Folder Include="src\app\views\root\external-views\register\" />
     <Folder Include="src\app\views\root\external-views\welcome\" />
     <Folder Include="src\app\views\root\main\" />
     <Folder Include="src\app\views\root\main\components\virtual-scroll-extended\" />
@@ -249,6 +260,7 @@
     <Folder Include="src\app\views\root\main\dashboard\" />
     <Folder Include="src\app\views\root\main\components\" />
     <Folder Include="src\app\views\root\main\utility\" />
+    <Folder Include="src\app\views\root\login\" />
     <Folder Include="src\app\views\root\shared\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />

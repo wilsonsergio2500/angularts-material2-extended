@@ -11,10 +11,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatToolbarModule, MatIconModule, MatSidenavModule, MatButtonModule, MatInputModule, MatSelectModule,
   MatProgressSpinnerModule, MatListModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule, MatTabsModule, MatMenuModule,
-  MatStepperModule
+  MatStepperModule, MatCardModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../../../../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS } from '../../../components/index';
 import { FORMLY_CONTROLS_COMPONENTS, FORMLY_CONTROLS_CONFIG } from '../../../fomly-fields/extensions/index';
@@ -32,6 +37,10 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     FORMLY_CONTROLS_COMPONENTS
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     FormlyModule.forRoot(FORMLY_CONTROLS_CONFIG),
     CommonModule,
     HttpModule,
@@ -56,10 +65,15 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     MatTabsModule,
     MatMenuModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    MatCardModule
 
   ],
   exports: [
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     CommonModule,
     HttpModule,
     FormsModule,
@@ -84,6 +98,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     MatMenuModule,
     MatSelectModule,
     MatStepperModule,
+    MatCardModule,
 
     // COMPONENTS
     CUSTOM_COMPONENTS,

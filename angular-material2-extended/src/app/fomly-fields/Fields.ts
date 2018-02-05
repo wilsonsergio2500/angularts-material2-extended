@@ -147,11 +147,11 @@ export namespace Fields {
      }
   }
 
+  
   export class PasswordField extends InputBase {
         constructor(key: string, label: string) {
             super(key, label, true);
             this.templateOptions.type = 'password';
-            
         }
     }
 
