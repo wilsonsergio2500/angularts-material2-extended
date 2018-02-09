@@ -47,6 +47,8 @@
     <Content Include="src\app\components\formly-stepper\formly-stepper.component.ts" />
     <Content Include="src\app\components\formly-stepper\models\FormlyStepper.ts" />
     <Content Include="src\app\components\formly-stepper\models\StepperTypes.ts" />
+    <Content Include="src\app\components\img-upload\img-upload.component.css" />
+    <Content Include="src\app\components\img-upload\img-upload.component.html" />
     <Content Include="src\app\components\json-form\json-form.component.html" />
     <Content Include="src\app\components\index.ts" />
     <Content Include="src\app\components\loading-button\busy\busy.component.html">
@@ -129,6 +131,8 @@
     <TypeScriptCompile Include="src\app\components\form-builder\edit-types.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\form-builder.component.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\type-options.ts" />
+    <TypeScriptCompile Include="src\app\components\img-upload\img-upload.component.ts" />
+    <TypeScriptCompile Include="src\app\components\img-upload\utils\ConvertToBase64.ts" />
     <TypeScriptCompile Include="src\app\components\json-form\json-form.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\busy\busy.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
@@ -209,6 +213,7 @@
     <Folder Include="src\app\" />
     <Folder Include="src\app\components\" />
     <Folder Include="src\app\components\formly-stepper\models\" />
+    <Folder Include="src\app\components\img-upload\utils\" />
     <Folder Include="src\app\components\loading-button\" />
     <Folder Include="src\app\components\loading-button\busy\" />
     <Folder Include="src\app\components\loading-button\ready\" />
@@ -217,6 +222,7 @@
     <Folder Include="src\app\components\json-form\" />
     <Folder Include="src\app\components\form-builder\" />
     <Folder Include="src\app\components\formly-stepper\" />
+    <Folder Include="src\app\components\img-upload\" />
     <Folder Include="src\app\components\snn-input\" />
     <Folder Include="src\app\components\ngx-quill\" />
     <Folder Include="src\app\components\snackbar-status\" />

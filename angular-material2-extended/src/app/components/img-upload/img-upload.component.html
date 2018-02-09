@@ -1,0 +1,25 @@
+
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="(DisplayPreview && HasImage)">
+    <div class="prev-img-container" [fxFlex]="PreviewWidth" fxFlex.xs="100">
+      <div style="--aspect-ratio: 2/1" [ngStyle]="style"> 
+        <div class="loading-signal" [hidden]="!Loading">
+          <div class="centered-block">
+            <mat-progress-spinner mode="indeterminate" [strokeWidth]="2"></mat-progress-spinner>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div fxLayout="row" fxLayoutAlign="center center" [style.marginTop.px]="5">
+
+  <div>
+    <button mat-button color="primary" mat-raised-button (click)="onClick()">
+      <ng-content></ng-content>
+      <mat-icon>camera_alt</mat-icon>
+    </button>
+    <input type="file" [uploader]="uploader" accept="image/png,image/gif,image/jpeg" ng2FileSelect [hidden]="true" #inputFile (onFileSelected)="fileSelected($event)" />
+
+  </div>
+
+</div>

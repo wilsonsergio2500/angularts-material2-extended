@@ -20,6 +20,7 @@ import { environment } from '../../../../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS } from '../../../components/index';
 import { FORMLY_CONTROLS_COMPONENTS, FORMLY_CONTROLS_CONFIG } from '../../../fomly-fields/extensions/index';
@@ -48,6 +49,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     ReactiveFormsModule,
     FormlyMaterialModule,
     FlexLayoutModule,
+    FileUploadModule,
 
     // ANGULAR MATERIAL
     MatFormFieldModule,
@@ -81,6 +83,7 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     FormlyMaterialModule,
     FormlyModule,
     FlexLayoutModule,
+    FileUploadModule,
     // ANGULAR MATERIAL
     MatFormFieldModule,
     LayoutModule,

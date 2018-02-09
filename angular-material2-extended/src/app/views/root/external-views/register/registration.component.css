@@ -1,3 +1,8 @@
+
+:root {
+  --aspect-ratio: 1;
+}
 :host ::ng-deep .btn-region {
   text-align:center;
 }
+

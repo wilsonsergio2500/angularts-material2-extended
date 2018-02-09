@@ -1,0 +1,39 @@
+:root {
+  --aspect-ratio: 1;
+}
+:host .loading-signal {
+  border: 1px solid;
+  border-color: lightgray;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align:center;
+}
+
+  :host .loading-signal .centered-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100%;
+  }
+
+:host .prev-img-container {
+  width:100%;
+  display:inline-block;
+  position:relative;
+}
+
+  :host .prev-img-container > * {
+    width: 100%;
+  }
+
+  :host .prev-img-container > [style^='--aspect-ratio']::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
