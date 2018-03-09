@@ -9,7 +9,7 @@ export const GetImageOrientation = (file) => {
 
     reader.onload = ({ target }) => {
       try {
-        const view = new DataView(target.result),
+        const view = new DataView((target as any).result),
           length = view.byteLength;
         let offset = 2;
 

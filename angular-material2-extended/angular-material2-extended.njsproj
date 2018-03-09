@@ -111,6 +111,7 @@
     <Content Include="src\app\views\root\main\utility\ResizeSubscriber.ts" />
     <Content Include="src\app\views\root\root.component.html" />
     <Content Include="src\app\views\root\root-routes.ts" />
+    <Content Include="src\app\views\root\shared\services\shared-services.ts" />
     <Content Include="src\app\views\sample\sample.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -156,6 +157,12 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\wrappers\formly-field-wrapper.ts" />
+    <TypeScriptCompile Include="src\app\views\root\shared\services\image-resizer-io\IImageResizerIOResponse.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\views\root\shared\services\image-resizer-io\ImageResizerIO.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\views\home\home.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -242,6 +249,7 @@
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\services\firebase\" />
     <Folder Include="src\app\services\firebase\models\" />
+    <Folder Include="src\app\views\root\shared\services\image-resizer-io\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
     <Folder Include="src\app\views\root\" />
@@ -268,6 +276,7 @@
     <Folder Include="src\app\views\root\main\utility\" />
     <Folder Include="src\app\views\root\login\" />
     <Folder Include="src\app\views\root\shared\" />
+    <Folder Include="src\app\views\root\shared\services\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />

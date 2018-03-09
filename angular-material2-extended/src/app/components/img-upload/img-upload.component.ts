@@ -1,28 +1,10 @@
 
-import { Component, ViewChild, ElementRef, Input, NgZone } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, NgZone, AfterViewInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { ConvertToBase64, GetImageOrientation } from './utils/ConvertToBase64';
-
-const ORIENT_TRANSFORMS = {
-  1: '',
-  2: 'rotateY(180deg)',
-  3: 'rotate(180deg)',
-  4: 'rotate(180deg) rotateY(180deg)',
-  5: 'rotate(270deg) rotateY(180deg)',
-  6: 'rotate(90deg)',
-  7: 'rotate(90deg) rotateY(180deg)',
-  8: 'rotate(270deg)'
-};
-const ORIENT_TRANSFORMS1 = {
-  1: '',
-  2: 'rotateY(180deg)',
-  3: 'rotate(180deg)',
-  4: 'rotate(180deg) rotateY(180deg)',
-  5: 'rotate(270deg) rotateY(180deg)',
-  6: 'rotate(90deg)',
-  7: 'rotate(90deg) rotateY(180deg)',
-  8: 'rotate(270deg)'
-};
+import { ImageResizerIO } from '../../views/root/shared/services/image-resizer-io/ImageResizerIO.service';
+import { ControlValueAccessor } from '@angular/forms';
+import { Helpers } from '../../helpers/Helpers'
 
 @Component({
   selector: 'img-upload',
@@ -31,18 +13,39 @@ const ORIENT_TRANSFORMS1 = {
     'img-upload.component.css'
   ]
 })
-export class ImageUploadComponent {
+export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit {
 
-  public uploader: FileUploader = new FileUploader({ allowedMimeType: ['image/jpeg', 'image/png'] });
+
+
+ 
+
+  public uploader: FileUploader = new FileUploader({
+    allowedMimeType: ['image/jpeg', 'image/png'],
+    allowedFileType: ['png', 'jpeg']
+  });
 
   @Input()
   private DisplayPreview = true;
-  @Input()
-  private PreviewWidth = 50;
+
+  @Input('PreviewWidth')
+  private PreviewWidth = '50px';
+
+  
+  @Input('aspect-ratio-width')
+  private aspectRatioWidth = 2;
+
+  @Input('aspect-ratio-height')
+  private aspectRatioHeight = 1;
+
 
   @ViewChild('inputFile')
   private inputFile: ElementRef;
 
+
+
+  private $imgId: string;
+
+  private _disabled = false;
   private Loading = false;
   private HasImage = false;
   private style = {
@@ -50,7 +53,12 @@ export class ImageUploadComponent {
     'background-size': 'cover'
   };
 
-  constructor(private zone: NgZone) {
+  private aspectRatioClass = 'none';
+
+  propagateChange = (_: any) => { };
+  propagateTouched = () => { };
+
+  constructor(private zone: NgZone, private ImageResizerIO: ImageResizerIO, private element: ElementRef ) {
   }
   onClick() {
     (this.inputFile.nativeElement as HTMLInputElement).click();
@@ -58,29 +66,62 @@ export class ImageUploadComponent {
   fileSelected($event) {
 
     this.Loading = true;
+    console.log($event);
+    console.log($event[0]);
 
-    const p1 = ConvertToBase64($event[0]);
-    const p2 = GetImageOrientation($event[0]);
-    Promise.all([p1, p2]).then((R) => {
+    this.ImageResizerIO.Upload($event[0]).then((response) => {
+      this.Loading = false;
+      if (response.success) {
 
-      this.HasImage = true;
+        this.$imgId = response.response.id;
+        this.setPreviewImage();
+        this.propagateChange(this.$imgId);
 
-      setTimeout(() => {
-
-        this.Loading = false;
-        this.style['background-image'] = `url(${R[0]})`;
-        //this.style['transform'] = ORIENT_TRANSFORMS[R[1]];
-
-      }, 350);
-
-      console.log(R);
+      }
+      console.log(response);
     });
 
-
-
-
-    console.log($event);
   }
 
+  setPreviewImage() {
+    const url = this.getUrlTemplate();
+    this.style['background-image'] = `url(${url})`;
+    this.HasImage = true;
+    setTimeout(this.setAspectRatio.bind(this), 250);
+  }
+  setAspectRatio() {
+    const cname = Helpers.CreateAspecRatioStyle(this.aspectRatioWidth, this.aspectRatioHeight);
+    this.aspectRatioClass = cname;
+    //const aspectRatioContainer = (this.element.nativeElement as HTMLDivElement).querySelector('[arContainer]') as HTMLDivElement;
+    //this.arstyle = `--aspect-ratio: ${this.aspectRatioWidth}/${this.aspectRatioHeight}`;
+    ////aspectRatioContainer.style['--aspect-ratio'] = `--aspect-ratio: ${this.aspectRatioWidth}/${this.aspectRatioHeight}`;
+  }
+
+  getUrlTemplate() {
+    const width = parseInt(this.PreviewWidth);
+    const height = width * this.aspectRatioHeight;
+    return `https://im.ages.io/${this.$imgId}?size=${width}x${height}&quality=50`
+  }
+
+  writeValue(value: any): void {
+    if (!!value) {
+      this.$imgId = value;
+      setTimeout(this.setPreviewImage.bind(this), 200);
+    }
+  }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.propagateTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean): void {
+    this._disabled = isDisabled;
+    
+  }
+
+  ngAfterViewInit(): void {
+  
+  }
 
 }

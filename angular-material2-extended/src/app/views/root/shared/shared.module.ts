@@ -25,9 +25,11 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS } from '../../../components/index';
 import { FORMLY_CONTROLS_COMPONENTS, FORMLY_CONTROLS_CONFIG } from '../../../fomly-fields/extensions/index';
 import { CUSTOM_DIRECTIVES } from '../../../directives/index';
+import { SHARED_SERVICES } from './services/shared-services'
 
  const Providers = [
-  CUSTOM_PROVIDERS,
+   CUSTOM_PROVIDERS,
+   SHARED_SERVICES
 ];
 
 
@@ -109,8 +111,8 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
     FORMLY_CONTROLS_COMPONENTS,
   ],
   providers: [
-    CUSTOM_PROVIDERS
-  ],
+
+  ].concat(Providers),
   entryComponents: [
     CUSTOM_COMPONENTS
   ]

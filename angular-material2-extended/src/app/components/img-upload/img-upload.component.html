@@ -1,7 +1,7 @@
 
   <div fxLayout="row" fxLayoutAlign="center center" *ngIf="(DisplayPreview && HasImage)">
     <div class="prev-img-container" [fxFlex]="PreviewWidth" fxFlex.xs="100">
-      <div style="--aspect-ratio: 2/1" [ngStyle]="style"> 
+      <div arContainer [ngClass]="aspectRatioClass" [ngStyle]="style" > 
         <div class="loading-signal" [hidden]="!Loading">
           <div class="centered-block">
             <mat-progress-spinner mode="indeterminate" [strokeWidth]="2"></mat-progress-spinner>
@@ -14,10 +14,20 @@
 <div fxLayout="row" fxLayoutAlign="center center" [style.marginTop.px]="5">
 
   <div>
-    <button mat-button color="primary" mat-raised-button (click)="onClick()">
-      <ng-content></ng-content>
-      <mat-icon>camera_alt</mat-icon>
-    </button>
+
+
+    <loading-button [IsBusy]="Loading" (onSubmit)="onClick()" mat-raised-button type="button" [disabled]="_disabled">
+      <loading-button-ready>
+
+        <ng-content></ng-content>
+        <mat-icon>camera_alt</mat-icon>
+
+      </loading-button-ready>
+      <loading-button-busy>
+        Loading...
+      </loading-button-busy>
+    </loading-button>
+
     <input type="file" [uploader]="uploader" accept="image/png,image/gif,image/jpeg" ng2FileSelect [hidden]="true" #inputFile (onFileSelected)="fileSelected($event)" />
 
   </div>
