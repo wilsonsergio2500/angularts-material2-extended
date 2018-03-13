@@ -1,0 +1,27 @@
+
+:root {
+  --aspect-ratio: 1;
+}
+
+:host .loading-signal {
+  border: 1px solid;
+  border-color: lightgray;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+  :host .loading-signal .centered-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100%;
+  }
+
+:host .prev-img-container {
+  position:relative;
+}

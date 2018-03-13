@@ -87,7 +87,8 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
     const url = this.getUrlTemplate();
     this.style['background-image'] = `url(${url})`;
     this.HasImage = true;
-    setTimeout(this.setAspectRatio.bind(this), 250);
+
+    //setTimeout(this.setAspectRatio.bind(this), 250);
   }
   setAspectRatio() {
     const cname = Helpers.CreateAspecRatioStyle(this.aspectRatioWidth, this.aspectRatioHeight);

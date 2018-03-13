@@ -5,6 +5,7 @@
     <Name>angular-material2-extended</Name>
     <RootNamespace>angular-material2-extended</RootNamespace>
     <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,6 +48,10 @@
     <Content Include="src\app\components\formly-stepper\formly-stepper.component.ts" />
     <Content Include="src\app\components\formly-stepper\models\FormlyStepper.ts" />
     <Content Include="src\app\components\formly-stepper\models\StepperTypes.ts" />
+    <Content Include="src\app\components\image-resize-io-loader\image-rio-loader.component.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\components\image-resize-io-loader\image-rio-loader.component.html" />
     <Content Include="src\app\components\img-upload\img-upload.component.css" />
     <Content Include="src\app\components\img-upload\img-upload.component.html" />
     <Content Include="src\app\components\json-form\json-form.component.html" />
@@ -132,6 +137,9 @@
     <TypeScriptCompile Include="src\app\components\form-builder\edit-types.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\form-builder.component.ts" />
     <TypeScriptCompile Include="src\app\components\form-builder\type-options.ts" />
+    <TypeScriptCompile Include="src\app\components\image-resize-io-loader\image-rio-loader.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\components\img-upload\img-upload.component.ts" />
     <TypeScriptCompile Include="src\app\components\img-upload\utils\ConvertToBase64.ts" />
     <TypeScriptCompile Include="src\app\components\json-form\json-form.component.ts" />
@@ -230,6 +238,7 @@
     <Folder Include="src\app\components\form-builder\" />
     <Folder Include="src\app\components\formly-stepper\" />
     <Folder Include="src\app\components\img-upload\" />
+    <Folder Include="src\app\components\image-resize-io-loader\" />
     <Folder Include="src\app\components\snn-input\" />
     <Folder Include="src\app\components\ngx-quill\" />
     <Folder Include="src\app\components\snackbar-status\" />
