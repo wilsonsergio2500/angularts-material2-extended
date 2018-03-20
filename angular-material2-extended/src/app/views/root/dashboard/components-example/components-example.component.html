@@ -98,7 +98,11 @@
 
       <div fxLayout="column" fxFlex="100">
 
-        <img-upload PreviewWidth="300px">
+        <img-upload PreviewWidth="300px"
+                    [aspect-ratio-width]="2"
+                    [aspect-ratio-height]="1"
+                    [thumbnail-actual-width]="300"
+                    [thumbnail-actual-height]="200">
           Upload
         </img-upload>
 

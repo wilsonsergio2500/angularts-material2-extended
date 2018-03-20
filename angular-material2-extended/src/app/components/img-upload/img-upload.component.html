@@ -1,15 +1,14 @@
 
-  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="(DisplayPreview && HasImage)">
-    <div class="prev-img-container" [fxFlex]="PreviewWidth" fxFlex.xs="100">
-      <div arContainer [ngClass]="aspectRatioClass" [ngStyle]="style" > 
-        <div class="loading-signal" [hidden]="!Loading">
-          <div class="centered-block">
-            <mat-progress-spinner mode="indeterminate" [strokeWidth]="2"></mat-progress-spinner>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="20" >
+    <image-rio-loader [actual-width]="thumbnailActualWidth" [actual-height]="thumbnailActualHeight" [image-id]="$imgId"
+                      [aspect-ratio-width]="aspectRatioWidth" [aspect-ratio-height]="aspectRatioHeight"
+                      delay-show="200" missing-image-id="dSaintlp"></image-rio-loader>
   </div>
+</div>
+
 
 <div fxLayout="row" fxLayoutAlign="center center" [style.marginTop.px]="5">
 

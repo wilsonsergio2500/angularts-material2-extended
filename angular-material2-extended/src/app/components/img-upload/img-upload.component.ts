@@ -30,6 +30,11 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   @Input('PreviewWidth')
   private PreviewWidth = '50px';
 
+  @Input('thumbnail-actual-width')
+  private thumbnailActualWidth = 100;
+
+  @Input('thumbnail-actual-height')
+  private thumbnailActualHeight = 100;
   
   @Input('aspect-ratio-width')
   private aspectRatioWidth = 2;
@@ -74,7 +79,6 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
       if (response.success) {
 
         this.$imgId = response.response.id;
-        this.setPreviewImage();
         this.propagateChange(this.$imgId);
 
       }
@@ -83,20 +87,7 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
 
   }
 
-  setPreviewImage() {
-    const url = this.getUrlTemplate();
-    this.style['background-image'] = `url(${url})`;
-    this.HasImage = true;
-
-    //setTimeout(this.setAspectRatio.bind(this), 250);
-  }
-  setAspectRatio() {
-    const cname = Helpers.CreateAspecRatioStyle(this.aspectRatioWidth, this.aspectRatioHeight);
-    this.aspectRatioClass = cname;
-    //const aspectRatioContainer = (this.element.nativeElement as HTMLDivElement).querySelector('[arContainer]') as HTMLDivElement;
-    //this.arstyle = `--aspect-ratio: ${this.aspectRatioWidth}/${this.aspectRatioHeight}`;
-    ////aspectRatioContainer.style['--aspect-ratio'] = `--aspect-ratio: ${this.aspectRatioWidth}/${this.aspectRatioHeight}`;
-  }
+  
 
   getUrlTemplate() {
     const width = parseInt(this.PreviewWidth);
@@ -107,7 +98,6 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   writeValue(value: any): void {
     if (!!value) {
       this.$imgId = value;
-      setTimeout(this.setPreviewImage.bind(this), 200);
     }
   }
   registerOnChange(fn: any): void {
@@ -122,7 +112,6 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   }
 
   ngAfterViewInit(): void {
-  
   }
 
 }

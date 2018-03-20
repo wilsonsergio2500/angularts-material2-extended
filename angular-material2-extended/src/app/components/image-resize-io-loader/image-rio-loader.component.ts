@@ -41,7 +41,10 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
 
   @Input('image-id')
   set ImageId(value: string) {
+
     this._imageId = value;
+    setTimeout(this.bindImage.bind(this), 50)
+  
   }
 
   @Input('missing-image-id')
@@ -86,7 +89,6 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.bindImage();
   }
 
   bindImage() {
