@@ -2,7 +2,7 @@
   <div arContainer [ngClass]="aspectRatioClass" [ngStyle]="style">
     <div class="loading-signal" [hidden]="!Loading">
       <div class="centered-block">
-        <mat-progress-spinner mode="indeterminate" [strokeWidth]="2"></mat-progress-spinner>
+        <mat-progress-spinner mode="indeterminate" [diameter]="loadingdiameter" [strokeWidth]="2"></mat-progress-spinner>
       </div>
     </div>
   </div>

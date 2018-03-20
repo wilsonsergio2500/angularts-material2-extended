@@ -5,6 +5,13 @@ import { Helpers } from '../../helpers/Helpers';
 import { validateArgCount } from '@firebase/util/dist/esm/src/validation';
 import { Promise } from 'q';
 
+/**
+ * usage:
+ *    <image-rio-loader [actual-width]="300" [actual-height]="200" image-id="intl1"
+                          aspect-ratio-width="2" aspect-ratio-height="1"
+                          delay-show="200" missing-image-id="dSaintlp"></image-rio-loader>
+ */
+
 @Component({
 
   selector: 'image-rio-loader',
@@ -42,6 +49,9 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
 
   @Input('delay-show')
   private delayShow = 1;
+
+  @Input('loading-spinner-diameter')
+  private loadingdiameter = 25;
 
   private _imageId = null;
   private aspectRatioClass = 'none';

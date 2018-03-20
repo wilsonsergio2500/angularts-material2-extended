@@ -20,7 +20,8 @@ const ARROWS = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   HOME: 'Home',
-  END: 'End'
+  END: 'End',
+  BACKSPACE: 'Backspace'
 };
 
 const delay = (call: () => void, ms: number = 1): Promise<void> => {
@@ -86,7 +87,9 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
 
   propagateChange = (_: any) => { };
   propagateTouched = () => { };
-  
+
+  private ovalue = '';
+  private nvalue = ''
 
   constructor(private elementRef: ElementRef) {
 
@@ -98,6 +101,7 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
       this.$modelvalue = value;
       this.$modelvalueArray = this.$modelvalue.split('');
       this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
+      console.log(this.$viewvalue);
     }
     
   }
@@ -147,13 +151,13 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
   }
   setCursorPosition(input: HTMLInputElement) {
     const pos = this.getCursor(input.value);
-    setTimeout(() => input.setSelectionRange(pos, pos));
+    setTimeout(() => input.setSelectionRange(pos, pos), 1);
   }
   getMask(vals: string[], hidden = false) {
     const msk = [...mask];
     let counter = 0;
     mask.map((item: string, index: number) => ({ item, index }))
-      .filter((el) => el.item !== '-')
+      .filter((el) => el.item !== '-' )
       .forEach((el) => {
         if (vals.length) {
           msk[el.index] = (!!vals[counter]) ? ( (hidden) ? HIDE_CHARACTER : vals[counter]) : mask[el.index];
@@ -162,7 +166,8 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
         }
 
       });
-    return msk.join('');
+    const response = msk.slice(0, 11).join('');
+    return response;
   }
 
   $setModel() {
@@ -183,13 +188,38 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
    
   }
 
+  update(input: HTMLInputElement) {
+     delay(() => {
+      this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
+      this.setCursorPosition(input);
+      this.$setModel();
+      this.propagateTouched();
+    }, 1)
+  }
+
   ngOnInit() {
 
     const el = this.inputElement.nativeElement;
 
 
-    const $keydownEvent = Observable.fromEvent(el, 'keydown')
+    const $keydown = Observable.fromEvent(el, 'keydown').do((event: KeyboardEvent) => {
+      console.log('kd - ' + event.key+ ':' + event.which);
+      if (event.key == ARROWS.BACKSPACE) {
+        if (this.$modelvalueArray.length) {
+          this.$modelvalueArray.pop();
+          const input = (event.target as HTMLInputElement);
+          this.updateView(input);
+
+        }
+      }
+      
+
+    })
+
+    const $keypress = Observable.fromEvent(el, 'keyup') // it was keydown
       .map((event: KeyboardEvent) => {
+
+
         const numeric = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)
           || (event.keyCode === 8);
         const preventable = event.key === ARROWS.LEFT || event.key === ARROWS.RIGHT || event.key === ARROWS.HOME
@@ -197,13 +227,174 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
           || event.key === ARROWS.UP
           || event.key === ARROWS.DOWN
           || numeric === false;
-          
 
-        if (preventable) {
+        
+
+        if (navigator.userAgent.match(/Android/i)) {
           return event;
         }
+       
+        if (!preventable) {
+          return event
+        }
+        
       }
-    ).do((event: Event) => (event) && event.preventDefault());
+    ).do((event: KeyboardEvent) => {
+
+      if (!!event) {
+
+        const LIMIT = 9;
+        const numeric = (event.which >= 48 && event.which <= 57) || (event.which >= 96 && event.which <= 105);
+        const input = (event.target as HTMLInputElement);
+
+      
+        const cursor = input.value.slice(0, input.selectionStart).length + 1;
+
+        if (cursor === 1 && this.$modelvalueArray.length === LIMIT) {
+          this.$modelvalueArray = [];
+        }
+
+
+        const forcevalue = () => {
+          delay(() => input.value = this.$viewvalue);
+        }
+
+        const tx = input.value;
+        const prevent = (tx.length > mask.length) && (this.$modelvalueArray.length === LIMIT);
+        if (prevent)
+        {
+          forcevalue();
+          this.updateView(input);
+          return;
+        }
+     
+
+        if (navigator.userAgent.match(/Android/i)) {
+
+          console.log(cursor);
+          const pox = cursor - 2;
+          const last = input.value.charAt(pox);
+          const allowed = (isNaN(parseInt(last, 10)) === false || last === "*" || last === "-");
+          if (allowed) {
+
+            const reversed = input.value.replace(/-/g, '').replace(/_/g, '').split('').reverse();
+            const array = [...reversed];
+            const size = array.length;
+            const position = array.findIndex((g, index) => isNaN(parseInt(g, 10)) === false);if (size > 0) {
+              const add = size > this.$modelvalueArray.length;
+              console.log(size, this.$modelvalueArray.length);
+              if (add) {
+                if (this.$modelvalueArray.length < LIMIT) {
+                  const entry = array[position];
+                  this.$modelvalueArray[this.$modelvalueArray.length] = entry;
+                }
+              } else {
+                this.$modelvalueArray = this.$modelvalueArray.slice(0, size);
+                console.log(this.$modelvalueArray)
+              }
+              this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
+              this.$setModel();
+            }
+        
+
+          } else {
+            if (cursor === 1) {
+              this.$modelvalueArray = [];
+            }
+            forcevalue();
+            this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
+            this.$setModel();
+            
+          }
+          delay(() => {
+            const newpos = this.getCursor(input.value);
+            input.setSelectionRange(newpos, newpos);
+          })
+          this.propagateTouched();
+          
+          //if (allowed) {
+
+          //  const reversed = input.value.replace(/-/g, '').replace(/_/g, '').split('').reverse();
+          //  const array = [...reversed];
+          //  const position = array.findIndex((g, index) => isNaN(parseInt(g, 10)) === false);
+          //  const size = array.length;
+          //  if (size > 0) {
+
+          //    const entry = array[position];
+
+          //    const add = size >= this.$modelvalueArray.length;
+          //    if (add) {
+          //      if (this.$modelvalueArray.length < LIMIT ) {
+          //        this.$modelvalueArray.push(entry);
+          //      }
+
+
+          //    } else {
+          //      this.$modelvalueArray.pop();
+
+          //    }
+
+          //    this.updateView(input);
+
+          //  }
+          //} else {
+          //  forcevalue();
+          //  this.updateView(input);
+          //}
+         
+
+
+        }
+
+        else {
+
+
+          if (numeric) {
+
+            const value = (event.which >= 96 && event.which <= 105)
+              ? String.fromCharCode(event.which - 48)
+              : String.fromCharCode(event.which);
+            const position = this.$modelvalueArray.length;
+
+
+
+
+            if (this.$modelvalueArray.length < LIMIT) {
+              this.$modelvalueArray[position] = value;
+              this.updateView(input);
+            }
+
+
+          }
+        }
+               
+
+
+      }
+
+      });
+    
+
+
+    //const $keydownEvent = Observable.fromEvent(el, 'keydown') // it was keydown
+    //  .map((event: KeyboardEvent) => {
+    //    const allowed = (event.keyCode == 229);
+    //    const numeric = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)
+    //      || (event.keyCode === 8);
+    //    const preventable = event.key === ARROWS.LEFT || event.key === ARROWS.RIGHT || event.key === ARROWS.HOME
+    //      || event.key === ARROWS.END
+    //      || event.key === ARROWS.UP
+    //      || event.key === ARROWS.DOWN
+    //      || numeric === false || allowed == false;
+          
+
+    //    if (preventable) {
+    //      return event;
+    //    }
+    //  }
+    //).do((event: Event) => (event) && event.preventDefault());
+
+
     
     const $onEntryEvents = Observable.merge(Observable.fromEvent(el, 'click'), Observable.fromEvent(el, 'focus'))
       .do((event: KeyboardEvent) => {
@@ -214,49 +405,55 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
       });
 
 
-    const $keyUpEvent = Observable.fromEvent(this.inputElement.nativeElement, 'keyup')
-      .do((event: KeyboardEvent) => {
+    //const $keyUpEvent = Observable.fromEvent(this.inputElement.nativeElement, 'keyup')
+    //  .do((event: KeyboardEvent) => {
 
-        const input = (event.target as HTMLInputElement);
-        const numeric = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+    //    const input = (event.target as HTMLInputElement);
+    //    const numeric = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+
+    //    console.log(event.charCode)
         
 
-        const cursor = input.value.slice(0, input.selectionStart).length;
-        if(cursor === 1 && this.$modelvalueArray.length === 9){
-            this.$modelvalueArray = [];
-        }
+    //    const cursor = input.value.slice(0, input.selectionStart).length;
+    //    if(cursor === 1 && this.$modelvalueArray.length === 9){
+    //        this.$modelvalueArray = [];
+    //    }
 
-        if (numeric) {
+    //    if (numeric) {
           
-          const value = (event.which >= 96 && event.which <= 105)
-            ? String.fromCharCode(event.which - 48)
-            : String.fromCharCode(event.which);
-          const position = this.$modelvalueArray.length;
-          if (this.$modelvalueArray.length < 9) {
-            this.$modelvalueArray[position] = value;
-            this.updateView(input);
-          }
+    //      const value = (event.which >= 96 && event.which <= 105)
+    //        ? String.fromCharCode(event.which - 48)
+    //        : String.fromCharCode(event.which);
+    //      const position = this.$modelvalueArray.length;
+    //      if (this.$modelvalueArray.length < 9) {
+    //        this.$modelvalueArray[position] = value;
+    //        this.updateView(input);
+    //      }
          
           
-        }
-        const back = (event.which === 8);
-        if (back) {
+    //    }
+    //    const back = (event.which === 8);
+    //    if (back) {
 
-          if (this.$modelvalueArray.length) {
-            this.$modelvalueArray.pop();
-            this.updateView(input);
+    //      if (this.$modelvalueArray.length) {
+    //        this.$modelvalueArray.pop();
+    //        this.updateView(input);
 
-          }
+    //      }
 
-        }
+    //    }
        
 
-      });
+    //  });
 
     this.Subscribers = [
-      $keydownEvent.subscribe(),
+      $keydown.subscribe(),
+     
+      $keypress.subscribe(),
+
+      //$keydownEvent.subscribe(),
       $onEntryEvents.subscribe(),
-      $keyUpEvent.subscribe()
+      //$keyUpEvent.subscribe(),
 
     ]; 
 
