@@ -13,6 +13,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
+import { setTimeout } from 'timers';
 
 const ARROWS = {
   RIGHT: 'ArrowRight',
@@ -292,8 +293,14 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
                 this.$modelvalueArray = this.$modelvalueArray.slice(0, size);
                 console.log(this.$modelvalueArray)
               }
-              this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
-              this.$setModel();
+              delay(() => {
+                this.$viewvalue = this.getMask(this.$modelvalueArray, this.HideValue);
+                this.$setModel();
+                delay(() => {
+                  const newpos = this.getCursor(input.value);
+                  input.setSelectionRange(newpos, newpos);
+                });
+              }, 100);
             }
         
 
@@ -312,36 +319,7 @@ export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy
           })
           this.propagateTouched();
           
-          //if (allowed) {
-
-          //  const reversed = input.value.replace(/-/g, '').replace(/_/g, '').split('').reverse();
-          //  const array = [...reversed];
-          //  const position = array.findIndex((g, index) => isNaN(parseInt(g, 10)) === false);
-          //  const size = array.length;
-          //  if (size > 0) {
-
-          //    const entry = array[position];
-
-          //    const add = size >= this.$modelvalueArray.length;
-          //    if (add) {
-          //      if (this.$modelvalueArray.length < LIMIT ) {
-          //        this.$modelvalueArray.push(entry);
-          //      }
-
-
-          //    } else {
-          //      this.$modelvalueArray.pop();
-
-          //    }
-
-          //    this.updateView(input);
-
-          //  }
-          //} else {
-          //  forcevalue();
-          //  this.updateView(input);
-          //}
-         
+                 
 
 
         }
