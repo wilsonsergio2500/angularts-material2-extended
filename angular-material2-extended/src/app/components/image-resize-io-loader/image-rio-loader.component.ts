@@ -1,9 +1,10 @@
 
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, NgZone } from '@angular/core';
 import { exportPropGetter } from '@firebase/database/dist/esm/src/core/util/util';
 import { Helpers } from '../../helpers/Helpers';
 import { validateArgCount } from '@firebase/util/dist/esm/src/validation';
 import { Promise } from 'q';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * usage:
@@ -64,13 +65,13 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
   };
   private Loading = true;
 
-  constructor() {
+  constructor(private zone: NgZone) {
    
   }
 
-  cacheImage(src: string): Promise<any> {
+  cacheImage(src: string): Promise<string> {
 
-    return Promise<any>((resolve, reject) => {
+    return Promise<string>((resolve, reject) => {
 
       let img = new Image();
       img.src = src;
@@ -99,13 +100,15 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
     if (!!id) {
       const bimage = this.getUrlTemplate(id);
 
-      this.cacheImage(bimage).then((x: string) => {
-
-        setTimeout(() => {
-          this.style['background-image'] = `url(${bimage})`;
-          this.Loading = false;
-        }, this.delayShow);
+      Observable.fromPromise(this.cacheImage(bimage) as PromiseLike<string>)
+        .delay(this.delayShow).subscribe(g => {
+          this.zone.run(() => {
+            this.style['background-image'] = `url(${bimage})`;
+            this.Loading = false;
+          });
       });
+
+     
     }
   }
 

@@ -2,7 +2,7 @@
  
 
 <div fxLayout="row" fxLayoutAlign="center center">
-  <div fxFlex="20" >
+  <div [fxFlex]="PreviewFlexSize" >
     <image-rio-loader [actual-width]="thumbnailActualWidth" [actual-height]="thumbnailActualHeight" [image-id]="$imgId"
                       [aspect-ratio-width]="aspectRatioWidth" [aspect-ratio-height]="aspectRatioHeight"
                       delay-show="200" missing-image-id="dSaintlp"></image-rio-loader>

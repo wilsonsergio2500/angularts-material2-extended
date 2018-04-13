@@ -27,8 +27,8 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   @Input()
   private DisplayPreview = true;
 
-  @Input('PreviewWidth')
-  private PreviewWidth = '50px';
+  @Input('preview-flex-size')
+  private PreviewFlexSize = 100;
 
   @Input('thumbnail-actual-width')
   private thumbnailActualWidth = 100;
@@ -88,12 +88,6 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   }
 
   
-
-  getUrlTemplate() {
-    const width = parseInt(this.PreviewWidth);
-    const height = width * this.aspectRatioHeight;
-    return `https://im.ages.io/${this.$imgId}?size=${width}x${height}&quality=50`
-  }
 
   writeValue(value: any): void {
     if (!!value) {
