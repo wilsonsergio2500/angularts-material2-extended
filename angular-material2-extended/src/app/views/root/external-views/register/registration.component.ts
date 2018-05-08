@@ -7,6 +7,10 @@ import { IFormlyGroup } from '../../../../fomly-fields/IFormlyGroup';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+import { FormlyStepper, IFormlyStepper, IFormlyStepperItem } from '../../../../components/formly-stepper/models/FormlyStepper';
+import { GetSetpCredFiels } from './steps/step-credentials';
+import { StepBio } from './steps/step-bio';
+
 const PasswordAllowedLength = 8;
 
 @Component({
@@ -18,30 +22,27 @@ const PasswordAllowedLength = 8;
 })
 export class RegistrationComponent {
 
-  formlyGroup: IFormlyGroup<any>;
-  working: boolean;
-  constructor(private fireAuth: AngularFireAuth) {
-    this.InitForm();
-  }
-  InitForm() {
-
+  STEP_CREDENTIALS = () => {
+    const PasswordAllowedLength = 8;
     const email = new Fields.EmailField('email', 'Email', true);
     const password = new Fields.PasswordField('password', 'Password');
+
     password.validators = {
       'lengthallowed': {
         expression: (fg: FormGroup) => {
-          return (!!fg.value) && ( (fg.value as string).length >= PasswordAllowedLength);
+          return (!!fg.value) && ((fg.value as string).length >= PasswordAllowedLength);
         },
         message: (error, field: FormlyFieldConfig) => {
           return `${field.templateOptions.label} has an invalid length`;
         }
       }
     }
+
     const passwordConfirmation = new Fields.PasswordField('passwordconfirm', 'Password Confirmation');
     passwordConfirmation.validators = {
       'match': {
         expression: (fg: FormGroup) => {
-          return fg.value === this.formlyGroup.model.password;
+          return fg.value === this.Forms.Model.password;
         },
         message: (g: any, p: FormlyFieldConfig) => {
           return `Password must match the above`;
@@ -49,25 +50,40 @@ export class RegistrationComponent {
       }
     };
 
-    const fields = [
-      email,
-      password,
-      passwordConfirmation
-    ];
+    return [
+      email, password, passwordConfirmation
+    ]
 
-    this.formlyGroup = new FormlyGroup<any>({ fields });
   }
+
+  Forms: IFormlyStepper<any> = new FormlyStepper<any>([
+    <IFormlyStepperItem>{ Label: 'Step 1', Fields: this.STEP_CREDENTIALS()},
+    <IFormlyStepperItem>{ Label: 'Step 2', Fields: StepBio }
+  ])
+
+
+ 
+
+
+
+  working: boolean;
+  constructor(private fireAuth: AngularFireAuth) {
+    this.working = false;
+  }
+
   formSubmit(model: any) {
-    this.working = true;
+    //  this.working = true;
 
 
-    this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then(() => {
+    //  this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then(() => {
 
-      setTimeout(() => { this.working = false; }, 300);
+    //    setTimeout(() => { this.working = false; }, 300);
 
-    }).catch((e) => {
+    //  }).catch((e) => {
 
-      });
+    //    });
+
+    //}
 
   }
 

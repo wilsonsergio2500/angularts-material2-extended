@@ -2,26 +2,40 @@
   <div fxLayout="row" fxFlex="100">
 
     <div fxFlexOffset="0"
-       fxFlexOffset.gt-xs="20" fxFlex.gt-xs="60"
-       fxFlexOffset.gt-sm="25" fxFlex.gt-sm="50"
-       fxFlexOffset.gt-md="30" fxFlex.gt-md="40"
-       fxFlexOffset.gt-lg="35" fxFlex.gt-lg="30">
+         fxFlexOffset.gt-xs="20" fxFlex.gt-xs="60"
+         fxFlexOffset.gt-sm="25" fxFlex.gt-sm="50"
+         fxFlexOffset.gt-md="30" fxFlex.gt-md="40"
+         fxFlexOffset.gt-lg="35" fxFlex.gt-lg="30">
 
-    <mat-card>
-      <mat-card-content>
-        <p>Here is the view</p>
 
-        <json-form [formlyGroup]="formlyGroup"
-                   [IsWorking]="working"
-                   [show-revert-btn]="false"
-                   [btn-ready]="'Register'"
-                   [btn-busy]="'Saving..'"
-                   (onFormSubmit)="formSubmit($event)"></json-form>
 
-        </mat-card-content>
-      </mat-card>
 
-  </div>
+
+      <formly-stepper [FormlyStepper]="Forms" [StepperType]="1"
+                      [HideHeader]="false"
+                      [Busy]="IsWorking"
+                      (OnCompleted)="Complete($event)"></formly-stepper>
+
+      <!--
+
+  <mat-card>
+    <mat-card-content>
+      <p>Here is the view</p>
+
+      <json-form [formlyGroup]="formlyGroup"
+                 [IsWorking]="working"
+                 [show-revert-btn]="false"
+                 [btn-ready]="'Register'"
+                 [btn-busy]="'Saving..'"
+                 (onFormSubmit)="formSubmit($event)"></json-form>
+
+      </mat-card-content>
+    </mat-card>
+
+
+    -->
+
+    </div>
 
 
   </div>
