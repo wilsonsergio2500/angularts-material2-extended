@@ -16,7 +16,13 @@ export const FORMLY_CONTROLS_CONFIG : ConfigOption = {
     {
       name: 'editor',
       component: FormlyQuillEditorComponent,
-      wrappers: ['form-field']
+      wrappers: ['form-field'],
+      defaultOptions: {
+        templateOptions: {
+          height: 100
+        }
+      }
+      
     },
     {
       name: 'hidden',

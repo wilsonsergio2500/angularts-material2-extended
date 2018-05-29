@@ -14,6 +14,10 @@ export namespace Fields {
     MULTI_CHECKBOX: 'multicheckbox'
   }
 
+  export interface IEditor {
+    height: number; 
+  }
+
   export interface IFormlyTemplateOptions {
      type?: string;
     label?: string;
@@ -40,6 +44,7 @@ export namespace Fields {
     change?: (field: FormlyFieldConfig, formControl: AbstractControl) => void;
     keypress?: (field: FormlyFieldConfig, formControl: AbstractControl) => void;
     [additionalProperties: string]: any;
+    editor?: IEditor;
   }
 
   interface IFormlyValidator{
@@ -219,6 +224,7 @@ export namespace Fields {
   export class EditorField extends InputBase{
     constructor(key: string, label: string, required: boolean = false){
       super(key, label, true)
+      this.templateOptions.editor = <IEditor>{};
       this.type = 'editor';
     }
   }

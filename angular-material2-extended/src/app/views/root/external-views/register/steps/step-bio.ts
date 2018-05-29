@@ -6,6 +6,8 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 
 const bio = new Fields.EditorField('bio', 'Bio', true);
+bio.templateOptions.placeholder = 'Enter Bio..';
+bio.templateOptions.editor.height = 130;
 
 export const StepBio = [
   bio

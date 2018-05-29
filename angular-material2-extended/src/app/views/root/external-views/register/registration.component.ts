@@ -75,13 +75,15 @@ export class RegistrationComponent {
     //  this.working = true;
 
 
-    //  this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then(() => {
+      this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then((response) => {
 
-    //    setTimeout(() => { this.working = false; }, 300);
+        console.log(response);
 
-    //  }).catch((e) => {
+        setTimeout(() => { this.working = false; }, 300);
 
-    //    });
+      }).catch((e) => {
+
+        });
 
     //}
 

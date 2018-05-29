@@ -116,6 +116,7 @@ export class QuillEditorComponent extends  _MatInputMixinBase  implements  After
   @Input() scrollingContainer: HTMLElement | string;
   @Input() bounds: HTMLElement | string;
   @Input() customOptions: CustomOption[] = [];
+  @Input() height: number;
 
   _disabled: boolean;
 
@@ -160,15 +161,25 @@ export class QuillEditorComponent extends  _MatInputMixinBase  implements  After
     let modules: any = this.modules || this.defaultModules;
     let placeholder = 'Insert text here ...';
 
+    console.log(this.height);
+
+    const markupPlaceholder = (this.elementRef.nativeElement as HTMLDivElement).getAttribute("placeholder");
+    placeholder = markupPlaceholder;
+
     if (this.placeholder !== null && this.placeholder !== undefined) {
       placeholder = this.placeholder.trim();
     }
+
+    
 
     if (toolbarElem) {
       modules['toolbar'] = toolbarElem;
     }
     this.elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
     this.editorElem = this.elementRef.nativeElement.querySelector('[quill-editor-element]');
+    if (!!this.height) {
+      this.editorElem.style.height = this.height + 'px';
+    }
 
     if (this.style) {
       Object.keys(this.style).forEach((key: string) => {
