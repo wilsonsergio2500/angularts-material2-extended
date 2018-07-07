@@ -1,3 +1,4 @@
+/// <reference path="external-views/external-views.module.ts" />
 import { Routes, Route } from '@angular/router';
 import { RootComponent } from './root.component';
 import { DASHBOARD_ROUTES } from './dashboard/dashboard-routes';

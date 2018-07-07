@@ -19,7 +19,6 @@ export class FormlyQuillEditorComponent extends FieldType implements OnInit {
   }
 
   ngOnInit() {
-
     if (this.field['__formField__']) {
       this.field['__formField__']._control = this.editor;
     }

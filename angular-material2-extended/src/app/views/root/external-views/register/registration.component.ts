@@ -56,9 +56,17 @@ export class RegistrationComponent {
 
   }
 
+  IMAGE_UPLOAD_FIELDS = () => {
+    const ImageUpload = new Fields.UploadImageField('Image', 'Profile Image');
+    return [ImageUpload];
+
+  }
+
   Forms: IFormlyStepper<any> = new FormlyStepper<any>([
-    <IFormlyStepperItem>{ Label: 'Step 1', Fields: this.STEP_CREDENTIALS()},
-    <IFormlyStepperItem>{ Label: 'Step 2', Fields: StepBio }
+    <IFormlyStepperItem>{ Label: 'Step 1', Fields: this.STEP_CREDENTIALS() },
+    <IFormlyStepperItem>{ Label: 'Step 2', Fields: this.IMAGE_UPLOAD_FIELDS()},
+    <IFormlyStepperItem>{ Label: 'Step 3', Fields: StepBio },
+    
   ])
 
 
@@ -74,16 +82,17 @@ export class RegistrationComponent {
   formSubmit(model: any) {
     //  this.working = true;
 
+    console.log(model);
 
-      this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then((response) => {
+      //this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then((response) => {
 
-        console.log(response);
+      //  console.log(response);
 
-        setTimeout(() => { this.working = false; }, 300);
+      //  setTimeout(() => { this.working = false; }, 300);
 
-      }).catch((e) => {
+      //}).catch((e) => {
 
-        });
+      //  });
 
     //}
 

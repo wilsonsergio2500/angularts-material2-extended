@@ -4,6 +4,7 @@ import { FormlyQuillEditorComponent } from './ngx-quill/formly-quill.component';
 import { HiddenFieldComponent } from './input-hidden/input-hidden.component';
 import { ConfigOption } from '@ngx-formly/core';
 import { FormlyWrapperFormField } from './wrappers/formly-field-wrapper';
+import { ImageUploadFieldComponent } from './img-upload-field/img-upload-field.component';
 
 
 export const FORMLY_CONTROLS_CONFIG : ConfigOption = {
@@ -25,6 +26,11 @@ export const FORMLY_CONTROLS_CONFIG : ConfigOption = {
       
     },
     {
+      name: 'image-upload',
+      component: ImageUploadFieldComponent,
+      //wrappers: ['form-field']
+    },
+    {
       name: 'hidden',
       component: HiddenFieldComponent
     }
@@ -39,6 +45,6 @@ export const FORMLY_CONTROLS_COMPONENTS = [
     DatePickerComponent,
     FormlyQuillEditorComponent,
     HiddenFieldComponent,
-   
+    ImageUploadFieldComponent,
     FormlyWrapperFormField
   ]

@@ -70,6 +70,7 @@
     <Content Include="src\app\components\snn-input\snn-input.style.css" />
     <Content Include="src\app\components\snn-input\ssn-input.component.html" />
     <Content Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.html" />
+    <Content Include="src\app\fomly-fields\extensions\img-upload-field\img-upload-field.component.html" />
     <Content Include="src\app\fomly-fields\extensions\ngx-quill\formly-quill.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -145,6 +146,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\components\img-upload\img-upload.component.ts" />
     <TypeScriptCompile Include="src\app\components\img-upload\utils\ConvertToBase64.ts" />
+    <TypeScriptCompile Include="src\app\components\img-upload\utils\empty-images-displays.ts" />
     <TypeScriptCompile Include="src\app\components\json-form\json-form.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\busy\busy.component.ts" />
     <TypeScriptCompile Include="src\app\components\loading-button\loading-button.component.ts" />
@@ -160,6 +162,7 @@
     <TypeScriptCompile Include="src\app\directives\md-mask\md-mask.directive.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\date-picker\date-picker.component.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\formly.error-state-matcher.ts" />
+    <TypeScriptCompile Include="src\app\fomly-fields\extensions\img-upload-field\img-upload-field.component.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\index.ts" />
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\input-hidden\input-hidden.component.ts">
       <SubType>Code</SubType>
@@ -254,6 +257,7 @@
     <Folder Include="src\app\fomly-fields\extensions\" />
     <Folder Include="src\app\fomly-fields\extensions\date-picker\" />
     <Folder Include="src\app\fomly-fields\extensions\input-hidden\" />
+    <Folder Include="src\app\fomly-fields\extensions\img-upload-field\" />
     <Folder Include="src\app\fomly-fields\extensions\ngx-quill\" />
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
     <Folder Include="src\app\helpers\" />

@@ -1,6 +1,7 @@
 
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup, AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { EMPTY_IMAGES_DISPLAY } from '../components/img-upload/utils/empty-images-displays';
 
 export namespace Fields {
 
@@ -11,11 +12,28 @@ export namespace Fields {
     SELECT: 'select',
     RADIO: 'radio',
     CHECKBOX: 'checkbox',
-    MULTI_CHECKBOX: 'multicheckbox'
+    MULTI_CHECKBOX: 'multicheckbox',
+    UPLOAD_IMAGE: 'image-upload'
   }
 
   export interface IEditor {
     height: number; 
+  }
+
+  const IMAGE_UPLOADER_DEFAULTS = <IImageUploader>{
+    previewFlexSize: 20,
+    aspectRatioWidth: 2,
+    aspectRatioHeight: 1,
+    thumbnailWidth: 300,
+    thumbnailHeight: 200
+  }
+
+  export interface IImageUploader {
+    previewFlexSize: number;
+    aspectRatioWidth: number;
+    aspectRatioHeight: number;
+    thumbnailWidth: number;
+    thumbnailHeight: number;
   }
 
   export interface IFormlyTemplateOptions {
@@ -45,6 +63,7 @@ export namespace Fields {
     keypress?: (field: FormlyFieldConfig, formControl: AbstractControl) => void;
     [additionalProperties: string]: any;
     editor?: IEditor;
+    uploaderImage?: IImageUploader;
   }
 
   interface IFormlyValidator{
@@ -235,6 +254,15 @@ export namespace Fields {
       this.type = 'hidden';
       this.defaultValue = value;
      
+    }
+  }
+
+  export class UploadImageField extends InputBase {
+    constructor(key, label, value = null) {
+      super(key, label);
+      this.defaultValue = (!!value) ? value : EMPTY_IMAGES_DISPLAY.BLANK_GENERIC;
+      this.type = types.UPLOAD_IMAGE;
+      this.templateOptions.uploaderImage = Object.assign(IMAGE_UPLOADER_DEFAULTS); // { ...IMAGE_UPLOADER_DEFAULTS };
     }
   }
 }

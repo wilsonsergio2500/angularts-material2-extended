@@ -1,10 +1,19 @@
 
-import { Component, ViewChild, ElementRef, Input, NgZone, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, NgZone, AfterViewInit, Optional, Self } from '@angular/core';
+import { ErrorStateMatcher, mixinErrorState, CanUpdateErrorState } from '@angular/material/core';
 import { FileUploader } from 'ng2-file-upload';
 import { ConvertToBase64, GetImageOrientation } from './utils/ConvertToBase64';
 import { ImageResizerIO } from '../../views/root/shared/services/image-resizer-io/ImageResizerIO.service';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NgForm, NgControl, FormGroupDirective } from '@angular/forms';
 import { Helpers } from '../../helpers/Helpers'
+
+export class MatInputBase {
+  constructor(public _defaultErrorStateMatcher: ErrorStateMatcher,
+    public _parentForm: NgForm,
+    public _parentFormGroup: FormGroupDirective,
+    public ngControl: NgControl) { }
+}
+export const _MatInputMixinBase = mixinErrorState(MatInputBase);
 
 @Component({
   selector: 'img-upload',
@@ -13,7 +22,7 @@ import { Helpers } from '../../helpers/Helpers'
     'img-upload.component.css'
   ]
 })
-export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit {
+export class ImageUploadComponent extends _MatInputMixinBase  implements ControlValueAccessor, AfterViewInit {
 
 
 
@@ -63,7 +72,14 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
   propagateChange = (_: any) => { };
   propagateTouched = () => { };
 
-  constructor(private zone: NgZone, private ImageResizerIO: ImageResizerIO, private element: ElementRef ) {
+  constructor(private zone: NgZone, private ImageResizerIO: ImageResizerIO, private element: ElementRef,
+    _defaultErrorStateMatcher: ErrorStateMatcher,
+    @Optional() _parentForm: NgForm,
+    @Optional() _parentFormGroup: FormGroupDirective,
+    @Optional() @Self() public ngControl: NgControl,
+  ) {
+    super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl);
+    ngControl.valueAccessor = this;
   }
   onClick() {
     (this.inputFile.nativeElement as HTMLInputElement).click();
@@ -80,7 +96,7 @@ export class ImageUploadComponent implements ControlValueAccessor, AfterViewInit
 
         this.$imgId = response.response.id;
         this.propagateChange(this.$imgId);
-
+        console.log(this.$imgId);
       }
       console.log(response);
     });
