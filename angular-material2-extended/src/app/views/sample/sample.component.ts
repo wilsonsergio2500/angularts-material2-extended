@@ -1,13 +1,13 @@
 
-import { Component } from '@angular/core';
+//import { Component } from '@angular/core';
 
-@Component({
-  selector: 'sample',
-  templateUrl: 'sample.component.html'
-})
-export class SampleViewComponent {
+//@Component({
+//  selector: 'sample',
+//  templateUrl: 'sample.component.html'
+//})
+//export class SampleViewComponent {
 
-  constructor() {
-  }
+//  constructor() {
+//  }
 
-}
+//}

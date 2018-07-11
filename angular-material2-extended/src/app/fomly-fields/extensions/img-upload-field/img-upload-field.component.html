@@ -1,9 +1,9 @@
 
 
-<img-upload [formlyAttributes]="field" [formControl]="formControl"  [preview-flex-size]="20"
-            [aspect-ratio-width]="2"
-            [aspect-ratio-height]="1"
-            [thumbnail-actual-width]="300"
-            [thumbnail-actual-height]="200" >
-  Upload
+<img-upload [formlyAttributes]="field" [formControl]="formControl" [preview-flex-size]="to.uploaderImage.previewFlexSize"
+            [aspect-ratio-width]="to.uploaderImage.aspectRatioWidth"
+            [aspect-ratio-height]="to.uploaderImage.aspectRatioHeight"
+            [thumbnail-actual-width]="to.uploaderImage.thumbnailWidth"
+            [thumbnail-actual-height]="to.uploaderImage.thumbnailHeight">
+  {{to.uploaderImage.title}}
 </img-upload>

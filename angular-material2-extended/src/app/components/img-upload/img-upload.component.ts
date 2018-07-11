@@ -5,7 +5,8 @@ import { FileUploader } from 'ng2-file-upload';
 import { ConvertToBase64, GetImageOrientation } from './utils/ConvertToBase64';
 import { ImageResizerIO } from '../../views/root/shared/services/image-resizer-io/ImageResizerIO.service';
 import { ControlValueAccessor, NgForm, NgControl, FormGroupDirective } from '@angular/forms';
-import { Helpers } from '../../helpers/Helpers'
+import { Helpers } from '../../helpers/Helpers';
+import ImageCompressor from 'image-compressor.js';
 
 export class MatInputBase {
   constructor(public _defaultErrorStateMatcher: ErrorStateMatcher,
@@ -23,14 +24,12 @@ export const _MatInputMixinBase = mixinErrorState(MatInputBase);
   ]
 })
 export class ImageUploadComponent extends _MatInputMixinBase  implements ControlValueAccessor, AfterViewInit {
-
-
-
  
 
   public uploader: FileUploader = new FileUploader({
     allowedMimeType: ['image/jpeg', 'image/png'],
     allowedFileType: ['png', 'jpeg']
+    
   });
 
   @Input()
@@ -79,7 +78,9 @@ export class ImageUploadComponent extends _MatInputMixinBase  implements Control
     @Optional() @Self() public ngControl: NgControl,
   ) {
     super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl);
-    ngControl.valueAccessor = this;
+    if (!!ngControl) {
+      ngControl.valueAccessor = this;
+    }
   }
   onClick() {
     (this.inputFile.nativeElement as HTMLInputElement).click();

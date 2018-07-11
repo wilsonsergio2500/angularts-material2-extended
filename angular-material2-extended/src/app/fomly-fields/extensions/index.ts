@@ -28,7 +28,6 @@ export const FORMLY_CONTROLS_CONFIG : ConfigOption = {
     {
       name: 'image-upload',
       component: ImageUploadFieldComponent,
-      //wrappers: ['form-field']
     },
     {
       name: 'hidden',

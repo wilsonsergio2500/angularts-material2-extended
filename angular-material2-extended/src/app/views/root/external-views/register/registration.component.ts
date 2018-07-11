@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormlyGroup } from '../../../../fomly-fields/FormlyGroup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Fields } from '../../../../fomly-fields/Fields';
@@ -11,6 +11,8 @@ import { FormlyStepper, IFormlyStepper, IFormlyStepperItem } from '../../../../c
 import { GetSetpCredFiels } from './steps/step-credentials';
 import { StepBio } from './steps/step-bio';
 
+import { EMPTY_IMAGES_DISPLAY } from '../../../../components/img-upload/utils/empty-images-displays';
+
 const PasswordAllowedLength = 8;
 
 @Component({
@@ -20,7 +22,10 @@ const PasswordAllowedLength = 8;
     'registration.component.css'
   ]
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnDestroy {
+
+  working: boolean;
+  insertFired: boolean = false;
 
   STEP_CREDENTIALS = () => {
     const PasswordAllowedLength = 8;
@@ -57,8 +62,14 @@ export class RegistrationComponent {
   }
 
   IMAGE_UPLOAD_FIELDS = () => {
-    const ImageUpload = new Fields.UploadImageField('Image', 'Profile Image');
-    return [ImageUpload];
+    const imageUpload = new Fields.UploadImageField('Image', 'Profile Image', EMPTY_IMAGES_DISPLAY.PROFILE);
+    imageUpload.templateOptions.uploaderImage.previewFlexSize = 30;
+    imageUpload.templateOptions.uploaderImage.aspectRatioWidth = 1;
+    imageUpload.templateOptions.uploaderImage.aspectRatioHeight = 1;
+    imageUpload.templateOptions.uploaderImage.thumbnailWidth = 210;
+    imageUpload.templateOptions.uploaderImage.thumbnailHeight = 210;
+    imageUpload.templateOptions.uploaderImage.title = 'Upload Image'
+    return [imageUpload];
 
   }
 
@@ -70,16 +81,13 @@ export class RegistrationComponent {
   ])
 
 
- 
-
-
-
-  working: boolean;
+  
   constructor(private fireAuth: AngularFireAuth) {
     this.working = false;
   }
 
   formSubmit(model: any) {
+    this.insertFired = true;
     //  this.working = true;
 
     console.log(model);
@@ -96,6 +104,10 @@ export class RegistrationComponent {
 
     //}
 
+  }
+
+  ngOnDestroy(): void {
+    console.log('destroy');
   }
 
 }

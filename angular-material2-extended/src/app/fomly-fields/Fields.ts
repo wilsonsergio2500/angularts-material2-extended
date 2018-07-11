@@ -25,7 +25,8 @@ export namespace Fields {
     aspectRatioWidth: 2,
     aspectRatioHeight: 1,
     thumbnailWidth: 300,
-    thumbnailHeight: 200
+    thumbnailHeight: 200,
+    title: 'Upload'
   }
 
   export interface IImageUploader {
@@ -34,6 +35,7 @@ export namespace Fields {
     aspectRatioHeight: number;
     thumbnailWidth: number;
     thumbnailHeight: number;
+    title: string;
   }
 
   export interface IFormlyTemplateOptions {
@@ -262,7 +264,7 @@ export namespace Fields {
       super(key, label);
       this.defaultValue = (!!value) ? value : EMPTY_IMAGES_DISPLAY.BLANK_GENERIC;
       this.type = types.UPLOAD_IMAGE;
-      this.templateOptions.uploaderImage = Object.assign(IMAGE_UPLOADER_DEFAULTS); // { ...IMAGE_UPLOADER_DEFAULTS };
+      this.templateOptions.uploaderImage = Object.assign(IMAGE_UPLOADER_DEFAULTS); 
     }
   }
 }

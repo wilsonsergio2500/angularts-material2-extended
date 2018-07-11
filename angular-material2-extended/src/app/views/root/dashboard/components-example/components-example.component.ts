@@ -15,9 +15,7 @@ export class ComponentsExampleComponent {
   constructor(private snackbarStatusService: SnackbarStatusService){
     this.working = false;
 
-    //this.SnnFormControl = new FormControl('123456789');
     this.SnnFormControl = new FormControl('123');
-   //this.SnnFormControl = new FormControl('');
   }
 
   Submit($event: any){

@@ -12,20 +12,37 @@ import { FormBuilderExampleComponent } from './form-builder-example/form-builder
 import { FormlyStepperExampleComponent } from './formly-stepper-example/formly-stepper-example.component';
 
 
+export function DASHBOARD_COMPONENTS() {
+  return [
+    DashboardComponent,
+    MainComponent,
+    ComponentsExampleComponent,
 
-export const DASHBOARD_COMPONENTS : any[] = [
-  DashboardComponent,
-  MainComponent,
-  ComponentsExampleComponent,
-
-  VanillaFormlyComponent,
-  FormlyFieldsTypesComponent,
-  FormlyLayoutComponent,
-  FomlyLayoutTemplateComponent,
-  FormlyAsyncValidatorComponent,
-  FormlyFormViewComponent,
-  FormBuilderExampleComponent,
-  FormlyStepperExampleComponent
+    VanillaFormlyComponent,
+    FormlyFieldsTypesComponent,
+    FormlyLayoutComponent,
+    FomlyLayoutTemplateComponent,
+    FormlyAsyncValidatorComponent,
+    FormlyFormViewComponent,
+    FormBuilderExampleComponent,
+    FormlyStepperExampleComponent
+  ]
+}
 
 
-]
+//export const DASHBOARD_COMPONENTS : any[] = [
+//  DashboardComponent,
+//  MainComponent,
+//  ComponentsExampleComponent,
+
+//  VanillaFormlyComponent,
+//  FormlyFieldsTypesComponent,
+//  FormlyLayoutComponent,
+//  FomlyLayoutTemplateComponent,
+//  FormlyAsyncValidatorComponent,
+//  FormlyFormViewComponent,
+//  FormBuilderExampleComponent,
+//  FormlyStepperExampleComponent
+
+
+//]

@@ -29,7 +29,7 @@ import { SharedModule } from './views/root/shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ROOT_COMPONENTS,
+    ROOT_COMPONENTS(),
     
   ],
   imports: [
