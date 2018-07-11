@@ -56,7 +56,9 @@ export class FormlyAsyncValidatorComponent{
         this.formlyGroup.fields = [zipcode];
 
         
-        
   }
+
+  submit() { }
+
 
 }

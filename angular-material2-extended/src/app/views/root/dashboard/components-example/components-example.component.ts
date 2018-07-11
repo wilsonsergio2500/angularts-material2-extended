@@ -11,6 +11,7 @@ export class ComponentsExampleComponent {
 
   working: boolean;
   SnnFormControl: FormControl;
+  editor: any;
   
   constructor(private snackbarStatusService: SnackbarStatusService){
     this.working = false;

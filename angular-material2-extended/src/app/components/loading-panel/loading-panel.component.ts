@@ -29,18 +29,18 @@ import { Component, Input, OnInit, ElementRef, OnChanges } from '@angular/core';
 export class LoadingPanelComponent implements OnInit {
 
     @Input()
-    private IsBusy: boolean;
+    IsBusy: boolean;
 
    
 
     constructor(private element: ElementRef) {
     }
 
-    private minimun = 20;
-    private dimensions = { width: 0, height: 0 };
-    private diameter = 0;
-    private horizontalCenter = 0;
-    private verticalCenter = 0;
+    minimun = 20;
+    dimensions = { width: 0, height: 0 };
+    diameter = 0;
+    horizontalCenter = 0;
+    verticalCenter = 0;
     ngOnInit() {
         const ele = this.element.nativeElement as HTMLElement;
 

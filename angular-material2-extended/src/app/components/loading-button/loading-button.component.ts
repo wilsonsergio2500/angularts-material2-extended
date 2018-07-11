@@ -46,9 +46,9 @@ export class LoadingButton implements OnInit {
     @Input()
     disabled: boolean;
 
-    private class: string = '';
-    private buttonType: string = 'button';
-    private color: string = 'primary'
+    class: string = '';
+    buttonType: string = 'button';
+    color: string = 'primary'
 
     @Output()
     private onSubmit: EventEmitter<any> = new EventEmitter <any>();

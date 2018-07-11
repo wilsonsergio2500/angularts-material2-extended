@@ -36,30 +36,28 @@ export class ImageUploadComponent extends _MatInputMixinBase  implements Control
   private DisplayPreview = true;
 
   @Input('preview-flex-size')
-  private PreviewFlexSize = 100;
+  PreviewFlexSize = 100;
 
   @Input('thumbnail-actual-width')
-  private thumbnailActualWidth = 100;
+  thumbnailActualWidth = 100;
 
   @Input('thumbnail-actual-height')
-  private thumbnailActualHeight = 100;
+  thumbnailActualHeight = 100;
   
   @Input('aspect-ratio-width')
-  private aspectRatioWidth = 2;
+  aspectRatioWidth = 2;
 
   @Input('aspect-ratio-height')
-  private aspectRatioHeight = 1;
+  aspectRatioHeight = 1;
 
 
   @ViewChild('inputFile')
   private inputFile: ElementRef;
 
+  $imgId: string;
 
-
-  private $imgId: string;
-
-  private _disabled = false;
-  private Loading = false;
+  _disabled = false;
+  Loading = false;
   private HasImage = false;
   private style = {
     'background-position': 'center center',

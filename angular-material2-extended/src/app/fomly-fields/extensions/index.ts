@@ -40,10 +40,12 @@ export const FORMLY_CONTROLS_CONFIG : ConfigOption = {
   manipulators: [],
 }
 
-export const FORMLY_CONTROLS_COMPONENTS = [
-    DatePickerComponent,
-    FormlyQuillEditorComponent,
-    HiddenFieldComponent,
-    ImageUploadFieldComponent,
-    FormlyWrapperFormField
+export function FORMLY_CONTROLS_COMPONENTS() {
+  return [
+  DatePickerComponent,
+  FormlyQuillEditorComponent,
+  HiddenFieldComponent,
+  ImageUploadFieldComponent,
+  FormlyWrapperFormField
   ]
+}

@@ -11,6 +11,7 @@ export class VanillaFormlyComponent{
   form: FormGroup;
   model: any;
   fields: FormlyFieldConfig[];
+  options: any;
   constructor(){
 
     this.form = new FormGroup({});

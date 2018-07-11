@@ -36,7 +36,7 @@ export class FormlyStepperComponent implements OnInit, AfterViewInit {
   @Input()
   private FormlyStepper: IFormlyStepper<any>;
   @Input()
-  private StepperType: number = 1;
+  StepperType: number = 1;
 
   @ViewChild('nextBtn', { read: ElementRef })
   private nxtbtn: ElementRef;

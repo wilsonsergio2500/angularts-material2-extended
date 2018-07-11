@@ -13,7 +13,7 @@
 
       <formly-stepper [FormlyStepper]="Forms" [StepperType]="1"
                       [HideHeader]="false"
-                      [Busy]="IsWorking"
+                      [Busy]="working"
                       (OnCompleted)="formSubmit($event)"></formly-stepper>
 
       <!--

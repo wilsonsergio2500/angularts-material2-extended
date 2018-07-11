@@ -30,16 +30,15 @@ import { CUSTOM_DIRECTIVES } from '../../../directives/index';
 import { SHARED_SERVICES } from './services/shared-services'
 
  const Providers = [
-   CUSTOM_PROVIDERS,
+   ...CUSTOM_PROVIDERS(),
    SHARED_SERVICES
 ];
 
 
 @NgModule({
   declarations: [
-    CUSTOM_COMPONENTS,
-    CUSTOM_DIRECTIVES,
-    FORMLY_CONTROLS_COMPONENTS
+    ...CUSTOM_COMPONENTS(),
+    ...FORMLY_CONTROLS_COMPONENTS()
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -108,15 +107,14 @@ import { SHARED_SERVICES } from './services/shared-services'
     MatCardModule,
 
     // COMPONENTS
-    CUSTOM_COMPONENTS,
-    CUSTOM_DIRECTIVES,
-    FORMLY_CONTROLS_COMPONENTS,
+    ...CUSTOM_COMPONENTS(),
+    ...FORMLY_CONTROLS_COMPONENTS(),
   ],
   providers: [
 
   ].concat(Providers),
   entryComponents: [
-    CUSTOM_COMPONENTS
+    ...CUSTOM_COMPONENTS()
   ]
 })
 export class SharedModule {

@@ -63,10 +63,10 @@ usage:
 
 export class SsnInputComponet implements ControlValueAccessor, OnInit, OnDestroy {
 
-  private _disabled: boolean = false;
+   _disabled: boolean = false;
   private $modelvalue = '';
   private $modelvalueArray: string[] = [];
-  private $viewvalue: string = EMPTY_MASK;
+  $viewvalue: string = EMPTY_MASK;
   private Subscribers: Subscription[];
   private touched = false;
 

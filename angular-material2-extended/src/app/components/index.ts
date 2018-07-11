@@ -18,30 +18,55 @@ import { ImageRioLoader } from './image-resize-io-loader/image-rio-loader.compon
 //providers
 import { SnackbarStatusService } from './snackbar-status/service/snackbar-status.service';
 
-export const CUSTOM_COMPONENTS = [
+export function CUSTOM_COMPONENTS() {
+  return [
+    LoadingButton,
+    LoadingButtonBusyComponent,
+    LoadingButtonReady,
+    CheckAnimationComponent,
+    LoadingPanelComponent,
+    CompletedSnackbarComponent,
+    ProgressSnackbarComponent,
+    JsonFormComponent,
+    QuillEditorComponent,
+    FormBuilderComponent,
+    FormlyStepperComponent,
+    SsnInputComponet,
+    ImageUploadComponent,
+    ImageRioLoader
+  ]
 
-  LoadingButton,
-  LoadingButtonBusyComponent,
-  LoadingButtonReady,
-  CheckAnimationComponent,
-  LoadingPanelComponent,
+}
 
-  CompletedSnackbarComponent,
-  ProgressSnackbarComponent,
-  JsonFormComponent,
-  QuillEditorComponent,
-  FormBuilderComponent,
-  FormlyStepperComponent,
-  SsnInputComponet,
-  ImageUploadComponent,
-  ImageRioLoader
+//export const CUSTOM_COMPONENTS = [
+
+//  LoadingButton,
+//  LoadingButtonBusyComponent,
+//  LoadingButtonReady,
+//  CheckAnimationComponent,
+//  LoadingPanelComponent,
+
+//  CompletedSnackbarComponent,
+//  ProgressSnackbarComponent,
+//  JsonFormComponent,
+//  QuillEditorComponent,
+//  FormBuilderComponent,
+//  FormlyStepperComponent,
+//  SsnInputComponet,
+//  ImageUploadComponent,
+//  ImageRioLoader
  
   
 
- ];
+// ];
 
 
-
-export const CUSTOM_PROVIDERS = [
+export function CUSTOM_PROVIDERS() {
+  return [
     SnackbarStatusService
   ]
+}
+
+//export const CUSTOM_PROVIDERS = [
+//    SnackbarStatusService
+//  ]

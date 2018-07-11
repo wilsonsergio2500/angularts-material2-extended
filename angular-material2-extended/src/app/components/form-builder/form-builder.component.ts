@@ -247,5 +247,8 @@ export class FormBuilderComponent{
   submit(){
 
   }
+
+  formSubmit($event: any) {
+  }
   
 }

@@ -21,6 +21,7 @@ export class DashComponent implements OnInit, OnDestroy {
   
   GridVs: IGridVS<any>;
   Buffer: any[];
+  viewPortItems: any;
   constructor(private element: ElementRef) {
 
     this.InitRecords();
@@ -55,7 +56,7 @@ export class DashComponent implements OnInit, OnDestroy {
     console.log($event);
   }
 
-  onScrollEnd() {
+  onScrollEnd($event: any) {
     console.log('scroll end..');
   }
   

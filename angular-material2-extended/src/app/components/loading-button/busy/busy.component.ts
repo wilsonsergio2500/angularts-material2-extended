@@ -12,7 +12,7 @@ export class LoadingButtonBusyComponent implements OnInit {
     ngOnInit() {
 
     }
-    private parentContext: LoadingButton
+    parentContext: LoadingButton
     constructor(@Host() parent: LoadingButton) {
         this.parentContext = parent;
     }

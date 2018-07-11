@@ -9,6 +9,8 @@ export interface IGridVS<T> {
   getTotalCount(): number;
   setHeight(h: number): void;
   setWidth(w: number): void;
+  TileWidth: number;
+  TileHeight: number;
 }
 
 

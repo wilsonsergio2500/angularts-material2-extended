@@ -55,15 +55,15 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
   private delayShow = 1;
 
   @Input('loading-spinner-diameter')
-  private loadingdiameter = 25;
+  loadingdiameter = 25;
 
   private _imageId = null;
-  private aspectRatioClass = 'none';
-  private style = {
+  public aspectRatioClass = 'none';
+  style = {
     'background-position': 'center center',
     'background-size': 'cover'
   };
-  private Loading = true;
+  public Loading = true;
 
   constructor(private zone: NgZone) {
    
