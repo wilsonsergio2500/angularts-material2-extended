@@ -11,7 +11,3 @@ export function ROOT_COMPONENTS() {
   ]
 }
 
-//export const ROOT_COMPONENTS = [
-//  RootComponent,
-//  LoginComponent
-//].concat(DASHBOARD_COMPONENTS);

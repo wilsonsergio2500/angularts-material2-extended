@@ -3,17 +3,18 @@ import { RootComponent } from './root.component';
 import { DASHBOARD_ROUTES } from './dashboard/dashboard-routes';
 import { LoginComponent } from './login/login.component';
 
-export const ROOT_ROUTES: Routes = [
-  {
-    path: '', component: RootComponent,
-    children: [
-      <Route>{ path: 'login', component: LoginComponent},
-      <Route>{
-        path: 'view', loadChildren: './external-views/external-views.module#ExternalViewModule',
+export function ROOT_ROUTES() {
+  return [
+    <Route>{
+      path: '', component: RootComponent,
+      children: [
+        ...DASHBOARD_ROUTES(),
+        <Route>{ path: 'login', component: LoginComponent },
+        <Route>{ path: 'view', loadChildren: 'app/views/root/external-views/external-views.module#ExternalViewModule' },
+        <Route>{ path: 'main', loadChildren: 'app/views/root/main/main-view.module#MainModuleViewComponent' }
+      ]
     },
-      <Route>{ path: 'main', loadChildren: './main/main-view.module#MainModuleViewComponent' }
-    ].concat(DASHBOARD_ROUTES),
+    
+  ];
+}
 
-  },
- 
-];

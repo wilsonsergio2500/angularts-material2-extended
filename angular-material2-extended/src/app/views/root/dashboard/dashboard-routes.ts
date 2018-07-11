@@ -12,26 +12,28 @@ import { FormlyFormViewComponent } from './formly-form-component/formly-form-com
 import { FormBuilderExampleComponent} from './form-builder-example/form-builder-example.component';
 import { FormlyStepperExampleComponent } from './formly-stepper-example/formly-stepper-example.component';
 
-export const DASHBOARD_ROUTES: Routes = [
+export function DASHBOARD_ROUTES() {
+  return [
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    children: [
-      { path: '', redirectTo: 'main', pathMatch: 'full' },
-      {path: 'main', component: MainComponent },
-      { path: 'components', component: ComponentsExampleComponent },
-      {path: 'formlyvanilla', component: VanillaFormlyComponent},
-      { path: 'formlyFieldTypes', component: FormlyFieldsTypesComponent},
-      { path: 'formlylayout', component: FormlyLayoutComponent},
-       { path: 'formlylayoutTemplate', component: FomlyLayoutTemplateComponent},
-       { path: 'formlyAsyncValidator', component: FormlyAsyncValidatorComponent},
-       { path: 'formlyFormComponent', component: FormlyFormViewComponent },
-       { path: 'formlyStepper', component: FormlyStepperExampleComponent},
-       { path: 'formBuilder', component: FormBuilderExampleComponent}
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    {
+      path: 'dashboard',
+      component: DashboardComponent,
+      children: [
+        { path: '', redirectTo: 'main', pathMatch: 'full' },
+        { path: 'main', component: MainComponent },
+        { path: 'components', component: ComponentsExampleComponent },
+        { path: 'formlyvanilla', component: VanillaFormlyComponent },
+        { path: 'formlyFieldTypes', component: FormlyFieldsTypesComponent },
+        { path: 'formlylayout', component: FormlyLayoutComponent },
+        { path: 'formlylayoutTemplate', component: FomlyLayoutTemplateComponent },
+        { path: 'formlyAsyncValidator', component: FormlyAsyncValidatorComponent },
+        { path: 'formlyFormComponent', component: FormlyFormViewComponent },
+        { path: 'formlyStepper', component: FormlyStepperExampleComponent },
+        { path: 'formBuilder', component: FormBuilderExampleComponent }
 
-    ]
-  }
+      ]
+    }
 
-]
+  ]
+}

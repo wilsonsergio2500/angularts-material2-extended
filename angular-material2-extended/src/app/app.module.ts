@@ -36,7 +36,7 @@ import { SharedModule } from './views/root/shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    RouterModule.forRoot(ROOT_ROUTES),
+    RouterModule.forRoot(ROOT_ROUTES()),
 
   ],
   providers: [

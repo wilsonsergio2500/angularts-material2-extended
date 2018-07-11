@@ -14,4 +14,6 @@ import { Component } from '@angular/core';
 
 export class RootComponent {
 
+  constructor() {
+  }
 }
