@@ -9,6 +9,7 @@ import { Base64Encoder } from '../../../../../../utility/Base64Encoder';
 
 import { IUserEntity, IUserConnectionBaseEntity } from '../schema/FirebaseDbSchema';
 import { User } from '@firebase/auth-types';
+import { retry } from 'rxjs/operators/retry';
 
 @Injectable()
 export class FirebaseUserService {
@@ -33,7 +34,7 @@ export class FirebaseUserService {
 
   CreateUser(user: IUserModel) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then((response: User) => {
-
+      
       const newUser = <IUserEntity>{
         firstName: user.firstName,
         lastName: user.lastName,
@@ -54,6 +55,22 @@ export class FirebaseUserService {
     });
   }
 
- 
+  IsEmailUse(email: string) : Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const emailEncoded = Base64Encoder.Encode(email);
+      const obj = this.fireDb.object(`emails/${emailEncoded}`);
+      obj.query.once('value', (snap) => {
+        const entity = snap.val();
+        if (!!entity) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      }, (err) => {
+        resolve(false);
+        })
+    });
+
+  }
 
 }

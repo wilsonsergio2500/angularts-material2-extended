@@ -51,6 +51,32 @@ export class RegistrationComponent implements OnDestroy {
   get credentialsFields(){
     const PasswordAllowedLength = 8;
     const email = new Fields.EmailField('email', 'Email', true);
+    email.modelOptions = {
+      debounce: { default: 250}
+    }
+    email.asyncValidators = {
+      exist: {
+        expression: (fg: FormGroup) => {
+          return new Promise((resolve, reject) => {
+            //only do if valid
+            let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const valid = regex.test(fg.value);
+            if (valid) {
+              this.firebaseUserService.IsEmailUse(fg.value).then((response) => {
+                console.log(response);
+                resolve(!response);
+              })
+            } else {
+              resolve(true);
+            }
+          })
+        },
+        message: (error, field: FormlyFieldConfig) => {
+          return `${field.formControl.value} account already exist`;
+        }
+      }
+    };
+
     const password = new Fields.PasswordField('password', 'Password');
     password.validators = {
       'lengthallowed': {
@@ -104,6 +130,7 @@ export class RegistrationComponent implements OnDestroy {
   constructor(private imageResizeIoService: ImageResizerIO, private firebaseUserService: FirebaseUserService) {
     this.working = false;
     window.addEventListener("beforeunload", this.OnBrowserDestroy.bind(this));
+ 
   }
 
   formSubmit(model: any) {
