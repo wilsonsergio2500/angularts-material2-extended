@@ -22,7 +22,6 @@ export class FormlyStepper<T> implements IFormlyStepper<T> {
 
   constructor(private steps: IFormlyStepperItem[], private viewmodel: T = <T>{}) {
     this.InitForms();
-	
   }
 
  private InitForms() {
@@ -73,5 +72,16 @@ export class FormlyStepper<T> implements IFormlyStepper<T> {
     })
 
     return model as T;
+  }
+
+  get IsDirty(): boolean {
+    let dirty = false;
+
+    this.Forms.forEach((FormlyGroup: IFormlyGroup<T>) => {
+      dirty = dirty || FormlyGroup.form.dirty;
+    });
+
+    return dirty;
+
   }
 }

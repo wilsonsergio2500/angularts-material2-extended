@@ -79,8 +79,10 @@
     <Content Include="src\app\fomly-fields\FormlyGroup.ts" />
     <Content Include="src\app\fomly-fields\IFormlyGroup.ts" />
     <Content Include="src\app\helpers\Helpers.ts" />
+    <Content Include="src\app\models\user\IUserModel.ts" />
     <Content Include="src\app\services\firebase\models\IDBSchema.ts" />
     <Content Include="src\app\services\firebase\models\IUser.ts" />
+    <Content Include="src\app\utility\Base64Encoder.ts" />
     <Content Include="src\app\views\home\home.component.html">
       <SubType>Code</SubType>
     </Content>
@@ -120,6 +122,7 @@
     <Content Include="src\app\views\root\main\utility\ResizeSubscriber.ts" />
     <Content Include="src\app\views\root\root.component.html" />
     <Content Include="src\app\views\root\root-routes.ts" />
+    <Content Include="src\app\views\root\shared\services\firebase\firebaseProviders.ts" />
     <Content Include="src\app\views\root\shared\services\shared-services.ts" />
     <Content Include="src\app\views\sample\sample.component.html">
       <SubType>Code</SubType>
@@ -171,6 +174,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\wrappers\formly-field-wrapper.ts" />
+    <TypeScriptCompile Include="src\app\utility\FriendlyUrlGenerator.ts" />
+    <TypeScriptCompile Include="src\app\views\root\shared\services\firebase\schema\FirebaseDbSchema.ts" />
+    <TypeScriptCompile Include="src\app\views\root\shared\services\firebase\user\user.service.ts" />
     <TypeScriptCompile Include="src\app\views\root\shared\services\image-resizer-io\IImageResizerIOResponse.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -262,10 +268,15 @@
     <Folder Include="src\app\fomly-fields\extensions\wrappers\" />
     <Folder Include="src\app\helpers\" />
     <Folder Include="src\app\directives\" />
+    <Folder Include="src\app\models\" />
+    <Folder Include="src\app\models\user\" />
+    <Folder Include="src\app\utility\" />
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\services\firebase\" />
     <Folder Include="src\app\services\firebase\models\" />
     <Folder Include="src\app\views\root\external-views\register\steps\" />
+    <Folder Include="src\app\views\root\shared\services\firebase\user\" />
+    <Folder Include="src\app\views\root\shared\services\firebase\schema\" />
     <Folder Include="src\app\views\root\shared\services\image-resizer-io\" />
     <Folder Include="src\app\views\" />
     <Folder Include="src\app\views\home\" />
@@ -294,6 +305,7 @@
     <Folder Include="src\app\views\root\login\" />
     <Folder Include="src\app\views\root\shared\" />
     <Folder Include="src\app\views\root\shared\services\" />
+    <Folder Include="src\app\views\root\shared\services\firebase\" />
     <Folder Include="src\app\views\sample\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />

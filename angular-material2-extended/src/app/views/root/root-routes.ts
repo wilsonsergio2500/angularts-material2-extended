@@ -10,7 +10,7 @@ export function ROOT_ROUTES() {
       children: [
         ...DASHBOARD_ROUTES(),
         <Route>{ path: 'login', component: LoginComponent },
-        <Route>{ path: 'view', loadChildren: 'app/views/root/external-views/external-views.module#ExternalViewModule' },
+        <Route>{ path: 'views', loadChildren: 'app/views/root/external-views/external-views.module#ExternalViewModule' },
         <Route>{ path: 'main', loadChildren: 'app/views/root/main/main-view.module#MainModuleViewComponent' }
       ]
     },

@@ -13,6 +13,7 @@ export class LoginComponent {
 
   constructor(private fireDb: AngularFireDatabase) {
 
+
     //let t = this.fireDb.list('users').push(<any>{ user: 'gio' });
     //this.user$ =  this.fireDb.object('users');
     ////this.users$ = this.fireDb.list('users');

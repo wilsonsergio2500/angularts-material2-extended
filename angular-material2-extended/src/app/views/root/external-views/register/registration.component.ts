@@ -1,17 +1,19 @@
 
 import { Component, OnDestroy } from '@angular/core';
 import { FormlyGroup } from '../../../../fomly-fields/FormlyGroup';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Fields } from '../../../../fomly-fields/Fields';
 import { IFormlyGroup } from '../../../../fomly-fields/IFormlyGroup';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { IUserModel } from '../../../../models/user/IUserModel';
 
 import { FormlyStepper, IFormlyStepper, IFormlyStepperItem } from '../../../../components/formly-stepper/models/FormlyStepper';
 import { GetSetpCredFiels } from './steps/step-credentials';
 import { StepBio } from './steps/step-bio';
 
 import { EMPTY_IMAGES_DISPLAY } from '../../../../components/img-upload/utils/empty-images-displays';
+import { ImageResizerIO } from '../../shared/services/image-resizer-io/ImageResizerIO.service';
+import { FirebaseUserService } from '../../shared/services/firebase/user/user.service';
 
 const PasswordAllowedLength = 8;
 
@@ -27,11 +29,29 @@ export class RegistrationComponent implements OnDestroy {
   working: boolean;
   insertFired: boolean = false;
 
-  STEP_CREDENTIALS = () => {
+ 
+  get personalInfoFields() {
+    const pattern = /[^a-zA-Z\-0-9]+/;
+    const firstName = new Fields.InputField('firstName', 'First Name', true);
+    const lastName = new Fields.InputField('lastName', 'Last Name', true);
+    const valid = {
+      expression: (fg: FormGroup) => {
+        return (!!fg.value) ? !pattern.test(fg.value) : true;
+      },
+      message: (error, field: FormlyFieldConfig) => {
+        return `${field.templateOptions.label} has an ilegal character`;
+      }
+    }
+    firstName.validators = { valid };
+    lastName.validators = { valid };
+    return [
+      firstName, lastName
+    ];
+  }
+  get credentialsFields(){
     const PasswordAllowedLength = 8;
     const email = new Fields.EmailField('email', 'Email', true);
     const password = new Fields.PasswordField('password', 'Password');
-
     password.validators = {
       'lengthallowed': {
         expression: (fg: FormGroup) => {
@@ -42,7 +62,6 @@ export class RegistrationComponent implements OnDestroy {
         }
       }
     }
-
     const passwordConfirmation = new Fields.PasswordField('passwordconfirm', 'Password Confirmation');
     passwordConfirmation.validators = {
       'match': {
@@ -60,9 +79,8 @@ export class RegistrationComponent implements OnDestroy {
     ]
 
   }
-
-  IMAGE_UPLOAD_FIELDS = () => {
-    const imageUpload = new Fields.UploadImageField('Image', 'Profile Image', EMPTY_IMAGES_DISPLAY.PROFILE);
+  get imageUploadField(){
+    const imageUpload = new Fields.UploadImageField('image', 'Profile Image', EMPTY_IMAGES_DISPLAY.PROFILE);
     imageUpload.templateOptions.uploaderImage.previewFlexSize = 30;
     imageUpload.templateOptions.uploaderImage.aspectRatioWidth = 1;
     imageUpload.templateOptions.uploaderImage.aspectRatioHeight = 1;
@@ -73,41 +91,42 @@ export class RegistrationComponent implements OnDestroy {
 
   }
 
-  Forms: IFormlyStepper<any> = new FormlyStepper<any>([
-    <IFormlyStepperItem>{ Label: 'Step 1', Fields: this.STEP_CREDENTIALS() },
-    <IFormlyStepperItem>{ Label: 'Step 2', Fields: this.IMAGE_UPLOAD_FIELDS()},
+  Forms: IFormlyStepper<IUserModel> = new FormlyStepper<IUserModel>([
+    <IFormlyStepperItem>{ Label: 'Step 1', Fields: this.credentialsFields },
+    <IFormlyStepperItem>{ Label: 'Step 2', Fields: this.imageUploadField },
+    <IFormlyStepperItem>{ Label: 'Step 4', Fields: this.personalInfoFields},
     <IFormlyStepperItem>{ Label: 'Step 3', Fields: StepBio },
     
   ])
 
 
   
-  constructor(private fireAuth: AngularFireAuth) {
+  constructor(private imageResizeIoService: ImageResizerIO, private firebaseUserService: FirebaseUserService) {
     this.working = false;
+    window.addEventListener("beforeunload", this.OnBrowserDestroy.bind(this));
   }
 
   formSubmit(model: any) {
     this.insertFired = true;
-    //  this.working = true;
+    this.working = true;
 
-    console.log(model);
+    this.firebaseUserService.CreateUser(this.Forms.Model).then(() => {
+      this.working = false;
+    });
 
-      //this.fireAuth.auth.createUserWithEmailAndPassword(model.email, model.password).then((response) => {
 
-      //  console.log(response);
-
-      //  setTimeout(() => { this.working = false; }, 300);
-
-      //}).catch((e) => {
-
-      //  });
-
-    //}
 
   }
 
   ngOnDestroy(): void {
-    console.log('destroy');
+    window.removeEventListener("beforeunload", this.OnBrowserDestroy);
+  }
+
+  OnBrowserDestroy(): void {
+    if (this.insertFired == false && this.Forms.Model.image != EMPTY_IMAGES_DISPLAY.PROFILE) {
+      this.imageResizeIoService.Delete(this.Forms.Model.image);
+    }
+    
   }
 
 }

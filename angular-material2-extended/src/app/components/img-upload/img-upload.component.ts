@@ -86,19 +86,21 @@ export class ImageUploadComponent extends _MatInputMixinBase  implements Control
   fileSelected($event) {
 
     this.Loading = true;
-    console.log($event);
-    console.log($event[0]);
 
-    this.ImageResizerIO.Upload($event[0]).then((response) => {
-      this.Loading = false;
-      if (response.success) {
+    const imageCompressor = new ImageCompressor($event[0], {
+      quality: .6,
+      success: (response: File) => {
+        this.ImageResizerIO.Upload(response).then((response) => {
+          this.Loading = false;
+          if (response.success) {
 
-        this.$imgId = response.response.id;
-        this.propagateChange(this.$imgId);
-        console.log(this.$imgId);
+            this.$imgId = response.response.id;
+            this.propagateChange(this.$imgId);
+          }
+        });
+
       }
-      console.log(response);
-    });
+    })
 
   }
 

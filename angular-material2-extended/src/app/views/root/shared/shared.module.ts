@@ -27,10 +27,12 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS } from '../../../components/index';
 import { FORMLY_CONTROLS_COMPONENTS, FORMLY_CONTROLS_CONFIG } from '../../../fomly-fields/extensions/index';
 import { CUSTOM_DIRECTIVES } from '../../../directives/index';
-import { SHARED_SERVICES } from './services/shared-services'
+import { SHARED_SERVICES } from './services/shared-services';
+import { firebaseProviders } from './services/firebase/firebaseProviders'
 
  const Providers = [
    ...CUSTOM_PROVIDERS(),
+   ...firebaseProviders(),
    SHARED_SERVICES
 ];
 
