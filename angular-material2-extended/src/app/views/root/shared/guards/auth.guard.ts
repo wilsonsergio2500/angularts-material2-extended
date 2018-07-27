@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate, CanLoad {
     return this.firebaseAuth.authState.pipe(map$)
       .do((IsAuth: boolean) => {
         if (IsAuth) {
-          
           return true;
         } else {
           this.router.navigate(['login']);
@@ -34,7 +33,6 @@ export class AuthGuard implements CanActivate, CanLoad {
     return this.firebaseAuth.authState.pipe(map$)
       .do((IsAuth: boolean) => {
         if (IsAuth) {
-          console.log('guard')
           return true;
         } else {
           this.router.navigate(['login']);

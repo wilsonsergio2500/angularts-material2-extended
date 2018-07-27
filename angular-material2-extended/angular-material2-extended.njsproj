@@ -106,6 +106,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
+    <Content Include="src\app\views\root\external-views\comfirm\email.comfirmation.component.css" />
     <Content Include="src\app\views\root\external-views\comfirm\email.comfirmation.component.html" />
     <Content Include="src\app\views\root\external-views\external-view.component.html" />
     <Content Include="src\app\views\root\external-views\register\registration.component.css" />

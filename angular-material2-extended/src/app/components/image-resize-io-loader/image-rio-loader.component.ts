@@ -32,7 +32,7 @@ export class ImageRioLoader implements OnInit, AfterViewInit {
   private actualHeight = 100;
 
   @Input('image-quality')
-  private imageQuality = 50;
+  private imageQuality = 80;
 
   @Input('aspect-ratio-width')
   private aspectRatioWidth = 2;

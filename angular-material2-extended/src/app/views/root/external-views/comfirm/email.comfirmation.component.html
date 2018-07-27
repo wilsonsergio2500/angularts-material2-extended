@@ -10,8 +10,31 @@
       <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100"
            [ngStyle.xs]="{'padding-top.px': 20}"
            [ngStyle.gt-xs]="{'padding-top.px': 50}">
-        <mat-card fxFlex="90" >
-        Simple card
+        <mat-card fxFlex="90">
+
+          <mat-card-header>
+            <div mat-card-avatar>
+              <image-rio-loader [actual-width]="50" [actual-height]="50" [image-id]="user.image.App.value"
+                                aspect-ratio-width="1" aspect-ratio-height="1"
+                                delay-show="200" missing-image-id="dSaintlp"></image-rio-loader>
+            </div>
+            <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+            <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>
+              An email confirmation has been sent to the above email account.
+              Please visit your email account and click on the verification link in order to complete your account creation process.
+              
+            </p>
+          </mat-card-content>
+
+          
+
+
+
+
         </mat-card>
       </div>
 
