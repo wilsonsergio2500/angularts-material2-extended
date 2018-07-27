@@ -106,6 +106,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\app\views\root\dashboard\vanilla-formly\vanilla-formly.component.html" />
+    <Content Include="src\app\views\root\external-views\comfirm\email.comfirmation.component.html" />
     <Content Include="src\app\views\root\external-views\external-view.component.html" />
     <Content Include="src\app\views\root\external-views\register\registration.component.css" />
     <Content Include="src\app\views\root\external-views\register\registration.component.html" />
@@ -175,6 +176,10 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\fomly-fields\extensions\wrappers\formly-field-wrapper.ts" />
     <TypeScriptCompile Include="src\app\utility\FriendlyUrlGenerator.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\comfirm\email-confirmation.component.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\comfirm\email-confirmation.resolver.ts" />
+    <TypeScriptCompile Include="src\app\views\root\external-views\services.ts" />
+    <TypeScriptCompile Include="src\app\views\root\shared\guards\auth.guard.ts" />
     <TypeScriptCompile Include="src\app\views\root\shared\services\firebase\schema\FirebaseDbSchema.ts" />
     <TypeScriptCompile Include="src\app\views\root\shared\services\firebase\user\user.service.ts" />
     <TypeScriptCompile Include="src\app\views\root\shared\services\image-resizer-io\IImageResizerIOResponse.ts">
@@ -274,7 +279,9 @@
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\services\firebase\" />
     <Folder Include="src\app\services\firebase\models\" />
+    <Folder Include="src\app\views\root\external-views\comfirm\" />
     <Folder Include="src\app\views\root\external-views\register\steps\" />
+    <Folder Include="src\app\views\root\shared\guards\" />
     <Folder Include="src\app\views\root\shared\services\firebase\user\" />
     <Folder Include="src\app\views\root\shared\services\firebase\schema\" />
     <Folder Include="src\app\views\root\shared\services\image-resizer-io\" />

@@ -7,7 +7,8 @@ export const styles = [
         .loading-signal{
              display: inline-block;
             position: absolute;
-            top: 15px;
+            top: 16px;
+            left: 16px;
         }
         .loading-message{
             padding: 10px;

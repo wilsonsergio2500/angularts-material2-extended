@@ -9,7 +9,7 @@ import { Base64Encoder } from '../../../../../../utility/Base64Encoder';
 
 import { IUserEntity, IUserConnectionBaseEntity } from '../schema/FirebaseDbSchema';
 import { User } from '@firebase/auth-types';
-import { retry } from 'rxjs/operators/retry';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class FirebaseUserService {
@@ -32,8 +32,16 @@ export class FirebaseUserService {
     return obj.set(<IUserConnectionBaseEntity>{ userId });
   }
 
+  private sendEmail(firebaseUser: User) {
+    if (!firebaseUser.emailVerified) {
+      return firebaseUser.sendEmailVerification();
+    } else {
+      return Promise.resolve(true);
+    }
+  }
+
   CreateUser(user: IUserModel) {
-    return this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then((response: User) => {
+    return this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then((firebaseUser: User) => {
       
       const newUser = <IUserEntity>{
         firstName: user.firstName,
@@ -49,11 +57,36 @@ export class FirebaseUserService {
         friendlyUrlId: `${user.firstName}-${user.lastName}-${FriendlyUrlGenerator.NewId()}`
         
       };
+     
 
-      const userId = response.uid;
-      return Promise.all([ this.addUser(userId, newUser), this.addEmail(userId, newUser), this.addFriendlyUrl(userId, newUser) ]);
+      const userId = firebaseUser.uid;
+      return Promise.all([this.addUser(userId, newUser), this.addEmail(userId, newUser), this.addFriendlyUrl(userId, newUser), this.sendEmail(firebaseUser) ]);
     });
   }
+
+  GetUser(userId: string) : Promise<IUserEntity> {
+    return new Promise((resolve, reject) => {
+      const obj = this.fireDb.object(`users/${userId}`);
+      obj.query.once('value', (snap) => {
+        const entity = snap.val();
+        console.log(entity);
+        if (!!entity) {
+          resolve(entity as IUserEntity);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  GetCurrentUser(): Promise<IUserEntity> {
+    return new Promise((resolve, reject) => {
+      this.fireAuth.authState.subscribe((firebaseUser: User) => {
+        this.GetUser(firebaseUser.uid).then(resolve).catch(reject);
+      })
+    });
+  }
+
 
   IsEmailUse(email: string) : Promise<boolean> {
     return new Promise((resolve, reject) => {

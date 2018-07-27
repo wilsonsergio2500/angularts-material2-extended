@@ -30,19 +30,4 @@ export function DASHBOARD_COMPONENTS() {
 }
 
 
-//export const DASHBOARD_COMPONENTS : any[] = [
-//  DashboardComponent,
-//  MainComponent,
-//  ComponentsExampleComponent,
 
-//  VanillaFormlyComponent,
-//  FormlyFieldsTypesComponent,
-//  FormlyLayoutComponent,
-//  FomlyLayoutTemplateComponent,
-//  FormlyAsyncValidatorComponent,
-//  FormlyFormViewComponent,
-//  FormBuilderExampleComponent,
-//  FormlyStepperExampleComponent
-
-
-//]

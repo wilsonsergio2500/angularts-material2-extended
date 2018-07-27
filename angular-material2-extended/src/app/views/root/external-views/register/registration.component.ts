@@ -14,6 +14,7 @@ import { StepBio } from './steps/step-bio';
 import { EMPTY_IMAGES_DISPLAY } from '../../../../components/img-upload/utils/empty-images-displays';
 import { ImageResizerIO } from '../../shared/services/image-resizer-io/ImageResizerIO.service';
 import { FirebaseUserService } from '../../shared/services/firebase/user/user.service';
+import {SnackbarStatusService } from '../../../../components/snackbar-status/service/snackbar-status.service';
 
 const PasswordAllowedLength = 8;
 
@@ -63,7 +64,6 @@ export class RegistrationComponent implements OnDestroy {
             const valid = regex.test(fg.value);
             if (valid) {
               this.firebaseUserService.IsEmailUse(fg.value).then((response) => {
-                console.log(response);
                 resolve(!response);
               })
             } else {
@@ -127,7 +127,8 @@ export class RegistrationComponent implements OnDestroy {
 
 
   
-  constructor(private imageResizeIoService: ImageResizerIO, private firebaseUserService: FirebaseUserService) {
+  constructor(private imageResizeIoService: ImageResizerIO, private firebaseUserService: FirebaseUserService,
+              private snackbarStatusService: SnackbarStatusService) {
     this.working = false;
     window.addEventListener("beforeunload", this.OnBrowserDestroy.bind(this));
  
@@ -138,7 +139,7 @@ export class RegistrationComponent implements OnDestroy {
     this.working = true;
 
     this.firebaseUserService.CreateUser(this.Forms.Model).then(() => {
-      this.working = false;
+      this.snackbarStatusService.OpenComplete('Account has been created', 5000);
     });
 
 

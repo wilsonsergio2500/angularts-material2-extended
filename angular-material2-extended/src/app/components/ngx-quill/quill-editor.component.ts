@@ -161,7 +161,7 @@ export class QuillEditorComponent extends  _MatInputMixinBase  implements  After
     let modules: any = this.modules || this.defaultModules;
     let placeholder = 'Insert text here ...';
 
-    console.log(this.height);
+    //console.log(this.height);
 
     const markupPlaceholder = (this.elementRef.nativeElement as HTMLDivElement).getAttribute("placeholder");
     placeholder = markupPlaceholder;

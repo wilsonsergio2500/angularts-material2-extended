@@ -28,14 +28,14 @@ export class ComponentsExampleComponent {
 
   ShowProgress(){
     this.snackbarStatusService.OpenProgress('Loading...')
-    setTimeout(() => {
-      this.snackbarStatusService.CloseStatus();
-    }, 8000)
+    //setTimeout(() => {
+    //  this.snackbarStatusService.CloseStatus();
+    //}, 8000)
   }
   ShowCompleted(){
     this.snackbarStatusService.OpenComplete('Action Completed')
-    setTimeout(()=> {
-      this.snackbarStatusService.CloseStatus();
-    }, 8000)
+    //setTimeout(()=> {
+    //  this.snackbarStatusService.CloseStatus();
+    //}, 8000)
   }
 }

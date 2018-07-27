@@ -11,17 +11,24 @@ export class SnackbarStatusService{
 
     }
 
-  OpenProgress(msg?: string) {
+  OpenProgress(msg?: string, duration = 900000) {
         const message = msg || 'Loading...';
-        this.snackbar.openFromComponent(ProgressSnackbarComponent, <MatSnackBarConfig>{ duration: 900000, data: { message } });
+    this.snackbar.openFromComponent(ProgressSnackbarComponent, <MatSnackBarConfig>{
+      duration: duration, data: { message }, horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
     }
 
     CloseStatus() {
         this.snackbar.dismiss();
     }
 
-    OpenComplete(msg?: string){
+  OpenComplete(msg?: string, duration = 900000){
         const message = msg || 'Action completed!';
-        this.snackbar.openFromComponent(CompletedSnackbarComponent, <MatSnackBarConfig>{ duration: 900000, data: { message } });
+    this.snackbar.openFromComponent(CompletedSnackbarComponent, <MatSnackBarConfig>{
+      duration: duration, data: { message },
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
     }
 }

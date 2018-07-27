@@ -1,0 +1,21 @@
+<div fxLayout="column" fxFlex="100">
+  <div fxLayout="row" fxFlex="100">
+
+    <div fxFlexOffset="0"
+         fxFlexOffset.gt-xs="20" fxFlex.gt-xs="60"
+         fxFlexOffset.gt-sm="25" fxFlex.gt-sm="50"
+         fxFlexOffset.gt-md="30" fxFlex.gt-md="40"
+         fxFlexOffset.gt-lg="35" fxFlex.gt-lg="30">
+
+      <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100"
+           [ngStyle.xs]="{'padding-top.px': 20}"
+           [ngStyle.gt-xs]="{'padding-top.px': 50}">
+        <mat-card fxFlex="90" >
+        Simple card
+        </mat-card>
+      </div>
+
+      </div>
+
+  </div>
+</div>

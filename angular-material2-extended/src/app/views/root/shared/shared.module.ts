@@ -1,3 +1,4 @@
+/// <reference path="guards/auth.guard.ts" />
 
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,9 +29,11 @@ import { CUSTOM_COMPONENTS, CUSTOM_PROVIDERS } from '../../../components/index';
 import { FORMLY_CONTROLS_COMPONENTS, FORMLY_CONTROLS_CONFIG } from '../../../fomly-fields/extensions/index';
 import { CUSTOM_DIRECTIVES } from '../../../directives/index';
 import { SHARED_SERVICES } from './services/shared-services';
-import { firebaseProviders } from './services/firebase/firebaseProviders'
+import { firebaseProviders } from './services/firebase/firebaseProviders';
+import { AuthGuard } from './guards/auth.guard';
 
- const Providers = [
+const Providers = [
+   AuthGuard,
    ...CUSTOM_PROVIDERS(),
    ...firebaseProviders(),
    SHARED_SERVICES
